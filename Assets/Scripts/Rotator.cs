@@ -4,8 +4,10 @@ public class Rotator : MonoBehaviour
 {
     protected void LookAt(Vector3 target)
     {
+        //Calculate angle between transform and target
         float lookAngle = AngleBetweenTwoPoints(transform.position, target) + 90;
 
+        //Assign the target rotation on the Z axis
         transform.eulerAngles = new Vector3(0, 0, lookAngle);
     }
 

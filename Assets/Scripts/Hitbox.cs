@@ -13,7 +13,7 @@ public class Hitbox : MonoBehaviour
 
     private void Awake()
     {
-        attackID = Random.Range(int.MinValue, int.MaxValue); //probbably change to a  class that generates a unqie ID
+        attackID = Random.Range(int.MinValue, int.MaxValue); //probably change to a class that generates a unique ID
     }
     
 }
