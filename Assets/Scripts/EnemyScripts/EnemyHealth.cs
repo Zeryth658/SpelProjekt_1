@@ -9,7 +9,6 @@ public class EnemyHealth : MonoBehaviour, IDamageable
     {
         health -= amount;
         Debug.Log($"{gameObject.name} took {amount} from {source}");
-
         if (health <= 0)
             Die();
     }

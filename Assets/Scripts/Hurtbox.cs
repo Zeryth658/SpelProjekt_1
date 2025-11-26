@@ -21,14 +21,21 @@ public class Hurtbox : MonoBehaviour
     {
         // Must have a hurtbox
         if (!other.TryGetComponent(out Hitbox hitbox))
+        {
             return;
+        }
 
         if (!CanTakeHit(hitbox.attackID))
-            return;
-
-        // Must also have a damageable body
-        if (other.TryGetComponent<IDamageable>(out var dmg))
         {
+            return;
+        }
+            
+        
+        
+        // Must also have a damageable body
+        if (TryGetComponent<IDamageable>(out var dmg))
+        {
+            Debug.Log($"{gameObject.name} im hit");
             dmg.TakeDamage(hitbox.damage, hitbox.owner);
             TriggerIFrames(); // optional
         }
@@ -42,6 +49,7 @@ public class Hurtbox : MonoBehaviour
         recentAttackIDs.Clear();
     }
     // Update is called once per frame
+
     void Update()
     {
         if (iFrameTimer > 0f)
