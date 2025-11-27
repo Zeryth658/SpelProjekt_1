@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class Bullet : MonoBehaviour, IDestroyOnImpact
 {
     public float speed = 10f;
     public Vector2 moveDirection;
@@ -10,7 +10,12 @@ public class Bullet : MonoBehaviour
     {
         moveDirection = direction.normalized;
     }
-    
+
+    public void DestroyMe()
+    {
+        Debug.Log($"{gameObject.name} killed");
+        PoolManager.Despawn(gameObject);
+    }
 
     // Update is called once per frame
     void Update()
