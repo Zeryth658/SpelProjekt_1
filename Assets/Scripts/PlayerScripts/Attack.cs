@@ -1,19 +1,37 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+
 public class Attack : MonoBehaviour
 {
     public GameObject melee;
+
+    private PlayerInput playerInput;
+    private InputAction attackAction;
+
     bool isAttacking = false;
     float atkDuration = 0.3f;
     float atkTimer = 0f;
-    private PlayerInput playerInput;
+
+    void Awake()
+    {
+        playerInput = GetComponent<PlayerInput>();
+        
+        attackAction = playerInput.actions["Attack"];
+        attackAction.performed += OnAttackInput;
+    }
+
+    private void OnEnable() => attackAction.Enable();
+    private void OnDisable() => attackAction.Disable();
 
     // Update is called once per frame
     private void Update()
     {
         CheckMeleeTimer();
+    }
 
-        if(Input.GetKeyDown(KeyCode.E) || Input.GetMouseButton(0))
+    private void OnAttackInput(InputAction.CallbackContext context)
+    {
+        if (!isAttacking)
         {
             OnAttack();
         }
@@ -21,11 +39,8 @@ public class Attack : MonoBehaviour
 
     private void OnAttack()
     {
-        if (!isAttacking)
-        {
-            melee.SetActive(true);
-            isAttacking = true;
-        }
+        isAttacking = true;
+        melee.SetActive(true);
     }
 
     private void CheckMeleeTimer()
@@ -35,8 +50,8 @@ public class Attack : MonoBehaviour
             atkTimer += Time.deltaTime;
             if(atkTimer >= atkDuration)
             {
-                atkTimer = 0;
                 isAttacking = false;
+                atkTimer = 0;
                 melee.SetActive(false);
             }
         }
