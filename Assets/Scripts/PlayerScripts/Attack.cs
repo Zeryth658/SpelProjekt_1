@@ -7,12 +7,6 @@ public class Attack : MonoBehaviour
     float atkDuration = 0.3f;
     float atkTimer = 0f;
     private PlayerInput playerInput;
-    private InputAction atkAction;
-
-    private void Awake()
-    {
-        atkAction = playerInput.actions["Attack"];
-    }
 
     // Update is called once per frame
     private void Update()
