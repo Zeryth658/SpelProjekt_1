@@ -38,6 +38,10 @@ public class Hurtbox : MonoBehaviour
             Debug.Log($"{gameObject.name} im hit");
             dmg.TakeDamage(hitbox.damage, hitbox.owner);
             TriggerIFrames(); // optional
+            if (other.TryGetComponent<IDestroyOnImpact>(out var hit))
+            {
+                hit.DestroyMe();
+            }
         }
 
         // If it's a bullet, despawn it
