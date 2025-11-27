@@ -15,7 +15,6 @@ public class Rotator : MonoBehaviour
         //Calculate angle between transform and target
         float lookAngle = AngleBetweenTwoPoints(transform.position, target) + 90;
 
-        Debug.Log(lookAngle);
         //Assign the target rotation on the Z axis
         transformToRotate.eulerAngles = new Vector3(0, 0, lookAngle);
     }
