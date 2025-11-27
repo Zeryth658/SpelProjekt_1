@@ -13,6 +13,7 @@ public class Hurtbox : MonoBehaviour
     {
         if (iFrameTimer > 0f) return false;
         if (recentAttackIDs.Contains(attackID)) return false;
+        
 
         recentAttackIDs.Add(attackID);
         return true;
@@ -29,8 +30,9 @@ public class Hurtbox : MonoBehaviour
         {
             return;
         }
-            
         
+        if (hitbox.owner == gameObject) return;
+            
         
         // Must also have a damageable body
         if (TryGetComponent<IDamageable>(out var dmg))

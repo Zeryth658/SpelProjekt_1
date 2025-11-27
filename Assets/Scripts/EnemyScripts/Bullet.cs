@@ -4,11 +4,14 @@ public class Bullet : MonoBehaviour, IDestroyOnImpact
 {
     public float speed = 10f;
     public Vector2 moveDirection;
+    public Hitbox hitbox;
 
-
-    public void SetDirection(Vector2 direction)
+    public void Initialize(Vector2 direction, float damage, GameObject owner)
     {
         moveDirection = direction.normalized;
+        hitbox.damage = damage;
+        hitbox.owner = owner;
+        hitbox.attackID = Random.Range(int.MinValue, int.MaxValue);
     }
 
     public void DestroyMe()
