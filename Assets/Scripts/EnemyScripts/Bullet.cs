@@ -19,13 +19,11 @@ public class Bullet : MonoBehaviour, IDestroyOnImpact
 
     public void DestroyMe()
     {
-        Debug.Log($"{gameObject.name} killed");
         PoolManager.Despawn(gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log($"{gameObject.name} entered {other.gameObject.name}");
         if (other.tag == "Wall")
         {
             DestroyMe();
