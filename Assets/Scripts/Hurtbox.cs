@@ -20,24 +20,31 @@ public class Hurtbox : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
+        
         // Must have a hurtbox
         if (!other.TryGetComponent(out Hitbox hitbox))
         {
             return;
         }
+        
+        if (hitbox.owner == gameObject) return;
+        
+        if (hitbox.owner.CompareTag(gameObject.tag))
+            return;
+        
 
         if (!CanTakeHit(hitbox.attackID))
         {
             return;
         }
         
-        if (hitbox.owner == gameObject) return;
+      
             
         
         // Must also have a damageable body
         if (TryGetComponent<IDamageable>(out var dmg))
         {
-            Debug.Log($"{gameObject.name} im hit");
+            Debug.Log($"{gameObject.name} im hit by {hitbox.owner}");
             dmg.TakeDamage(hitbox.damage, hitbox.owner);
             TriggerIFrames(); // optional
             if (other.TryGetComponent<IDestroyOnImpact>(out var hit))

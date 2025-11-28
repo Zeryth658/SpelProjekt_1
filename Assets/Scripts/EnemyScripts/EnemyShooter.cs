@@ -17,10 +17,45 @@ public class EnemyShooter : MonoBehaviour
     public ShotPattern shotpattern;
     public AimBehaviour aimBehaviour;
 
-
+    private float cooldownTimer;
+    private Vector2 direction;
+    
     // Update is called once per frame
     void Update()
     {
+        //cooldownTimer -= Time.deltaTime;
+
+        if (cooldownTimer <= 0)
+        {
+            cooldownTimer = attackCooldown;
+            Shoot();
+        }
+        else
+        {
+            cooldownTimer -= Time.deltaTime;
+        }
         
+    }
+
+    private void Shoot()
+    {
+        if (aimBehaviour == null || target == null || shotpattern == null)
+        {
+            Debug.Log($"{gameObject.name} I can't shoot something missing. AimBehavior =  {aimBehaviour}, target =  {target}, shotpattern =  {shotpattern}");
+            return; 
+        }
+
+        direction = aimBehaviour.SetTarget(firePoint, target);
+        
+        shotpattern.Shoot(this, firePoint, direction);
+    }
+
+    public void SpawnBullet()
+    {
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        GameObject bulletObj = PoolManager.Spawn(bulletPrefab, firePoint.position, rotation);
+        Bullet bullet = bulletObj.GetComponent<Bullet>();
+        bullet.Initialize(direction, bulletDamage, this.gameObject, bulletSpeed, bulletLifeTime);
     }
 }
