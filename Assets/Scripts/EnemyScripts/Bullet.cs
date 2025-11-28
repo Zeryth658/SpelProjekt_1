@@ -23,6 +23,15 @@ public class Bullet : MonoBehaviour, IDestroyOnImpact
         PoolManager.Despawn(gameObject);
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log($"{gameObject.name} entered {other.gameObject.name}");
+        if (other.tag == "Wall")
+        {
+            DestroyMe();
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
