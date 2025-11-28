@@ -50,11 +50,11 @@ public class EnemyShooter : MonoBehaviour
         shotpattern.Shoot(this, firePoint, direction);
     }
 
-    public void SpawnBullet()
+    public void SpawnBullet(Vector3 spawnPosition, Vector3 spawnDirection)
     {
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        float angle = Mathf.Atan2(spawnDirection.y, spawnDirection.x) * Mathf.Rad2Deg;
         Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        GameObject bulletObj = PoolManager.Spawn(bulletPrefab, firePoint.position, rotation);
+        GameObject bulletObj = PoolManager.Spawn(bulletPrefab, spawnPosition, rotation);
         Bullet bullet = bulletObj.GetComponent<Bullet>();
         bullet.Initialize(direction, bulletDamage, this.gameObject, bulletSpeed, bulletLifeTime);
     }
