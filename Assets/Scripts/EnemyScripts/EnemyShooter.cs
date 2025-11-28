@@ -16,6 +16,8 @@ public class EnemyShooter : MonoBehaviour
     [Header("Shoot behaviour")]
     public ShotPattern shotpattern;
     public AimBehaviour aimBehaviour;
+    public int detectionRange;
+    public LayerMask obstacleMask;
 
     private float cooldownTimer;
     private Vector2 direction;
@@ -27,14 +29,29 @@ public class EnemyShooter : MonoBehaviour
 
         if (cooldownTimer <= 0)
         {
-            cooldownTimer = attackCooldown;
-            Shoot();
+            if (TargetInLineOfSight())
+            {
+                cooldownTimer = attackCooldown;
+                Shoot();
+            }
         }
         else
         {
             cooldownTimer -= Time.deltaTime;
         }
         
+    }
+
+    private bool TargetInLineOfSight()
+    {
+      Vector2 dir = (target.position - firePoint.position).normalized;
+      float distance = Vector2.Distance(firePoint.position, target.position);
+
+      RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, distance, obstacleMask);
+      if (hit.collider != null) return false;
+
+      
+      return true;
     }
 
     private void Shoot()
@@ -46,8 +63,11 @@ public class EnemyShooter : MonoBehaviour
         }
 
         direction = aimBehaviour.SetTarget(firePoint, target);
+        if (TargetInLineOfSight())
+        { 
+            shotpattern.Shoot(this, firePoint, direction);
+        }
         
-        shotpattern.Shoot(this, firePoint, direction);
     }
 
     public void SpawnBullet(Vector3 spawnPosition, Vector3 spawnDirection)

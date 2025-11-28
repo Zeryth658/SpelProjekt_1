@@ -185,3 +185,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 6716923964577713858, guid: 00b52c8c331c83a469ebbf079fa48ee9, type: 3}
   shotpattern: {fileID: 11400000, guid: d3be9205a17373346be4b1cdfe6adc27, type: 2}
   aimBehaviour: {fileID: 11400000, guid: 3e291654a2f4c4b4b89f0a2bc24d5d04, type: 2}
+  detectionRange: 0
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 65536
