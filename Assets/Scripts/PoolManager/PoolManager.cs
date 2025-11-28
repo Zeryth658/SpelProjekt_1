@@ -18,11 +18,32 @@ public class PoolManager : MonoBehaviour
             prefabLookUp.Add(pool.prefab, pool);
         }
     }
+    
+    private static readonly object locker = new object();
 
     // Spawns an object from a prehab using its preexisting pool or makes a new object if it didnt have one
     public static GameObject Spawn(GameObject prefab, Vector3 position, Quaternion rotation)
     {
-        Pool pool = Instance.prefabLookUp[prefab];
+        Pool pool;
+
+        lock(locker)
+        {
+            if(!Instance.prefabLookUp.TryGetValue(prefab, out pool))
+            {
+                pool = new Pool
+                {
+                    prefab = prefab,
+                    parent = Instance.transform,
+                    initialPoolSize = 1
+                };
+                pool.InitializePool();
+                Instance.prefabLookUp[prefab] = pool;
+                Instance.pools.Add(pool);
+            
+            }
+            
+        }
+
 
         PoolObject anObject = pool.GetObject();
         anObject.transform.SetPositionAndRotation(position, rotation);
