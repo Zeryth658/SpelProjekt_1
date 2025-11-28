@@ -63,10 +63,10 @@ public class EnemyShooter : MonoBehaviour
         }
 
         direction = aimBehaviour.SetTarget(firePoint, target);
-        if (TargetInLineOfSight())
-        { 
-            shotpattern.Shoot(this, firePoint, direction);
-        }
+        
+        
+        shotpattern.Shoot(this, firePoint, direction);
+        
         
     }
 
