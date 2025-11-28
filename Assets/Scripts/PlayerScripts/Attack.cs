@@ -7,6 +7,7 @@ public class Attack : MonoBehaviour
 
     private PlayerInput playerInput;
     private InputAction attackAction;
+    private Animator animator;
 
     bool isAttacking = false;
     float atkDuration = 0.3f;
@@ -15,6 +16,7 @@ public class Attack : MonoBehaviour
     void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
+        animator = GetComponent<Animator>();
         
         attackAction = playerInput.actions["Attack"];
         attackAction.performed += OnAttackInput;
@@ -40,6 +42,7 @@ public class Attack : MonoBehaviour
     private void OnAttack()
     {
         isAttacking = true;
+        //animator.SetTrigger("Attack");
         melee.SetActive(true);
     }
 
