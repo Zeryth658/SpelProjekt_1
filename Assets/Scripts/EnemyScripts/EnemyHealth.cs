@@ -15,6 +15,6 @@ public class EnemyHealth : MonoBehaviour, IDamageable
 
     void Die()
     {
-        Destroy(gameObject);
+        PoolManager.Despawn(gameObject);
     }
 }
