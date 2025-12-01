@@ -9,10 +9,7 @@ public class Attack : MonoBehaviour
 
     private PlayerController controls;
     private Animator animator;
-
-    bool isAttacking = false;
-    float atkDuration = 0.3f;
-    float atkTimer = 0f;
+    [SerializeField] private Transform weaponCollider;
 
     void Awake()
     {
@@ -30,30 +27,17 @@ public class Attack : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        CheckMeleeTimer();
+        
     }
 
     private void OnAttack()
     {
-        if (!isAttacking)
-        {
-            isAttacking = true;
-            animator.SetTrigger("Attack");
-            melee.SetActive(true);
-        }
+        animator.SetTrigger("Attack");
+        weaponCollider.gameObject.SetActive(true);
     }
 
-    private void CheckMeleeTimer()
+    public void DoneAttackingAnimEvent()
     {
-        if (isAttacking)
-        {
-            atkTimer += Time.deltaTime;
-            if(atkTimer >= atkDuration)
-            {
-                isAttacking = false;
-                atkTimer = 0;
-                melee.SetActive(false);
-            }
-        }
+        weaponCollider.gameObject.SetActive(false);
     }
 }
