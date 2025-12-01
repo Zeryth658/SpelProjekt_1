@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 582737285545866239}
   - component: {fileID: 4282639671913355516}
   - component: {fileID: 5636634285687410746}
+  - component: {fileID: 3844878854157292557}
   - component: {fileID: 950005001998381786}
   m_Layer: 0
   m_Name: Melee
@@ -28,13 +29,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 922159165274181876}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -0, y: 1.1, z: 0}
+  m_LocalRotation: {x: 0, y: -0, z: 0.9659259, w: -0.25881898}
+  m_LocalPosition: {x: -0.6, y: 0.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1437618163912301222}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 210}
 --- !u!212 &582737285545866239
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -160,6 +161,20 @@ MonoBehaviour:
   damage: 1
   owner: {fileID: 922159165274181876}
   attackID: 0
+--- !u!114 &3844878854157292557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 922159165274181876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a7f5bec687337843bf143200a022a11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  melee: {fileID: 922159165274181876}
+  animator: {fileID: 950005001998381786}
 --- !u!95 &950005001998381786
 Animator:
   serializedVersion: 7
@@ -315,7 +330,6 @@ GameObject:
   - component: {fileID: 6918456677596445224}
   - component: {fileID: 2995894528709451915}
   - component: {fileID: 1157133527975207446}
-  - component: {fileID: 8606880502762859207}
   - component: {fileID: 4967197348334144092}
   - component: {fileID: 785864877921393023}
   m_Layer: 0
@@ -445,19 +459,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 5
   hurtbox: {fileID: 4967197348334144092}
---- !u!114 &8606880502762859207
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8818006389662794542}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a7f5bec687337843bf143200a022a11, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  melee: {fileID: 922159165274181876}
 --- !u!114 &4967197348334144092
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,6 +1,6 @@
 {
     "version": 1,
-    "name": "PlayerActions",
+    "name": "PlayerController",
     "maps": [
         {
             "name": "Player",
@@ -23,15 +23,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
-                },
-                {
-                    "name": "Attack",
-                    "type": "Button",
-                    "id": "5c0c3e8b-c5de-4067-af7a-d889d5d34d14",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -92,7 +83,35 @@
                 },
                 {
                     "name": "",
-                    "id": "f84e23ac-c1a6-4020-80cb-009e06c7ce85",
+                    "id": "89830a3a-3e3a-42a6-bf08-4671b63743f3",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Combat",
+            "id": "6e0f1c8e-2daa-469d-8206-511f3acad826",
+            "actions": [
+                {
+                    "name": "Attack",
+                    "type": "Button",
+                    "id": "3fd164c3-ffd5-473e-bbd4-57fee604ad21",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "a6d141f9-bae2-47f2-a94c-927362d08b28",
                     "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
@@ -103,23 +122,12 @@
                 },
                 {
                     "name": "",
-                    "id": "1fa39909-8388-4b1e-b406-c61781c8feb9",
+                    "id": "8a815afb-1494-4e96-bcb2-0b6fc78abde6",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Attack",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "89830a3a-3e3a-42a6-bf08-4671b63743f3",
-                    "path": "<Mouse>/position",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Look",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

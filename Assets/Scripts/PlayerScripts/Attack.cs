@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -5,8 +7,7 @@ public class Attack : MonoBehaviour
 {
     public GameObject melee;
 
-    private PlayerInput playerInput;
-    private InputAction attackAction;
+    private PlayerController controls;
     private Animator animator;
 
     bool isAttacking = false;
@@ -15,15 +16,16 @@ public class Attack : MonoBehaviour
 
     void Awake()
     {
-        playerInput = GetComponent<PlayerInput>();
         animator = GetComponent<Animator>();
-        
-        attackAction = playerInput.actions["Attack"];
-        attackAction.performed += OnAttackInput;
+        controls = new PlayerController();
     }
+    
+    private void OnEnable() => controls.Enable();
 
-    private void OnEnable() => attackAction.Enable();
-    private void OnDisable() => attackAction.Disable();
+    void Start()
+    {
+        controls.Combat.Attack.started += _ => OnAttack();
+    }
 
     // Update is called once per frame
     private void Update()
@@ -31,19 +33,14 @@ public class Attack : MonoBehaviour
         CheckMeleeTimer();
     }
 
-    private void OnAttackInput(InputAction.CallbackContext context)
+    private void OnAttack()
     {
         if (!isAttacking)
         {
-            OnAttack();
+            isAttacking = true;
+            animator.SetTrigger("Attack");
+            melee.SetActive(true);
         }
-    }
-
-    private void OnAttack()
-    {
-        isAttacking = true;
-        //animator.SetTrigger("Attack");
-        melee.SetActive(true);
     }
 
     private void CheckMeleeTimer()
