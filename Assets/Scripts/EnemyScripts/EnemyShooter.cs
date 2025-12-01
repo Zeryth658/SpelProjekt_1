@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class EnemyShooter : MonoBehaviour
@@ -40,6 +41,15 @@ public class EnemyShooter : MonoBehaviour
             cooldownTimer -= Time.deltaTime;
         }
         
+    }
+
+    private void Start()
+    {
+        if (aimBehaviour == null || target == null || shotpattern == null)
+        {
+            Debug.Log($"{gameObject.name} I can't shoot something missing. AimBehavior =  {aimBehaviour}, target =  {target}, shotpattern =  {shotpattern}");
+            return; 
+        }
     }
 
     private bool TargetInLineOfSight()
