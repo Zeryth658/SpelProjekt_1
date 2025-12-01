@@ -38,6 +38,7 @@ public class Hurtbox : MonoBehaviour
                 return;
         }
 
+        // Checks Immunity frames
         if (!CanTakeHit(hitbox.attackID))
         {
             return;
@@ -57,9 +58,7 @@ public class Hurtbox : MonoBehaviour
                 hit.DestroyMe();
             }
         }
-
-        // If it's a bullet, despawn it
-        //PoolManager.Despawn(gameObject);
+        
     }
     public void TriggerIFrames()
     {

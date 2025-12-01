@@ -44,6 +44,9 @@ public class EnemyShooter : MonoBehaviour
 
     private bool TargetInLineOfSight()
     {
+        
+        if (target == null) return false;
+        
       Vector2 dir = (target.position - firePoint.position).normalized;
       float distance = Vector2.Distance(firePoint.position, target.position);
 
