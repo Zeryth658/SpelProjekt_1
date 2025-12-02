@@ -33,6 +33,10 @@ public class Attack : MonoBehaviour
     private void OnAttack()
     {
         animator.SetTrigger("Attack");
+    }
+
+    public void StartAttackingAnimEvent()
+    {
         weaponCollider.gameObject.SetActive(true);
     }
 
