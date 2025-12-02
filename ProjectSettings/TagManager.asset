@@ -43,5 +43,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: GroundLayer
+    uniqueID: 947068203
+    locked: 0
+  - name: NewLayer
+    uniqueID: 1858684809
+    locked: 0
   m_RenderingLayers:
   - Default
+  - Layer 1
