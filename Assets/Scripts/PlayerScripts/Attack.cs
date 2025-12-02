@@ -5,8 +5,6 @@ using UnityEngine.InputSystem;
 
 public class Attack : MonoBehaviour
 {
-    public GameObject melee;
-
     private PlayerController controls;
     private Animator animator;
     [SerializeField] private Transform weaponCollider;
