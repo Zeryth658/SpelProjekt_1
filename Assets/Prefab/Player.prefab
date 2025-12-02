@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3259029622902731156}
   - component: {fileID: 1190782734434366332}
   - component: {fileID: 8803418714444095585}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WeaponCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -201,7 +201,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a7f5bec687337843bf143200a022a11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  melee: {fileID: 922159165274181876}
   weaponCollider: {fileID: 3259029622902731156}
 --- !u!95 &950005001998381786
 Animator:
