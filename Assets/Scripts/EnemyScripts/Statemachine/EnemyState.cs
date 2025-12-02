@@ -3,12 +3,12 @@ using UnityEngine;
 public class EnemyState
 {
     protected Enemy enemy;
-    protected EnemyStateMachine _enemyStateMachine;
+    protected EnemyStateMachine enemyStateMachine;
 
     public EnemyState(Enemy enemy, EnemyStateMachine enemyStateMachine)
     {
         this.enemy = enemy;
-        this._enemyStateMachine = enemyStateMachine;
+        this.enemyStateMachine = enemyStateMachine;
     }
     
     public virtual void EnterState(){}

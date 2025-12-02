@@ -7,7 +7,6 @@ public class EnemyShooter : MonoBehaviour
     public float bulletSpeed;
     public float bulletLifeTime;
     public float bulletDamage;
-    public float attackCooldown = 1f;
     
     [Header("References")]
     public Transform firePoint;
@@ -17,32 +16,13 @@ public class EnemyShooter : MonoBehaviour
     [Header("Shoot behaviour")]
     public ShotPattern shotpattern;
     public AimBehaviour aimBehaviour;
-    public int detectionRange;
     public LayerMask obstacleMask;
 
-    private float cooldownTimer;
+   
     private Vector2 direction;
     
     // Update is called once per frame
-    void Update()
-    {
-        //cooldownTimer -= Time.deltaTime;
-
-        if (cooldownTimer <= 0)
-        {
-            if (TargetInLineOfSight())
-            {
-                cooldownTimer = attackCooldown;
-                Shoot();
-            }
-        }
-        else
-        {
-            cooldownTimer -= Time.deltaTime;
-        }
-        
-    }
-
+    
     private void Start()
     {
         if (aimBehaviour == null || target == null || shotpattern == null)
@@ -51,8 +31,22 @@ public class EnemyShooter : MonoBehaviour
             return; 
         }
     }
+    
+    
 
-    private bool TargetInLineOfSight()
+    public bool CanShoot
+    {
+        get
+        {
+            return TargetInLineOfSight();
+        }
+    }
+    
+
+
+
+
+    public bool TargetInLineOfSight()
     {
         
         if (target == null) return false;
@@ -67,7 +61,7 @@ public class EnemyShooter : MonoBehaviour
       return true;
     }
 
-    private void Shoot()
+    public void Shoot()
     {
         if (aimBehaviour == null || target == null || shotpattern == null)
         {

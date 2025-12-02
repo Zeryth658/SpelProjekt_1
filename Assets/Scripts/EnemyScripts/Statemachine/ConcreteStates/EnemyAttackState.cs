@@ -20,7 +20,18 @@ public class EnemyAttackState : EnemyState
 
     public override void FrameUpdate()
     {
-        base.FrameUpdate();
+
+        if (enemy.Shooter.CanShoot)
+        {
+            enemy.Shooter.Shoot();
+
+            enemyStateMachine.ChangeState(enemy.AttackRecoveryState);
+        }
+        else
+        {
+           
+            enemyStateMachine.ChangeState(enemy.IdleState);
+        }
     }
 
     public override void PhysicsUpdate()

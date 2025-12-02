@@ -1,16 +1,16 @@
 using UnityEngine;
 
-public class EnemyIdleState : EnemyState
+public class EnemySpottedPlayerState : EnemyState
 {
-
-    public EnemyIdleState(Enemy enemy, EnemyStateMachine enemyStateMachine) : base(enemy, enemyStateMachine)
+    private float detectionTimer;
+    public EnemySpottedPlayerState(Enemy enemy, EnemyStateMachine enemyStateMachine) : base(enemy, enemyStateMachine)
     {
         
     }
-
+    
     public override void EnterState()
     {
-        base.EnterState();
+        detectionTimer = 0f;
     }
 
     public override void ExitState()
@@ -20,9 +20,10 @@ public class EnemyIdleState : EnemyState
 
     public override void FrameUpdate()
     {
-        if (enemy.PlayerDetected())
+        detectionTimer  += Time.deltaTime;
+        if (detectionTimer >= enemy.spottingDelay)
         {
-            enemyStateMachine.ChangeState(enemy.SpottedState);
+            enemyStateMachine.ChangeState(enemy.PreparingShotState);
         }
     }
 

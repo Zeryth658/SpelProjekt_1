@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5266735357534616372}
   - component: {fileID: 2138003811000849263}
-  - component: {fileID: 277990519224863539}
   - component: {fileID: 4972438075651288497}
   - component: {fileID: 8152063064535360942}
   - component: {fileID: 2652434584671427070}
+  - component: {fileID: -5444184480930271380}
   m_Layer: 0
   m_Name: BasicEnemy
   m_TagString: Enemy
@@ -91,20 +91,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &277990519224863539
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1943045095350305208}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76fdaee65b454684186a0433dfdab8a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 1
-  hurtbox: {fileID: 4972438075651288497}
 --- !u!114 &4972438075651288497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,7 +165,6 @@ MonoBehaviour:
   bulletSpeed: 4
   bulletLifeTime: 100
   bulletDamage: 1
-  attackCooldown: 1.5
   firePoint: {fileID: 5266735357534616372}
   target: {fileID: 0}
   bulletPrefab: {fileID: 6716923964577713858, guid: 00b52c8c331c83a469ebbf079fa48ee9, type: 3}
@@ -189,3 +174,21 @@ MonoBehaviour:
   obstacleMask:
     serializedVersion: 2
     m_Bits: 65536
+--- !u!114 &-5444184480930271380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1943045095350305208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed305e99ecff29b40b39e87ea7c43f47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHealth: 1
+  detectionRange: 10
+  spottingDelay: 0.7
+  preparingShotTime: 0.4
+  recoveryTime: 0.5
+  hurtbox: {fileID: 4972438075651288497}
