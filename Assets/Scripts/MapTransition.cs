@@ -3,7 +3,7 @@ using Unity.Cinemachine;
 
 public class MapTransition : MonoBehaviour
 {
-    Collider waypoint;
+    BoxCollider2D waypoint;
     PolygonCollider2D mapBoundary;
     CinemachineConfiner2D confiner;
     [SerializeField] Direction direction;
@@ -14,7 +14,7 @@ public class MapTransition : MonoBehaviour
 
     private void Awake()
     {
-        waypoint = GetComponent<Collider>();
+        waypoint = GetComponent<BoxCollider2D>();
         mapBoundary = GetComponentInParent<PolygonCollider2D>();
         confiner = FindFirstObjectByType<CinemachineConfiner2D>();
     }
