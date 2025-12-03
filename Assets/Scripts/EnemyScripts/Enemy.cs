@@ -4,9 +4,10 @@ using UnityEngine;
 public class Enemy : MonoBehaviour, IDamageable
 {
    
-    public float currentHealth{get; set;}
-    public Rigidbody2D rb {get; set;}
+    private float currentHealth{get; set;}
+    public SpriteRenderer SpriteRenderer {get; set;}
     public bool IsFacingRight { get; set; } = true;
+    public bool Spotted { get; set; }
     
     public EnemyStateMachine StateMachine { get; set; } 
     public EnemyIdleState  IdleState { get; set; } 
@@ -26,9 +27,11 @@ public class Enemy : MonoBehaviour, IDamageable
     public Hurtbox hurtbox;
     
     public EnemyShooter Shooter { get; set; }
+    public OrbitingWeapon WeaponRotation { get; set; }
 
     private void Awake()
     {
+        WeaponRotation = GetComponentInChildren<OrbitingWeapon>();
         Shooter = GetComponent<EnemyShooter>();
         StateMachine = new EnemyStateMachine();
         PreparingShotState = new EnemyPreparingShotState(this, StateMachine);
@@ -41,14 +44,14 @@ public class Enemy : MonoBehaviour, IDamageable
     public void Start()
     {
         currentHealth = MaxHealth;
-        rb = GetComponent<Rigidbody2D>();
+        SpriteRenderer = GetComponent<SpriteRenderer>();
         
         StateMachine.Initialize(IdleState);
     }
 
     public void Update()
     {
-        
+        WeaponRotation.UpdateAimRotation();
         StateMachine.CurrentState.FrameUpdate();
     }
 
@@ -62,7 +65,22 @@ public class Enemy : MonoBehaviour, IDamageable
     {
         if (!Shooter.target) return false;
 
-        return Vector3.Distance(transform.position, Shooter.target.position) <= detectionRange && Shooter.TargetInLineOfSight();
+        return Vector3.Distance(transform.position, Shooter.target.position) <= detectionRange &&
+                Shooter.TargetInLineOfSight();
+
+
+    }
+
+    public void aimChecker()
+    {
+        if (PlayerDetected())
+        {
+            WeaponRotation.isAiming = true;
+        }
+        else
+        {
+            WeaponRotation.isAiming = false;
+        }
     }
 
 

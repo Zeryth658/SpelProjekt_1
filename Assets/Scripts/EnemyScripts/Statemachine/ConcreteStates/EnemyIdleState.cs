@@ -10,6 +10,7 @@ public class EnemyIdleState : EnemyState
 
     public override void EnterState()
     {
+        enemy.Spotted = false;
         base.EnterState();
     }
 

@@ -22,6 +22,7 @@ public class EnemyAttackRecoveryState : EnemyState
     public override void FrameUpdate()
     {
         timer += Time.deltaTime;
+        enemy.aimChecker();
 
         if (timer >= enemy.recoveryTime)
         {

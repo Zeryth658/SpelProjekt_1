@@ -29,7 +29,6 @@ public class EnemyAttackState : EnemyState
         }
         else
         {
-           
             enemyStateMachine.ChangeState(enemy.IdleState);
         }
     }
