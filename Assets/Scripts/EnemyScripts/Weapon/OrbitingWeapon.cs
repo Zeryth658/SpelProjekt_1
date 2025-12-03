@@ -7,7 +7,7 @@ public class OrbitingWeapon : MonoBehaviour
     private Transform target;           
     private AimBehaviour aimBehaviour;
     private EnemyShooter shooter;
-    public float snapAimSpeed = 720f;
+    public float AimSpeed = 720f;
     private SpriteRenderer spriteRenderer;
     public bool isAiming { get; set; }
 
@@ -39,8 +39,8 @@ public class OrbitingWeapon : MonoBehaviour
             
         float newAngle = Mathf.MoveTowardsAngle(
             currentAngle,
-            targetAngle,
-            snapAimSpeed * Time.deltaTime
+            targetAngle, 
+            AimSpeed * Time.deltaTime
         );
             
         float deltaAngle = Mathf.DeltaAngle(currentAngle, newAngle);
