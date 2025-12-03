@@ -4,7 +4,7 @@ using Unity.Cinemachine;
 public class MapTransition : MonoBehaviour
 {
     PolygonCollider2D mapBoundary;
-    [SerializeField] CinemachineConfiner2D confiner;
+    CinemachineConfiner2D confiner;
     [SerializeField] Direction direction;
     [SerializeField] float addNewPos = 2;
 
@@ -13,6 +13,7 @@ public class MapTransition : MonoBehaviour
     private void Awake()
     {
         mapBoundary = GetComponentInParent<PolygonCollider2D>();
+        confiner = FindFirstObjectByType<CinemachineConfiner2D>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -37,10 +38,10 @@ public class MapTransition : MonoBehaviour
                 newPos.y -= addNewPos;
                 break;
             case Direction.Left:
-                newPos.x += addNewPos;
+                newPos.x -= addNewPos;
                 break;
             case Direction.Right:
-                newPos.x -= addNewPos;
+                newPos.x += addNewPos;
                 break;
         }
 
