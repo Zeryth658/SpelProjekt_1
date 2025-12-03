@@ -7,6 +7,7 @@ public class MapTransition : MonoBehaviour
     CinemachineConfiner2D confiner;
     [SerializeField] Direction direction;
     [SerializeField] float addNewPos = 2;
+    private bool hasEntered = false;
 
     enum Direction { Up, Down, Left, Right }
 
@@ -18,10 +19,14 @@ public class MapTransition : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if(hasEntered == false)
         {
-            confiner.BoundingShape2D = mapBoundary;
-            UpdatePlayerPosition(collision.gameObject);
+            if (collision.gameObject.CompareTag("Player"))
+            {
+                confiner.BoundingShape2D = mapBoundary;
+                UpdatePlayerPosition(collision.gameObject);
+                hasEntered = true;
+            }
         }
     }
 
