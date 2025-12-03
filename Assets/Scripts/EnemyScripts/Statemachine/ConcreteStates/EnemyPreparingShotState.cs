@@ -21,7 +21,7 @@ public class EnemyPreparingShotState : EnemyState
     public override void FrameUpdate()
     {
         timer += Time.deltaTime;
-        enemy.aimChecker();
+        enemy.AimChecker();
 
         if (timer >= enemy.preparingShotTime)
         {

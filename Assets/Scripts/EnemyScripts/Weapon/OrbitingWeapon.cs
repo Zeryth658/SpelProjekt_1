@@ -9,6 +9,7 @@ public class OrbitingWeapon : MonoBehaviour
     private EnemyShooter shooter;
     public float AimSpeed = 720f;
     private SpriteRenderer spriteRenderer;
+    private SpriteRenderer parentSpriteRenderer;
     public bool isAiming { get; set; }
 
     void Awake()
@@ -16,6 +17,7 @@ public class OrbitingWeapon : MonoBehaviour
         weapon = transform;
         shooter = GetComponentInParent<EnemyShooter>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        parentSpriteRenderer = transform.parent.GetComponent<SpriteRenderer>();
         if (shooter == null)
         {
             Debug.LogError("WeaponOrbit: No EnemyShooter found in parent!");
@@ -54,8 +56,13 @@ public class OrbitingWeapon : MonoBehaviour
         if (rotation > 90 || rotation < -90)
         {
             spriteRenderer.flipY = true;
+            parentSpriteRenderer.flipX = true;
         }
-        else spriteRenderer.flipY = false;
+        else
+        {
+            spriteRenderer.flipY = false;
+            parentSpriteRenderer.flipX = false;
+        }
         
     }
     

@@ -71,7 +71,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
     }
 
-    public void aimChecker()
+    public void AimChecker()
     {
         if (PlayerDetected())
         {
