@@ -9,11 +9,13 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D myRigidbody;
     private PlayerInput playerInput;
     private InputAction moveAction;
+    private Animator animator;
 
     private void Awake()
     {
         myRigidbody = GetComponent<Rigidbody2D>();
         playerInput = GetComponent<PlayerInput>();
+        animator = GetComponentInChildren<Animator>();
 
         moveAction = playerInput.actions["Walk"];
     }
@@ -21,6 +23,8 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         movement = moveAction.ReadValue<Vector2>();
+
+        animator.SetFloat("Movement input", Mathf.Abs(movement.magnitude));
 
         myRigidbody.linearVelocity = movement * moveSpeed;
     }
