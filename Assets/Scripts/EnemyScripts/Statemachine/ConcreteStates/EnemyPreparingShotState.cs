@@ -22,6 +22,10 @@ public class EnemyPreparingShotState : EnemyState
     {
         timer += Time.deltaTime;
         enemy.AimChecker();
+        if (enemy.RangeCheck())
+        {
+            enemyStateMachine.ChangeState(enemy.ChaseState);
+        }
 
         if (timer >= enemy.preparingShotTime)
         {
