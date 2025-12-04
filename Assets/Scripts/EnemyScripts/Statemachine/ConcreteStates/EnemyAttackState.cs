@@ -20,6 +20,7 @@ public class EnemyAttackState : EnemyState
 
     public override void FrameUpdate()
     {
+        
 
         if (enemy.Shooter.CanShoot)
         {

@@ -1,16 +1,15 @@
 using UnityEngine;
 
-public class EnemyPreparingShotState : EnemyState
+public class EnemyChaseState : EnemyState
 {
-    private float timer;
-    public EnemyPreparingShotState(Enemy enemy, EnemyStateMachine enemyStateMachine) : base(enemy, enemyStateMachine)
+    public EnemyChaseState(Enemy enemy, EnemyStateMachine enemyStateMachine) : base(enemy, enemyStateMachine)
     {
         
     }
     
     public override void EnterState()
     {
-        timer = 0;
+        base.EnterState();
     }
 
     public override void ExitState()
@@ -20,16 +19,15 @@ public class EnemyPreparingShotState : EnemyState
 
     public override void FrameUpdate()
     {
-        timer += Time.deltaTime;
-        enemy.AimChecker();
-        if (enemy.RangeCheck())
-        {
-            enemyStateMachine.ChangeState(enemy.ChaseState);
-        }
+        float distance = Vector2.Distance(enemy.transform.position, enemy.Shooter.target.position);
 
-        if (timer >= enemy.preparingShotTime)
+        if (distance > enemy.shootingRange)
         {
-            enemyStateMachine.ChangeState(enemy.AttackState);
+            enemy.Movement.MovementUpdate();
+        }
+        else
+        {
+            enemyStateMachine.ChangeState(enemy.PreparingShotState);
         }
     }
 

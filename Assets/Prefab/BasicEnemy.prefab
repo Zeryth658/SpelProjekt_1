@@ -115,6 +115,7 @@ GameObject:
   - component: {fileID: 2652434584671427070}
   - component: {fileID: -5444184480930271380}
   - component: {fileID: 3597884981904689622}
+  - component: {fileID: 2353125152221379395}
   m_Layer: 0
   m_Name: BasicEnemy
   m_TagString: Enemy
@@ -246,6 +247,7 @@ MonoBehaviour:
   spottingDelay: 0.3
   preparingShotTime: 0.4
   recoveryTime: 0.5
+  shootingRange: 7
   hurtbox: {fileID: 4972438075651288497}
 --- !u!58 &3597884981904689622
 CircleCollider2D:
@@ -283,3 +285,17 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.65625
+--- !u!114 &2353125152221379395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1943045095350305208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dce3323deeec5044a396fadcc012ff2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 3
+  shootingRange: 5

@@ -23,6 +23,7 @@ public class EnemyAttackRecoveryState : EnemyState
     {
         timer += Time.deltaTime;
         enemy.AimChecker();
+        //enemy.RangeCheck();
 
         if (timer >= enemy.recoveryTime)
         {

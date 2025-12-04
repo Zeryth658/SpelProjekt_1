@@ -15,25 +15,31 @@ public class Enemy : MonoBehaviour, IDamageable
     public EnemyAttackState AttackState { get; set; } 
     public EnemySpottedPlayerState  SpottedState { get; set; } 
     public EnemyPreparingShotState  PreparingShotState { get; set; }
+    public EnemyChaseState ChaseState { get; set; }
     
     [Header("Settings")]
     public float MaxHealth  = 5f;
-    public float detectionRange = 10f;
+    public float detectionRange = 15f;
     public float spottingDelay = 0.7f;
     public float preparingShotTime = 0.4f;
     public float recoveryTime = 0.5f;
+    public float shootingRange = 7f;
     
     [Header("References")]
     public Hurtbox hurtbox;
     
     public EnemyShooter Shooter { get; set; }
     public OrbitingWeapon WeaponRotation { get; set; }
+    
+    public EnemyMovement Movement { get; set; }
 
     private void Awake()
     {
+        Movement = GetComponent<EnemyMovement>();
         WeaponRotation = GetComponentInChildren<OrbitingWeapon>();
         Shooter = GetComponent<EnemyShooter>();
         StateMachine = new EnemyStateMachine();
+        ChaseState = new EnemyChaseState(this, StateMachine);
         PreparingShotState = new EnemyPreparingShotState(this, StateMachine);
         IdleState = new EnemyIdleState(this, StateMachine);   
         AttackRecoveryState = new EnemyAttackRecoveryState(this, StateMachine);
@@ -69,6 +75,16 @@ public class Enemy : MonoBehaviour, IDamageable
                 Shooter.TargetInLineOfSight();
 
 
+    }
+
+    public bool RangeCheck()
+    {
+        float distance = Vector2.Distance(transform.position, Shooter.target.position);
+        if (distance > shootingRange)
+        {
+            return true;
+        }
+        return false;
     }
 
     public void AimChecker()
