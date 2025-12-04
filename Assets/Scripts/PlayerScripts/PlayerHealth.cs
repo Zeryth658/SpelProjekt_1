@@ -15,7 +15,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     public void Start()
     {
         currentHealth = maxHealth;
-        //healthBar.SetMaxHealth(maxHealth);
+        healthBar.SetMaxHealth(maxHealth);
     }
 
     public void TakeDamage(float amount, GameObject source)
@@ -27,7 +27,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         {
             Die();
         }
-        //healthBar.SetHealth(currentHealth);
+        healthBar.SetHealth(currentHealth);
     }
 
     void Die()
