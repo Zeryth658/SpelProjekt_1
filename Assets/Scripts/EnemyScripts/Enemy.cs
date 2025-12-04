@@ -4,9 +4,10 @@ using UnityEngine;
 public class Enemy : MonoBehaviour, IDamageable
 {
    
-    public float currentHealth{get; set;}
-    public Rigidbody2D rb {get; set;}
+    private float currentHealth{get; set;}
+    public SpriteRenderer SpriteRenderer {get; set;}
     public bool IsFacingRight { get; set; } = true;
+    public bool Spotted { get; set; }
     
     public EnemyStateMachine StateMachine { get; set; } 
     public EnemyIdleState  IdleState { get; set; } 
@@ -14,23 +15,33 @@ public class Enemy : MonoBehaviour, IDamageable
     public EnemyAttackState AttackState { get; set; } 
     public EnemySpottedPlayerState  SpottedState { get; set; } 
     public EnemyPreparingShotState  PreparingShotState { get; set; }
+    public EnemyChaseState ChaseState { get; set; }
     
     [Header("Settings")]
     public float MaxHealth  = 5f;
-    public float detectionRange = 10f;
+    public float detectionRange = 15f;
     public float spottingDelay = 0.7f;
     public float preparingShotTime = 0.4f;
     public float recoveryTime = 0.5f;
+    public float shootingRange = 7f;
+    public AudioSource audioSource;
+    public AudioClip deathSound;
     
     [Header("References")]
     public Hurtbox hurtbox;
     
     public EnemyShooter Shooter { get; set; }
+    public OrbitingWeapon WeaponRotation { get; set; }
+    
+    public EnemyMovement Movement { get; set; }
 
     private void Awake()
     {
+        Movement = GetComponent<EnemyMovement>();
+        WeaponRotation = GetComponentInChildren<OrbitingWeapon>();
         Shooter = GetComponent<EnemyShooter>();
         StateMachine = new EnemyStateMachine();
+        ChaseState = new EnemyChaseState(this, StateMachine);
         PreparingShotState = new EnemyPreparingShotState(this, StateMachine);
         IdleState = new EnemyIdleState(this, StateMachine);   
         AttackRecoveryState = new EnemyAttackRecoveryState(this, StateMachine);
@@ -41,14 +52,14 @@ public class Enemy : MonoBehaviour, IDamageable
     public void Start()
     {
         currentHealth = MaxHealth;
-        rb = GetComponent<Rigidbody2D>();
+        SpriteRenderer = GetComponent<SpriteRenderer>();
         
         StateMachine.Initialize(IdleState);
     }
 
     public void Update()
     {
-        
+        WeaponRotation.UpdateAimRotation();
         StateMachine.CurrentState.FrameUpdate();
     }
 
@@ -62,20 +73,45 @@ public class Enemy : MonoBehaviour, IDamageable
     {
         if (!Shooter.target) return false;
 
-        return Vector3.Distance(transform.position, Shooter.target.position) <= detectionRange && Shooter.TargetInLineOfSight();
+        return Vector3.Distance(transform.position, Shooter.target.position) <= detectionRange &&
+                Shooter.TargetInLineOfSight();
+
+
+    }
+
+    public bool RangeCheck()
+    {
+        float distance = Vector2.Distance(transform.position, Shooter.target.position);
+        if (distance > shootingRange)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public void AimChecker()
+    {
+        if (PlayerDetected())
+        {
+            WeaponRotation.isAiming = true;
+        }
+        else
+        {
+            WeaponRotation.isAiming = false;
+        }
     }
 
 
     public void TakeDamage(float amount, GameObject source)
     {
         currentHealth -= amount;
-        Debug.Log($"{gameObject.name} took {amount} from {source}");
         if (currentHealth <= 0)
             Die();
     }
-    
+
     void Die()
     {
+        AudioSource.PlayClipAtPoint(deathSound, transform.position);
         PoolManager.Despawn(gameObject);
     }
 

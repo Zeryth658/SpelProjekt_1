@@ -22,6 +22,8 @@ public class EnemyAttackRecoveryState : EnemyState
     public override void FrameUpdate()
     {
         timer += Time.deltaTime;
+        enemy.AimChecker();
+        //enemy.RangeCheck();
 
         if (timer >= enemy.recoveryTime)
         {

@@ -23,7 +23,8 @@ public class EnemySpottedPlayerState : EnemyState
         detectionTimer  += Time.deltaTime;
         if (detectionTimer >= enemy.spottingDelay)
         {
-            enemyStateMachine.ChangeState(enemy.PreparingShotState);
+            enemy.WeaponRotation.isAiming = true;
+            enemyStateMachine.ChangeState(enemy.ChaseState);
         }
     }
 
