@@ -24,6 +24,8 @@ public class Enemy : MonoBehaviour, IDamageable
     public float preparingShotTime = 0.4f;
     public float recoveryTime = 0.5f;
     public float shootingRange = 7f;
+    public AudioSource audioSource;
+    public AudioClip deathSound;
     
     [Header("References")]
     public Hurtbox hurtbox;
@@ -103,13 +105,13 @@ public class Enemy : MonoBehaviour, IDamageable
     public void TakeDamage(float amount, GameObject source)
     {
         currentHealth -= amount;
-        Debug.Log($"{gameObject.name} took {amount} from {source}");
         if (currentHealth <= 0)
             Die();
     }
-    
+
     void Die()
     {
+        AudioSource.PlayClipAtPoint(deathSound, transform.position);
         PoolManager.Despawn(gameObject);
     }
 
