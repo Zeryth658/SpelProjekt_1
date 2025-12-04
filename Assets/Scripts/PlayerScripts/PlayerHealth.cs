@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class PlayerHealth : MonoBehaviour, IDamageable
 {
     public float maxHealth = 5f;
@@ -22,6 +22,6 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
     void Die()
     {
-        Destroy(gameObject);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
