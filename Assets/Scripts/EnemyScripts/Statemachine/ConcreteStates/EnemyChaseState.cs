@@ -20,10 +20,18 @@ public class EnemyChaseState : EnemyState
     public override void FrameUpdate()
     {
         float distance = Vector2.Distance(enemy.transform.position, enemy.Shooter.target.position);
-
+        enemy.AimChecker();
         if (distance > enemy.shootingRange)
         {
-            enemy.Movement.MovementUpdate();
+            if (enemy.PlayerDetected())
+            {
+                enemy.Movement.MovementUpdate();
+            }
+            else
+            {
+                enemyStateMachine.ChangeState(enemy.IdleState);
+            }
+            
         }
         else
         {
