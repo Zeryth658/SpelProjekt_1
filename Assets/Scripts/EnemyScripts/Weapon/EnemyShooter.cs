@@ -54,7 +54,7 @@ public class EnemyShooter : MonoBehaviour
       Vector2 dir = (target.position - firePoint.position).normalized;
       float distance = Vector2.Distance(firePoint.position, target.position);
 
-      RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, distance, obstacleMask);
+      RaycastHit2D hit = Physics2D.Raycast(firePoint.position, dir, distance, obstacleMask);
       if (hit.collider != null) return false;
 
       
