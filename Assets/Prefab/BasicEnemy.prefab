@@ -248,7 +248,7 @@ MonoBehaviour:
   spottingDelay: 0.3
   preparingShotTime: 0.4
   recoveryTime: 0.5
-  shootingRange: 7
+  shootingRange: 15
   audioSource: {fileID: 7146277591970315539}
   deathSound: {fileID: 8300000, guid: 7f0e3e7740a0c6c4ebc7c1423fe46538, type: 3}
   hurtbox: {fileID: 4972438075651288497}
@@ -300,7 +300,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dce3323deeec5044a396fadcc012ff2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
+  moveSpeed: 0
 --- !u!82 &7146277591970315539
 AudioSource:
   m_ObjectHideFlags: 0
