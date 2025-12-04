@@ -4,9 +4,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 {
     public float maxHealth = 5f;
     public float currentHealth;
-
     public HealthBar healthBar;
-
     public Hurtbox hurtbox;
 
     [SerializeField] private AudioSource playerGetHitSound1;
@@ -15,7 +13,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     public void Start()
     {
         currentHealth = maxHealth;
-        healthBar.SetMaxHealth(maxHealth);
+        healthBar.SetValue(currentHealth, maxHealth);
     }
 
     public void TakeDamage(float amount, GameObject source)
@@ -27,7 +25,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         {
             Die();
         }
-        healthBar.SetHealth(currentHealth);
+        healthBar.SetNewValue(currentHealth, maxHealth);
     }
 
     void Die()
