@@ -5,6 +5,9 @@ using UnityEngine.InputSystem;
 
 public class Attack : MonoBehaviour
 {
+    private float attackTimer;
+    private float attackCooldown = 0.4f;
+
     private PlayerController controls;
     private Animator animator;
     [SerializeField] private Transform weaponCollider;
@@ -25,12 +28,18 @@ public class Attack : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        
+        if(attackTimer > 0)
+        {
+            attackTimer -= Time.deltaTime;
+        }
     }
 
     private void OnAttack()
     {
-        animator.SetTrigger("Attack");
+        if (attackTimer <= 0)
+        {
+            animator.SetTrigger("Attack");
+        }
     }
 
     public void StartAttackingAnimEvent()
@@ -41,5 +50,7 @@ public class Attack : MonoBehaviour
     public void DoneAttackingAnimEvent()
     {
         weaponCollider.gameObject.SetActive(false);
+        
+        attackTimer = attackCooldown;
     }
 }
