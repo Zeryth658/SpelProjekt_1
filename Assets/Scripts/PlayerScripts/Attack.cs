@@ -8,10 +8,9 @@ public class Attack : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer characterRenderer, weaponRenderer;
 
+
     private float delay = 0.4f;
     private bool attackBlocked;
-
-    public bool IsAttacking { get; private set; }
 
     private PlayerController controls;
     private Animator animator;
@@ -48,7 +47,6 @@ public class Attack : MonoBehaviour
         if (attackBlocked)
             return;
         animator.SetTrigger("Attack");
-        IsAttacking = true;
         attackBlocked = true;
         StartCoroutine(DelayAttack());
     }
@@ -59,11 +57,6 @@ public class Attack : MonoBehaviour
         attackBlocked = false;
     }
 
-    public void ResetIsAttacking()
-    {
-        IsAttacking = false;
-    }
-    
     public void StartAttackingAnimEvent()
     {
         weaponCollider.gameObject.SetActive(true);
