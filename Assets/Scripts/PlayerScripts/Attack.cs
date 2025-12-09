@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,8 +6,11 @@ using UnityEngine.InputSystem;
 
 public class Attack : MonoBehaviour
 {
-    private float attackTimer;
-    private float attackCooldown = 0.4f;
+    [SerializeField] private SpriteRenderer characterRenderer, weaponRenderer;
+
+
+    private float delay = 0.4f;
+    private bool attackBlocked;
 
     private PlayerController controls;
     private Animator animator;
@@ -28,18 +32,29 @@ public class Attack : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if(attackTimer > 0)
+        if(transform.eulerAngles.z > 90 && transform.eulerAngles.z < 270)
         {
-            attackTimer -= Time.deltaTime;
+            weaponRenderer.sortingOrder = characterRenderer.sortingOrder - 1;
+        }
+        else
+        {
+            weaponRenderer.sortingOrder = characterRenderer.sortingOrder + 1;
         }
     }
 
     private void OnAttack()
     {
-        if (attackTimer <= 0)
-        {
-            animator.SetTrigger("Attack");
-        }
+        if (attackBlocked)
+            return;
+        animator.SetTrigger("Attack");
+        attackBlocked = true;
+        StartCoroutine(DelayAttack());
+    }
+
+    private IEnumerator DelayAttack()
+    {
+        yield return new WaitForSeconds(delay);
+        attackBlocked = false;
     }
 
     public void StartAttackingAnimEvent()
@@ -50,7 +65,5 @@ public class Attack : MonoBehaviour
     public void DoneAttackingAnimEvent()
     {
         weaponCollider.gameObject.SetActive(false);
-        
-        attackTimer = attackCooldown;
     }
 }

@@ -127,13 +127,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 922159165274181876}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: 0.9659259, w: -0.25881898}
-  m_LocalPosition: {x: -0.6, y: 0.4, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
+  m_LocalPosition: {x: 0, y: 0.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1437618163912301222}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 210}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
 --- !u!212 &582737285545866239
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -201,6 +201,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a7f5bec687337843bf143200a022a11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterRenderer: {fileID: 4064008269935355502}
+  weaponRenderer: {fileID: 582737285545866239}
   weaponCollider: {fileID: 3259029622902731156}
 --- !u!95 &950005001998381786
 Animator:
