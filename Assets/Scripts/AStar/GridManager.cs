@@ -30,7 +30,10 @@ public class GridManager : MonoBehaviour
     public void BuildGrid()
     {
         grid = new GridNode[width, height];
-        for  (int x = 0; x < width; x++)
+        for (int x = 0; x < width; x++)
+        {
+            
+        }
     }
     
 }
