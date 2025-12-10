@@ -8,7 +8,6 @@ public class Attack : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer characterRenderer, weaponRenderer;
 
-
     private float delay = 0.4f;
     private bool attackBlocked;
 
@@ -23,6 +22,8 @@ public class Attack : MonoBehaviour
     }
     
     private void OnEnable() => controls.Enable();
+
+    private void OnDisable() => controls.Disable();
 
     void Start()
     {

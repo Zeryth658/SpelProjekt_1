@@ -904,6 +904,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 785864877921393023, guid: 661478b901d8b4748a674a4e9c8ae8ae, type: 3}
+      propertyPath: m_Actions
+      value: 
+      objectReference: {fileID: -944628639613478452, guid: 00a254183a87b24459bea6e1befa970c, type: 3}
+    - target: {fileID: 785864877921393023, guid: 661478b901d8b4748a674a4e9c8ae8ae, type: 3}
+      propertyPath: m_DefaultActionMap
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 1157133527975207446, guid: 661478b901d8b4748a674a4e9c8ae8ae, type: 3}
       propertyPath: healthBar
       value: 
@@ -948,6 +956,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6918456677596445224, guid: 661478b901d8b4748a674a4e9c8ae8ae, type: 3}
+      propertyPath: move
+      value: 
+      objectReference: {fileID: 25163413201970416, guid: bc34662edf0ac42448e817171785edc3, type: 3}
+    - target: {fileID: 6918456677596445224, guid: 661478b901d8b4748a674a4e9c8ae8ae, type: 3}
+      propertyPath: shoot
+      value: 
+      objectReference: {fileID: 8661097812254239804, guid: bc34662edf0ac42448e817171785edc3, type: 3}
+    - target: {fileID: 6918456677596445224, guid: 661478b901d8b4748a674a4e9c8ae8ae, type: 3}
+      propertyPath: attack
+      value: 
+      objectReference: {fileID: 8661097812254239804, guid: bc34662edf0ac42448e817171785edc3, type: 3}
+    - target: {fileID: 6918456677596445224, guid: 661478b901d8b4748a674a4e9c8ae8ae, type: 3}
+      propertyPath: maxSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918456677596445224, guid: 661478b901d8b4748a674a4e9c8ae8ae, type: 3}
+      propertyPath: movement
+      value: 
+      objectReference: {fileID: -615609114178366659, guid: 00a254183a87b24459bea6e1befa970c, type: 3}
+    - target: {fileID: 6918456677596445224, guid: 661478b901d8b4748a674a4e9c8ae8ae, type: 3}
+      propertyPath: pointerPosition
+      value: 
+      objectReference: {fileID: 1485504275406657881, guid: 00a254183a87b24459bea6e1befa970c, type: 3}
     - target: {fileID: 8818006389662794542, guid: 661478b901d8b4748a674a4e9c8ae8ae, type: 3}
       propertyPath: m_Name
       value: Player
