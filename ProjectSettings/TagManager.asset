@@ -49,6 +49,9 @@ TagManager:
   - name: NewLayer
     uniqueID: 1858684809
     locked: 0
+  - name: WallLayer
+    uniqueID: 3873359563
+    locked: 0
   m_RenderingLayers:
   - Default
   - Layer 1
