@@ -23,6 +23,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Attack",
+                    "type": "Button",
+                    "id": "ca29095d-2e0c-4277-8d4f-ee018da21068",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -91,28 +100,11 @@
                     "action": "Look",
                     "isComposite": false,
                     "isPartOfComposite": false
-                }
-            ]
-        },
-        {
-            "name": "Combat",
-            "id": "6e0f1c8e-2daa-469d-8206-511f3acad826",
-            "actions": [
-                {
-                    "name": "Attack",
-                    "type": "Button",
-                    "id": "3fd164c3-ffd5-473e-bbd4-57fee604ad21",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
+                },
                 {
                     "name": "",
-                    "id": "a6d141f9-bae2-47f2-a94c-927362d08b28",
-                    "path": "<Keyboard>/e",
+                    "id": "624ae866-1040-47d9-a967-079e7e75dcb8",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -122,7 +114,7 @@
                 },
                 {
                     "name": "",
-                    "id": "8a815afb-1494-4e96-bcb2-0b6fc78abde6",
+                    "id": "6d5f9f9a-c5fb-490b-820f-2728ab58e08e",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
