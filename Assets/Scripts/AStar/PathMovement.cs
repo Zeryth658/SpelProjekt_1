@@ -9,16 +9,17 @@ public class PathMovement : MonoBehaviour
     private List<Vector2> path;
     private int pathIndex = 0;
     private LayerMask obstacleMask;
-   
+    private OrbitingWeapon _orbitingWeapon;
     
     public bool IsMoving => path != null && pathIndex < path.Count;
     
     public void Initialize(LayerMask obstacleMask)
     {
         this.obstacleMask = obstacleMask;
+        this._orbitingWeapon = GetComponentInChildren<OrbitingWeapon>();
     }
 
-    public void SetPath(List<Vector2> newPath, bool smooth = false)
+    public void SetPath(List<Vector2> newPath, bool smooth = true)
     {
         if (newPath == null || newPath.Count == 0)
         {
@@ -45,11 +46,13 @@ public class PathMovement : MonoBehaviour
         
         Vector2 destination = path[pathIndex];
         transform.position = Vector2.MoveTowards(transform.position, destination, speed * Time.deltaTime);
-
+        Vector2 direction = (destination - (Vector2)transform.position).normalized;
+        _orbitingWeapon.UpdateRotation(direction);
         if (Vector2.Distance(transform.position, destination) <= reachThreshold)
         {
             pathIndex++;
         }
+        
     }
     
     public Vector2 GetCurrentTarget()

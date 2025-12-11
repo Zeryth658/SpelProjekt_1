@@ -21,6 +21,7 @@ public class EnemyShooter : MonoBehaviour
    
     private Vector2 direction;
     
+    private float bulletRadius;
     // Update is called once per frame
     
     private void Start()
@@ -31,7 +32,12 @@ public class EnemyShooter : MonoBehaviour
             return; 
         }
     }
-    
+
+    private void Awake()
+    {
+        var collider = bulletPrefab.GetComponent<CircleCollider2D>();
+        bulletRadius = collider.radius + 0.1f;
+    }
     
 
     public bool CanShoot
@@ -53,8 +59,7 @@ public class EnemyShooter : MonoBehaviour
         
       Vector2 dir = (target.position - transform.position).normalized;
       float distance = Vector2.Distance(transform.position, target.position);
-
-      RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, distance, obstacleMask);
+      RaycastHit2D hit = Physics2D.CircleCast(transform.position, bulletRadius, dir, distance, obstacleMask);
       if (hit.collider != null) return false;
 
       
@@ -85,4 +90,6 @@ public class EnemyShooter : MonoBehaviour
         Bullet bullet = bulletObj.GetComponent<Bullet>();
         bullet.Initialize(direction, bulletDamage, this.gameObject, bulletSpeed, bulletLifeTime);
     }
+    
+
 }
