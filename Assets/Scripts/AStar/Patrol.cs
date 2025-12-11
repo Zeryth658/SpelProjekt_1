@@ -13,12 +13,17 @@ public class Patrol : MonoBehaviour
     public void BeginPatrol()
     {
         this.movement = GetComponent<PathMovement>();
+        if (waypoints == null || waypoints.Length == 0)
+        {
+            return;
+        }
         currentWaypoint = 0;
         GoToNextPoint();
     }
 
     public void UpdateWayPoint()
     {
+        if (waypoints == null || waypoints.Length == 0) return;
         if (!movement.IsMoving)
         {
             waitTimer += Time.deltaTime;
@@ -37,6 +42,8 @@ public class Patrol : MonoBehaviour
     }
     private void GoToNextPoint()
     {
+        if (waypoints == null || waypoints.Length == 0)
+            return;
         Vector2 start = transform.position;
         Vector2 end = waypoints[currentWaypoint].position;
         List<Vector2> path = AStarPathfinder.FindPath(start, end, true);
