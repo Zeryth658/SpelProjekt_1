@@ -21,8 +21,8 @@ public class WeaponParent : MonoBehaviour
 
     void Update()
     {
-        if(IsAttacking)
-            return;
+        if(IsAttacking) { return; }
+        
         Vector2 direction = (PointerPosition - (Vector2)transform.position).normalized;
         transform.right = direction;
 

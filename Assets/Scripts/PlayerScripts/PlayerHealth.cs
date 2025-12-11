@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 public class PlayerHealth : MonoBehaviour, IDamageable
@@ -9,11 +10,14 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     public Hurtbox hurtbox;
     private Animator animator;
 
+    public bool isDead = false;
+
     [SerializeField] private AudioSource playerGetHitSound1;
     [SerializeField] private AudioSource playerGetHitSound2;
 
     public void Awake()
     {
+        isDead = false;
         animator = GetComponentInChildren<Animator>();
     }
 
@@ -39,6 +43,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
     void Die()
     {
+        isDead = true;
         animator.SetBool("Dead", true);
     }
 
