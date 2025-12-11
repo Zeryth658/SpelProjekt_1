@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour, IDamageable
     public EnemyPreparingShotState  PreparingShotState { get; set; }
     public EnemyChaseState ChaseState { get; set; }
     
+    
     [Header("Settings")]
     public float MaxHealth  = 5f;
     public float detectionRange = 15f;
@@ -34,11 +35,17 @@ public class Enemy : MonoBehaviour, IDamageable
     public OrbitingWeapon WeaponRotation { get; set; }
     
     public EnemyMovement Movement { get; set; }
+    
+    public PathMovement PathMovement { get; set; }
+    
+    public Patrol Patrol { get; set; }
 
     private void Awake()
     {
         Movement = GetComponent<EnemyMovement>();
         WeaponRotation = GetComponentInChildren<OrbitingWeapon>();
+        PathMovement = GetComponent<PathMovement>();
+        Patrol = GetComponent<Patrol>();
         Shooter = GetComponent<EnemyShooter>();
         StateMachine = new EnemyStateMachine();
         ChaseState = new EnemyChaseState(this, StateMachine);
@@ -52,8 +59,9 @@ public class Enemy : MonoBehaviour, IDamageable
     public void Start()
     {
         currentHealth = MaxHealth;
-        SpriteRenderer = GetComponent<SpriteRenderer>();
         
+        SpriteRenderer = GetComponent<SpriteRenderer>();
+        PathMovement.Initialize(GridManager.Instance.obstacleMask);
         StateMachine.Initialize(IdleState);
     }
 

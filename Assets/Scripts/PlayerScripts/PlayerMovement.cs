@@ -44,15 +44,17 @@ public class PlayerMovement : MonoBehaviour
         weaponParent.PointerPosition = pointerInput;
         movementInput = movement.action.ReadValue<Vector2>().normalized;
 
+        Vector2 lookDirection = (pointerInput - (Vector2)transform.position).normalized;
+
         animator.SetFloat("Movement input", Mathf.Abs(movementInput.magnitude));
         
         if (characterRenderer != null)
         {
-            if(pointerInput.x < 0)
+            if(lookDirection.x < 0)
             {
                 characterRenderer.flipX = true;
             }
-            else if (pointerInput.x > 0)
+            else if (lookDirection.x > 0)
             {
                 characterRenderer.flipX = false;
             }

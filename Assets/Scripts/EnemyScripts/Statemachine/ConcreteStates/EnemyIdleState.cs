@@ -10,6 +10,7 @@ public class EnemyIdleState : EnemyState
 
     public override void EnterState()
     {
+        enemy.Patrol.BeginPatrol();
         enemy.Spotted = false;
         base.EnterState();
     }
@@ -21,6 +22,8 @@ public class EnemyIdleState : EnemyState
 
     public override void FrameUpdate()
     {
+        enemy.PathMovement.UpdateMovement();
+        enemy.Patrol.UpdateWayPoint();
         if (enemy.PlayerDetected())
         {
             enemyStateMachine.ChangeState(enemy.SpottedState);
