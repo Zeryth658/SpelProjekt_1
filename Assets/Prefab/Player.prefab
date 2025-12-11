@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 623797603461334084}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.53, y: -0.32, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -79,11 +79,14 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0, y: 0.6}
-      - {x: -0.8, y: 0.35}
-      - {x: -0.5, y: 1.25}
-      - {x: 0.5, y: 1.25}
-      - {x: 0.8, y: 0.35}
+    - - {x: 0.67564774, y: 1.5215316}
+      - {x: 1.2006683, y: 0.99863386}
+      - {x: 1.1953735, y: 0.09830189}
+      - {x: 0.7446518, y: -0.33501017}
+      - {x: -0.10870743, y: -0.38066196}
+      - {x: -0.35551453, y: 0.24025989}
+      - {x: -0.37410355, y: 0.84851956}
+      - {x: -0.10806733, y: 1.594489}
   m_UseDelaunayMesh: 0
 --- !u!114 &8803418714444095585
 MonoBehaviour:
@@ -402,6 +405,7 @@ GameObject:
   - component: {fileID: 4064008269935355502}
   - component: {fileID: 3970064998263046705}
   - component: {fileID: 4476033958375185608}
+  - component: {fileID: 5830405334427470913}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -513,6 +517,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5830405334427470913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7791832516361344083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 322e229f80be3624c846e851521001c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8818006389662794542
 GameObject:
   m_ObjectHideFlags: 0
@@ -532,6 +548,7 @@ GameObject:
   - component: {fileID: 785864877921393023}
   - component: {fileID: 3439027128940978162}
   - component: {fileID: 2495225295072083710}
+  - component: {fileID: 9214262830800647993}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -655,6 +672,7 @@ MonoBehaviour:
   currentHealth: 0
   healthBar: {fileID: 0}
   hurtbox: {fileID: 4967197348334144092}
+  isDead: 0
   playerGetHitSound1: {fileID: 3439027128940978162}
   playerGetHitSound2: {fileID: 2495225295072083710}
 --- !u!114 &4967197348334144092
@@ -918,3 +936,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &9214262830800647993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8818006389662794542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c7824756d31cbc46a239b564757c0be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StartPos: {x: 0, y: 0, z: 0}
