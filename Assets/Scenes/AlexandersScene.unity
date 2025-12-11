@@ -2065,6 +2065,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: BasicEnemy (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 2138003811000849263, guid: ea244abc5f80e354a8e5dbf007afa041, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2138003811000849263, guid: ea244abc5f80e354a8e5dbf007afa041, type: 3}
+      propertyPath: m_FlipY
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2652434584671427070, guid: ea244abc5f80e354a8e5dbf007afa041, type: 3}
       propertyPath: target
       value: 
@@ -5807,7 +5815,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 623797603461334084, guid: 661478b901d8b4748a674a4e9c8ae8ae, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1157133527975207446, guid: 661478b901d8b4748a674a4e9c8ae8ae, type: 3}
       propertyPath: health
