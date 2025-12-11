@@ -4,30 +4,61 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField] private SpriteRenderer characterRenderer;
     [SerializeField] private float maxSpeed = 5f, acceleration = 50f, deacceleration = 100;
     [SerializeField] private float currentSpeed = 0f;
 
+    [SerializeField] private InputActionReference movement, attack, pointerPosition;
+    
     private Vector2 pointerInput, movementInput;
-    public Vector2 PointerInput => pointerInput;
 
-    [SerializeField] private InputActionReference movement, pointerPosition;
-
+    private WeaponParent weaponParent;
     private Rigidbody2D myRigidbody;
     private Animator animator;
+
+    private void OnEnable()
+    {
+        attack.action.performed += PerformAttack;
+    }
+
+    private void OnDisable()
+    {
+        attack.action.performed -= PerformAttack;
+    }
+
+    private void PerformAttack(InputAction.CallbackContext context)
+    {
+        weaponParent.OnAttack();
+    }
 
     private void Awake()
     {
         myRigidbody = GetComponent<Rigidbody2D>();
+        weaponParent = GetComponentInChildren<WeaponParent>();
         animator = GetComponentInChildren<Animator>();
     }
 
     private void FixedUpdate()
     {
         pointerInput = GetPointerInput();
-        
-        movementInput = movement.action.ReadValue<Vector2>();
+        weaponParent.PointerPosition = pointerInput;
+        movementInput = movement.action.ReadValue<Vector2>().normalized;
+
+        Vector2 lookDirection = (pointerInput - (Vector2)transform.position).normalized;
 
         animator.SetFloat("Movement input", Mathf.Abs(movementInput.magnitude));
+        
+        if (characterRenderer != null)
+        {
+            if(lookDirection.x < 0)
+            {
+                characterRenderer.flipX = true;
+            }
+            else if (lookDirection.x > 0)
+            {
+                characterRenderer.flipX = false;
+            }
+        }
 
         if (movementInput.magnitude > 0 && currentSpeed >= 0)
         {
