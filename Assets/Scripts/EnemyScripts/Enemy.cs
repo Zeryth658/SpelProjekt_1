@@ -30,6 +30,7 @@ public class Enemy : MonoBehaviour, IDamageable
     
     [Header("References")]
     public Hurtbox hurtbox;
+    public GameObject blood;
     
     public EnemyShooter Shooter { get; set; }
     public OrbitingWeapon WeaponRotation { get; set; }
@@ -119,6 +120,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
     void Die()
     {
+        PoolManager.Spawn(blood, transform.position, Quaternion.identity);
         AudioSource.PlayClipAtPoint(deathSound, transform.position);
         PoolManager.Despawn(gameObject);
     }
