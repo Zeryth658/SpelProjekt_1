@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 pointerInput, movementInput;
 
     private WeaponParent weaponParent;
+    private PlayerHealth playerHealth;
     private Rigidbody2D myRigidbody;
     private Animator animator;
 
@@ -35,11 +36,14 @@ public class PlayerMovement : MonoBehaviour
     {
         myRigidbody = GetComponent<Rigidbody2D>();
         weaponParent = GetComponentInChildren<WeaponParent>();
+        playerHealth = GetComponent<PlayerHealth>();
         animator = GetComponentInChildren<Animator>();
     }
 
     private void FixedUpdate()
     {
+        if(playerHealth.isDead == true) { return; }
+        
         pointerInput = GetPointerInput();
         weaponParent.PointerPosition = pointerInput;
         movementInput = movement.action.ReadValue<Vector2>().normalized;
