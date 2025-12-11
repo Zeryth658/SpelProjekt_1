@@ -81,11 +81,12 @@ public class Enemy : MonoBehaviour, IDamageable
     public bool PlayerDetected()
     {
         if (!Shooter.target) return false;
+        if (Vector3.Distance(transform.position, Shooter.target.position) <= detectionRange)
+        {
+            return Shooter.TargetInLineOfSight();
+        }
 
-        return Vector3.Distance(transform.position, Shooter.target.position) <= detectionRange &&
-                Shooter.TargetInLineOfSight();
-
-
+        return false;
     }
 
     public bool RangeCheck()
