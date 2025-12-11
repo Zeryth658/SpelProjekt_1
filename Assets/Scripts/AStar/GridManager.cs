@@ -18,8 +18,8 @@ public class GridManager : MonoBehaviour
     
     [Header("Debug")] 
     public bool drawGizmos = false;
-    public Color walkableColor  =  new Color(0.2f,0.8f,0.2f,0.4f);
-    public Color blockedColor =  new Color(0.8f,0.2f,0.2f,0.4f);
+    public Color walkableColor  =  new Color(0.2f,0.8f,0.2f,0.1f);
+    public Color blockedColor =  new Color(0.8f,0.2f,0.2f,0.1f);
     
     private GridNode[,] _grid;
 
