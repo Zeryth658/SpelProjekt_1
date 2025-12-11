@@ -37,7 +37,7 @@ public class WeaponParent : MonoBehaviour
         }
         transform.localScale = scale;
 
-        if(transform.eulerAngles.z > 90 && transform.eulerAngles.z < 270)
+        if(transform.eulerAngles.z > 0 && transform.eulerAngles.z < 180)
         {
             weaponRenderer.sortingOrder = characterRenderer.sortingOrder - 1;
         }
