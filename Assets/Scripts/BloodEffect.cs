@@ -1,58 +1,92 @@
-using UnityEngine;
+﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.Tilemaps;
 
-[DisallowMultipleComponent]
-[RequireComponent(typeof(ParticleSystem))]
 public class BloodEffect : MonoBehaviour
 {
-    public Vector3 minBloodScale = new Vector3(0.5f, 0.5f, 0.5f),
-        maxBloodScale = new Vector3(1f, 1f, 1f);
-    public Gradient bloodColors;
-    [Range(0,1)] public float ratio = 0.34f;
+    [Header("Prefab Settings")]
+    public GameObject prefab;
+    public int amountToSpawn = 3;
+    public float delay = 0.5f;
 
-    List<ParticleCollisionEvent> collisionEvents = new List<ParticleCollisionEvent>();
-    ParticleSystem particles;
+    [Header("Spawn Area")]
+    public float radius = 3f;
 
-    void Start() 
+    void Start()
     {
-        particles = GetComponent<ParticleSystem>();
+        StartCoroutine(SpawnAfterDelay());
     }
 
-    void OnParticleCollision(GameObject other) 
+    IEnumerator SpawnAfterDelay()
     {
-        Debug.Log("WORKING");
-        if(!other.TryGetComponent(out TilemapRenderer t)) return;
-        if(Random.value > ratio) return;
+        yield return new WaitForSeconds(delay);
 
-        // We have to cycle through all collision events.
-        int numCollisionEvents = particles.GetCollisionEvents(other, collisionEvents);
-        for (int i = 0; i < numCollisionEvents; i++) {
-
-            // Only consider collisions that hit our component.
-            if(collisionEvents[i].colliderComponent.gameObject == other) 
-            {
-                Vector2 sfxPos = collisionEvents[i].intersection;
-                ParticleSystemManager.CreateBloodStain(
-                    other.transform, sfxPos, 
-                    bloodColors.Evaluate(Random.Range(0, 1)),
-                    new Vector3(
-                        Random.Range(minBloodScale.x, maxBloodScale.x),
-                        Random.Range(minBloodScale.y, maxBloodScale.y),
-                        Random.Range(minBloodScale.z, maxBloodScale.z)
-                    )
-                );
-            }
+        for (int i = 0; i < amountToSpawn; i++)
+        {
+            Vector3 randomPos = GetRandomPointInCircle();
+            Instantiate(prefab, randomPos, Quaternion.identity);
         }
     }
 
-    // Ensure minBloodScale does not exceed maxBloodScale.
-    void OnValidate() 
+    Vector3 GetRandomPointInCircle()
     {
-        minBloodScale = new Vector3(
-            Mathf.Min(minBloodScale.x, maxBloodScale.x),
-            Mathf.Min(minBloodScale.y, maxBloodScale.y),
-            Mathf.Min(minBloodScale.z, maxBloodScale.z)
-        );
+        // Random point inside a circle (uniform distribution)
+        float angle = Random.Range(0f, Mathf.PI * 2f);
+        float dist = Mathf.Sqrt(Random.Range(0f, 1f)) * radius;
+
+        float x = Mathf.Cos(angle) * dist;
+        float y = Mathf.Sin(angle) * dist;
+
+        return transform.position + new Vector3(x, y, 0f);
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.yellow;
+
+        // Draw the circle (Unity doesn't have a built-in circle, so approximate it)
+        int segments = 64;
+        Vector3 prevPoint = transform.position + new Vector3(radius, 0, 0);
+
+        for (int i = 1; i <= segments; i++)
+        {
+            float angle = (i * Mathf.PI * 2f) / segments;
+            Vector3 newPoint = transform.position + new Vector3(Mathf.Cos(angle) * radius, Mathf.Sin(angle) * radius, 0);
+
+            Gizmos.DrawLine(prevPoint, newPoint);
+            prevPoint = newPoint;
+        }
     }
 }
+//public ParticleSystem particleSystem;
+//public GameObject prefab;
+//public int numberToSpawn = 3;
+//public float delay = 0.5f;
+
+//private ParticleSystem.Particle[] particles;
+
+//void Start()
+//{
+//    particles = new ParticleSystem.Particle[particleSystem.main.maxParticles];
+//    StartCoroutine(SpawnPrefabsAfterDelay());
+//}
+
+//IEnumerator SpawnPrefabsAfterDelay()
+//{
+//    // Wait for the delay
+//    yield return new WaitForSeconds(delay);
+
+//    int alive = particleSystem.GetParticles(particles);
+
+//    // If fewer than 3 particles exist, spawn on as many as we have
+//    int count = Mathf.Min(numberToSpawn, alive);
+
+//    for (int i = 0; i < count; i++)
+//    {
+//        // Convert particle local position → world position
+//        Vector3 worldPos = particleSystem.transform.TransformPoint(particles[i].position);
+
+//        Instantiate(prefab, worldPos, Quaternion.identity);
+//    }
+//}
