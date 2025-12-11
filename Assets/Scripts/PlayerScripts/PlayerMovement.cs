@@ -29,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void PerformAttack(InputAction.CallbackContext context)
     {
+        if(playerHealth.isDead == true) { return; }
         weaponParent.OnAttack();
     }
 
@@ -42,7 +43,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(playerHealth.isDead == true) { return; }
+        if(playerHealth.isDead == true) 
+        { 
+            movementInput = Vector2.zero;
+            myRigidbody.linearVelocity = movementInput * currentSpeed;
+            return;
+        }
         
         pointerInput = GetPointerInput();
         weaponParent.PointerPosition = pointerInput;
