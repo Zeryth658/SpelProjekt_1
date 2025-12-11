@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField] private SpriteRenderer characterRenderer;
     [SerializeField] private float maxSpeed = 5f, acceleration = 50f, deacceleration = 100;
     [SerializeField] private float currentSpeed = 0f;
 
@@ -45,16 +46,17 @@ public class PlayerMovement : MonoBehaviour
 
         animator.SetFloat("Movement input", Mathf.Abs(movementInput.magnitude));
         
-        Vector2 scale = transform.localScale;
-        if(movementInput.x < 0)
+        if (characterRenderer != null)
         {
-            scale.x = -1;
+            if(pointerInput.x < 0)
+            {
+                characterRenderer.flipX = true;
+            }
+            else if (pointerInput.x > 0)
+            {
+                characterRenderer.flipX = false;
+            }
         }
-        else if (movementInput.x > 0)
-        {
-            scale.x = 1;
-        }
-        transform.localScale = scale;
 
         if (movementInput.magnitude > 0 && currentSpeed >= 0)
         {
