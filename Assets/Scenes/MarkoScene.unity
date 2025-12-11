@@ -55401,22 +55401,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BasicEnemy (4)
       objectReference: {fileID: 0}
-    - target: {fileID: 2138003811000849263, guid: ea244abc5f80e354a8e5dbf007afa041, type: 3}
-      propertyPath: m_SortingLayer
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2138003811000849263, guid: ea244abc5f80e354a8e5dbf007afa041, type: 3}
-      propertyPath: m_SortingLayerID
-      value: 947068203
-      objectReference: {fileID: 0}
     - target: {fileID: 2652434584671427070, guid: ea244abc5f80e354a8e5dbf007afa041, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 1661414575}
-    - target: {fileID: 2652434584671427070, guid: ea244abc5f80e354a8e5dbf007afa041, type: 3}
-      propertyPath: detectionRange
-      value: 100
-      objectReference: {fileID: 0}
     - target: {fileID: 5266735357534616372, guid: ea244abc5f80e354a8e5dbf007afa041, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.833597
@@ -55456,14 +55444,6 @@ PrefabInstance:
     - target: {fileID: 5266735357534616372, guid: ea244abc5f80e354a8e5dbf007afa041, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8152063064535360942, guid: ea244abc5f80e354a8e5dbf007afa041, type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 1.125
-      objectReference: {fileID: 0}
-    - target: {fileID: 8152063064535360942, guid: ea244abc5f80e354a8e5dbf007afa041, type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 1.1875
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -60043,21 +60023,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4064020813040852249, guid: 34aa5056927a6734081644318bc41d85, type: 3}
-      propertyPath: delay
-      value: 0.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 4064020813040852249, guid: 34aa5056927a6734081644318bc41d85, type: 3}
-      propertyPath: amountToSpawn
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 4144589229495795748, guid: 34aa5056927a6734081644318bc41d85, type: 3}
       propertyPath: m_Name
       value: Blood
-      objectReference: {fileID: 0}
-    - target: {fileID: 4144589229495795748, guid: 34aa5056927a6734081644318bc41d85, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8764945624503066742, guid: 34aa5056927a6734081644318bc41d85, type: 3}
       propertyPath: m_LocalPosition.x
@@ -60098,10 +60066,6 @@ PrefabInstance:
     - target: {fileID: 8764945624503066742, guid: 34aa5056927a6734081644318bc41d85, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9165979828172794304, guid: 34aa5056927a6734081644318bc41d85, type: 3}
-      propertyPath: playOnAwake
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
