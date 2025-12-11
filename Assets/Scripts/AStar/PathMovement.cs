@@ -18,7 +18,7 @@ public class PathMovement : MonoBehaviour
         this.obstacleMask = obstacleMask;
     }
 
-    public void SetPath(List<Vector2> newPath, bool smooth = false)
+    public void SetPath(List<Vector2> newPath, bool smooth = true)
     {
         if (newPath == null || newPath.Count == 0)
         {
