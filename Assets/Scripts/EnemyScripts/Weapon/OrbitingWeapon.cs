@@ -66,6 +66,43 @@ public class OrbitingWeapon : MonoBehaviour
         
     }
     
+    public void UpdateRotation(Vector2 direction)
+    {
+        float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            
+        Vector2 dirToWeapon = transform.position - enemy.position;
+        float currentAngle = Mathf.Atan2(dirToWeapon.y, dirToWeapon.x) * Mathf.Rad2Deg;
+
+            
+        float newAngle = Mathf.MoveTowardsAngle(
+            currentAngle,
+            targetAngle, 
+            AimSpeed * Time.deltaTime
+        );
+            
+        float deltaAngle = Mathf.DeltaAngle(currentAngle, newAngle);
+        weapon.transform.RotateAround(enemy.position, Vector3.forward, deltaAngle);
+        
+        float rotation = transform.eulerAngles.z;
+        
+        if (rotation > 180) rotation -= 360;
+
+   
+        if (rotation > 90 || rotation < -90)
+        {
+            spriteRenderer.flipY = true;
+            parentSpriteRenderer.flipX = true;
+        }
+        else
+        {
+            spriteRenderer.flipY = false;
+            parentSpriteRenderer.flipX = false;
+        }
+        
+    }
+    
+    
+    
 
     
     
