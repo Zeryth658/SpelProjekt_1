@@ -7,8 +7,11 @@ public class EntryEvent : MonoBehaviour
     [Header("Event called when stepping on the trigger")]
     public UnityEvent OnEntryEvent;
 
-    public void OnTriggerEnter2D()
+    public void OnTriggerEnter2D(GameObject other)
     {
-        OnEntryEvent.Invoke();
+        if (other.CompareTag("Player"))
+        {
+            OnEntryEvent.Invoke();
+        }
     }
 }
