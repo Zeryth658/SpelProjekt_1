@@ -1,12 +1,13 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
+using System.Collections;
 
 public class EntryEvent : MonoBehaviour
 {
     [Header("Event called when stepping on the trigger")]
     public UnityEvent OnEntryEvent;
-    
+
     private TagHandle playerTag;
 
     public void OnEnable()
@@ -14,7 +15,7 @@ public class EntryEvent : MonoBehaviour
         playerTag = TagHandle.GetExistingTag("Player");
     }
 
-    public void OnTriggerEnter2D(GameObject other)
+    public void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag(playerTag))
         {
