@@ -11,10 +11,10 @@ public class HealthBar : MonoBehaviour
 
     public void SetValue(float health, float maxHealth)
     {
-        slider.maxValue = health;
+        slider.maxValue = maxHealth;
         slider.value = health;
 
-        fill.color = gradient.Evaluate(1f);
+        fill.color = gradient.Evaluate(slider.normalizedValue);
 
         hpIndicator.SetText($"{health}/{maxHealth}");
     }
