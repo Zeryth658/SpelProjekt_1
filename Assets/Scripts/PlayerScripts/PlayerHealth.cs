@@ -1,10 +1,8 @@
-using System.Collections.Generic;
-using NUnit.Framework;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+
 public class PlayerHealth : MonoBehaviour, IDamageable
 {
-    public float maxHealth = 5f;
+    public float maxHealth = 15f;
     public float currentHealth;
     public HealthBar healthBar;
     public Hurtbox hurtbox;
@@ -23,7 +21,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
     public void Start()
     {
-        currentHealth = maxHealth;
+        currentHealth = maxHealth - 10;
         healthBar.SetValue(currentHealth, maxHealth);
     }
 
@@ -36,10 +34,14 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         {
             Die();
         }
-        healthBar.SetNewValue(currentHealth, maxHealth);
+        HealthBarNewValue();
         animator.SetTrigger("Got Hit");
-
     }
+
+    public void HealthBarNewValue()
+    {
+        healthBar.SetNewValue(currentHealth, maxHealth);
+    } 
 
     void Die()
     {

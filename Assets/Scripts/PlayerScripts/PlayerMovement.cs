@@ -5,8 +5,8 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer characterRenderer;
-    [SerializeField] private float maxSpeed = 5f, acceleration = 50f, deacceleration = 100;
-    [SerializeField] private float currentSpeed = 0f;
+    [SerializeField] public float maxSpeed = 5f, acceleration = 50f, deacceleration = 100;
+    [SerializeField] public float currentSpeed = 0f;
 
     [SerializeField] private InputActionReference movement, attack, pointerPosition;
     
