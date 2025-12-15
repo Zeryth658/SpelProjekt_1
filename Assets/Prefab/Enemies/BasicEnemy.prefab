@@ -247,11 +247,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealth: 1
-  detectionRange: 15
+  detectionRange: 30
   spottingDelay: 0.3
   preparingShotTime: 0.4
   recoveryTime: 0.5
-  shootingRange: 15
+  shootingRange: 30
   audioSource: {fileID: 7146277591970315539}
   deathSound: {fileID: 8300000, guid: 7f0e3e7740a0c6c4ebc7c1423fe46538, type: 3}
   hurtbox: {fileID: 4972438075651288497}
