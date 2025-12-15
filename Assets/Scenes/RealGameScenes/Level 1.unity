@@ -7802,10 +7802,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 623797603461334084, guid: 661478b901d8b4748a674a4e9c8ae8ae, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1157133527975207446, guid: 661478b901d8b4748a674a4e9c8ae8ae, type: 3}
       propertyPath: healthBar
       value: 
@@ -7849,6 +7845,10 @@ PrefabInstance:
     - target: {fileID: 1432178805295054504, guid: 661478b901d8b4748a674a4e9c8ae8ae, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3230153213661425252, guid: 661478b901d8b4748a674a4e9c8ae8ae, type: 3}
+      propertyPath: InitialModule.gravitySource
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8818006389662794542, guid: 661478b901d8b4748a674a4e9c8ae8ae, type: 3}
       propertyPath: m_Name
