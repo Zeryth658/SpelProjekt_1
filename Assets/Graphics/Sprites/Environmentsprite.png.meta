@@ -807,8 +807,8 @@ TextureImporter:
       name: Environmentsprite_32
       rect:
         serializedVersion: 2
-        x: 112
-        y: 48
+        x: 0
+        y: 32
         width: 16
         height: 16
       alignment: 0
@@ -829,7 +829,7 @@ TextureImporter:
       name: Environmentsprite_33
       rect:
         serializedVersion: 2
-        x: 0
+        x: 16
         y: 32
         width: 16
         height: 16
@@ -851,7 +851,7 @@ TextureImporter:
       name: Environmentsprite_34
       rect:
         serializedVersion: 2
-        x: 16
+        x: 32
         y: 32
         width: 16
         height: 16
@@ -873,7 +873,7 @@ TextureImporter:
       name: Environmentsprite_35
       rect:
         serializedVersion: 2
-        x: 32
+        x: 48
         y: 32
         width: 16
         height: 16
@@ -895,7 +895,7 @@ TextureImporter:
       name: Environmentsprite_36
       rect:
         serializedVersion: 2
-        x: 48
+        x: 64
         y: 32
         width: 16
         height: 16
@@ -917,7 +917,7 @@ TextureImporter:
       name: Environmentsprite_37
       rect:
         serializedVersion: 2
-        x: 64
+        x: 80
         y: 32
         width: 16
         height: 16
@@ -939,7 +939,7 @@ TextureImporter:
       name: Environmentsprite_38
       rect:
         serializedVersion: 2
-        x: 80
+        x: 96
         y: 32
         width: 16
         height: 16
@@ -961,8 +961,8 @@ TextureImporter:
       name: Environmentsprite_39
       rect:
         serializedVersion: 2
-        x: 96
-        y: 32
+        x: 0
+        y: 16
         width: 16
         height: 16
       alignment: 0
@@ -983,8 +983,8 @@ TextureImporter:
       name: Environmentsprite_40
       rect:
         serializedVersion: 2
-        x: 112
-        y: 32
+        x: 16
+        y: 16
         width: 16
         height: 16
       alignment: 0
@@ -1005,7 +1005,7 @@ TextureImporter:
       name: Environmentsprite_41
       rect:
         serializedVersion: 2
-        x: 112
+        x: 32
         y: 16
         width: 16
         height: 16
@@ -1027,8 +1027,8 @@ TextureImporter:
       name: Environmentsprite_42
       rect:
         serializedVersion: 2
-        x: 112
-        y: 0
+        x: 48
+        y: 16
         width: 16
         height: 16
       alignment: 0
