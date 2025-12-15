@@ -44,7 +44,7 @@ public class DodgeRoll : MonoBehaviour
     {
         moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
 
-        if (Input.GetKeyDown(KeyCode.Space) && !isDodging && _canDodge && moveInput.magnitude > 0.1f)
+        if (!isDodging && _canDodge && moveInput.magnitude > 0.1f)
         {
             
             StartCoroutine(Dodge(moveInput));
