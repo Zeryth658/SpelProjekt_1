@@ -30,10 +30,12 @@ public class PauseMenu : MonoBehaviour
     }
     public void RestartGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        ResumeGame();
+        ResetGame.Reset();
     }
     public void QuitGame()
     {
+        ResumeGame();
         SceneManager.LoadScene(0);
     }
 
