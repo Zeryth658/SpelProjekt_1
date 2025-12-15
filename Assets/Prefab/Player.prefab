@@ -5565,6 +5565,7 @@ GameObject:
   - component: {fileID: 4967197348334144092}
   - component: {fileID: 8421511727814535381}
   - component: {fileID: 4750242863019485764}
+  - component: {fileID: 9190699797064338643}
   - component: {fileID: 785864877921393023}
   - component: {fileID: 3439027128940978162}
   - component: {fileID: 2495225295072083710}
@@ -5694,6 +5695,7 @@ MonoBehaviour:
   currentHealth: 0
   healthBar: {fileID: 0}
   hurtbox: {fileID: 4967197348334144092}
+  immune: 0
   isDead: 0
   playerGetHitSound1: {fileID: 3439027128940978162}
   playerGetHitSound2: {fileID: 2495225295072083710}
@@ -5751,6 +5753,64 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eb93d1076d91044685f7e5b52a1f348, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &9190699797064338643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8818006389662794542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab13a063c7e25cb4a8a8ab3fa4674f4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dodgeSpeed: 14
+  dodgeDuration: 0.45
+  dodgeCooldown: 0.4
+  SpeedCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.0011268463
+      value: 0.998099
+      inSlope: -0.33097273
+      outSlope: -0.33097273
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.07491154
+    - serializedVersion: 3
+      time: 0.1514144
+      value: 1.0994534
+      inSlope: -0.8784628
+      outSlope: -0.8784628
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.72479117
+      value: 0.17899323
+      inSlope: -1.3249991
+      outSlope: -1.3249991
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1.0184445
+      value: 0.05408755
+      inSlope: 0.0016904213
+      outSlope: 0.0016904213
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.10849802
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  playerInput: {fileID: 785864877921393023}
 --- !u!114 &785864877921393023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5987,4 +6047,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c7824756d31cbc46a239b564757c0be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartPos: {x: 0, y: 0, z: 0}

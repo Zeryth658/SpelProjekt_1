@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     private PlayerHealth playerHealth;
     private Rigidbody2D myRigidbody;
     private Animator animator;
+    private DodgeRoll dodgeRoll;
 
     private void OnEnable()
     {
@@ -39,10 +40,15 @@ public class PlayerMovement : MonoBehaviour
         weaponParent = GetComponentInChildren<WeaponParent>();
         playerHealth = GetComponent<PlayerHealth>();
         animator = GetComponentInChildren<Animator>();
+        dodgeRoll = GetComponent<DodgeRoll>();
     }
 
     private void FixedUpdate()
     {
+        if (dodgeRoll.isDodging)
+        {
+            return;
+        }
         if(playerHealth.isDead == true) 
         { 
             movementInput = Vector2.zero;

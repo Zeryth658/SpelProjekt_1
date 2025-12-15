@@ -8,6 +8,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     public Hurtbox hurtbox;
     private Animator animator;
 
+    public bool immune = false;
     public bool isDead = false;
 
     [SerializeField] private AudioSource playerGetHitSound1;
@@ -26,6 +27,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
     public void TakeDamage(float amount, GameObject source)
     {
+        if (immune) return;
         PlayGetHitSounds();
         currentHealth -= amount;
         Debug.Log($"{gameObject.name} took {amount} from {source}");

@@ -32,6 +32,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Dodge",
+                    "type": "Button",
+                    "id": "3ab9f1b2-4c50-4da2-9f3b-f14d80b5e934",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -103,8 +112,8 @@
                 },
                 {
                     "name": "",
-                    "id": "624ae866-1040-47d9-a967-079e7e75dcb8",
-                    "path": "<Keyboard>/space",
+                    "id": "6d5f9f9a-c5fb-490b-820f-2728ab58e08e",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -114,12 +123,34 @@
                 },
                 {
                     "name": "",
-                    "id": "6d5f9f9a-c5fb-490b-820f-2728ab58e08e",
-                    "path": "<Mouse>/leftButton",
+                    "id": "32210e21-896c-4543-afd8-c9d97158ed49",
+                    "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Attack",
+                    "action": "Dodge",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "dcea7293-06a7-45d9-ae0c-4cea7f3821b6",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Dodge",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c10cd31c-58b5-48a9-9ab6-b922476ff494",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Dodge",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
