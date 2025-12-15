@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour, IDamageable
 {
     public float maxHealth = 15f;
-    public float currentHealth;
+    public float currentHealth = 5f;
     public HealthBar healthBar;
     public Hurtbox hurtbox;
     private Animator animator;
@@ -21,7 +21,6 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
     public void Start()
     {
-        currentHealth = maxHealth - 10;
         healthBar.SetValue(currentHealth, maxHealth);
     }
 
