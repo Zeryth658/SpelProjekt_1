@@ -27,7 +27,6 @@ public class MapTransition : MonoBehaviour
             {
                 confiner.BoundingShape2D = mapBoundary;
                 UpdatePlayerPosition(collision.gameObject);
-                waypoint.isTrigger = false;
                 hasEntered = true;
             }
         }

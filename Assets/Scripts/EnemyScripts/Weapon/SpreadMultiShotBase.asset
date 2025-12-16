@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f920ae63519bcc45a3d0014c8d8e91e, type: 3}
   m_Name: SpreadMultiShotBase
   m_EditorClassIdentifier: 
-  spreadAngle: 37.72177
-  bulletAmount: 5
+  spreadAngle: 40
+  bulletAmount: 3
   randomAngle: 0
   minSpreadAngle: 5
   maxSpreadAngle: 40

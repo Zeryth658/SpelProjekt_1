@@ -5,12 +5,14 @@ public class ChildChecker : MonoBehaviour
 {
     [Header("Event called when there are no child objects")]
     public UnityEvent OnNoEnemies;
+    private bool performed = false;
 
     public void Update()
     {
         //Checking for child objects
-        if(transform.childCount == 0)
+        if(!performed && transform.childCount == 0)
         {
+            performed = true;
             OnNoEnemies.Invoke();
         }
     }

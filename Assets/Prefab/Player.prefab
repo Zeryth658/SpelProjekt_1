@@ -178,7 +178,7 @@ Transform:
   m_GameObject: {fileID: 922159165274181876}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0.5, y: 0.2, z: 0}
+  m_LocalPosition: {x: 0.6, y: 0.125, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5708,7 +5708,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 15
-  currentHealth: 5
+  currentHealth: 10
   healthBar: {fileID: 0}
   hurtbox: {fileID: 4967197348334144092}
   immune: 0
@@ -5729,10 +5729,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageInterval: 3
   damageAmount: 1
-  hpReductionThreshold: 5
+  hpReductionThreshold: 3
   hpSpeedThreshold: 12
   baseSpeedIncrease: 3
-  additionalSpeedMultiplier: 1
+  additionalSpeedMultiplier: 0.5
   playerHealth: {fileID: 1157133527975207446}
   playerMovement: {fileID: 6918456677596445224}
 --- !u!114 &4967197348334144092
@@ -5784,8 +5784,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab13a063c7e25cb4a8a8ab3fa4674f4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dodgeSpeed: 14
-  dodgeDuration: 0.45
+  dodgeSpeed: 20
+  dodgeDuration: 0.35
   dodgeCooldown: 0.4
   SpeedCurve:
     serializedVersion: 2
@@ -5800,8 +5800,8 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0.07491154
     - serializedVersion: 3
-      time: 0.1514144
-      value: 1.0994534
+      time: 0.19804525
+      value: 1.0743833
       inSlope: -0.8784628
       outSlope: -0.8784628
       tangentMode: 0
@@ -5809,8 +5809,8 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.72479117
-      value: 0.17899323
+      time: 0.631537
+      value: 0.3595127
       inSlope: -1.3249991
       outSlope: -1.3249991
       tangentMode: 0
@@ -5818,8 +5818,8 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 1.0184445
-      value: 0.05408755
+      time: 1.0014768
+      value: 0.18946353
       inSlope: 0.0016904213
       outSlope: 0.0016904213
       tangentMode: 0
