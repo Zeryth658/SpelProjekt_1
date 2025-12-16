@@ -30,7 +30,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void PerformAttack(InputAction.CallbackContext context)
     {
-        if(PauseMenu.IsPaused) { return; }
         if(playerHealth.isDead == true) { return; }
         weaponParent.OnAttack();
     }
