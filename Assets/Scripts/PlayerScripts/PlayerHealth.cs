@@ -20,14 +20,6 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         animator = GetComponentInChildren<Animator>();
     }
 
-    public void Update()
-    {
-        if(currentHealth > maxHealth)
-        {
-            currentHealth = maxHealth;
-        }
-    }
-
     public void Start()
     {
         healthBar.SetValue(currentHealth, maxHealth);

@@ -5721,14 +5721,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8818006389662794542}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 04033b74e652fd84ebf1e3e1aaeaa47c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lessThanMaxHpThreshold: 2
+  hpThreshold: 12
   damageAmount: 0.03
-  speedIncrease: 3
+  baseSpeedIncrease: 3
   playerHealth: {fileID: 1157133527975207446}
   playerMovement: {fileID: 6918456677596445224}
 --- !u!114 &4967197348334144092
