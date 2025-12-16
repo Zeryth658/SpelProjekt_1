@@ -1,6 +1,6 @@
 using System;
 using UnityEngine;
-
+using System.Collections;
 public class EnemyShooter : MonoBehaviour
 {
     [Header("Bullet stats")]
@@ -14,13 +14,15 @@ public class EnemyShooter : MonoBehaviour
     public GameObject bulletPrefab;
     
     [Header("Shoot behaviour")]
+	public int shotAmount = 1;
+	public float shotDelay = 0.2f; 
     public ShotPattern shotpattern;
     public AimBehaviour aimBehaviour;
     public LayerMask obstacleMask;
 
    
     private Vector2 direction;
-    
+    private float time;
     private float bulletRadius;
     // Update is called once per frame
     
@@ -76,10 +78,19 @@ public class EnemyShooter : MonoBehaviour
 
         direction = aimBehaviour.SetTarget(firePoint, target);
         
+        StartCoroutine(MultiShoot());
         
-        shotpattern.Shoot(this, firePoint, direction);
         
-        
+    }
+
+    private IEnumerator MultiShoot()
+    {
+        for (int i = 0; i < shotAmount; i++)
+        {
+            shotpattern.Shoot(this, firePoint, direction);
+            yield return new WaitForSeconds(shotDelay);
+        }
+        yield return null;
     }
 
     public void SpawnBullet(Vector3 spawnPosition, Vector3 spawnDirection)
@@ -88,7 +99,7 @@ public class EnemyShooter : MonoBehaviour
         Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         GameObject bulletObj = PoolManager.Spawn(bulletPrefab, spawnPosition, rotation);
         Bullet bullet = bulletObj.GetComponent<Bullet>();
-        bullet.Initialize(direction, bulletDamage, this.gameObject, bulletSpeed, bulletLifeTime);
+        bullet.Initialize(spawnDirection, bulletDamage, this.gameObject, bulletSpeed, bulletLifeTime);
     }
     
 
