@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 3259029622902731156}
   - component: {fileID: 1190782734434366332}
   - component: {fileID: 8803418714444095585}
+  - component: {fileID: 995108492243502543}
   m_Layer: 6
   m_Name: WeaponCollider
   m_TagString: Untagged
@@ -134,6 +135,20 @@ MonoBehaviour:
   damage: 1
   owner: {fileID: 8818006389662794542}
   attackID: 0
+--- !u!114 &995108492243502543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 623797603461334084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e0b95a2e65d005429106a0ebb1bac50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHealth: {fileID: 1157133527975207446}
+  healAmount: 1
 --- !u!1 &922159165274181876
 GameObject:
   m_ObjectHideFlags: 0
@@ -5692,7 +5707,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 15
-  currentHealth: 0
+  currentHealth: 5
   healthBar: {fileID: 0}
   hurtbox: {fileID: 4967197348334144092}
   immune: 0
