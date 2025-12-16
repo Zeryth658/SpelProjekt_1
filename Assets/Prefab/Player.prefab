@@ -5691,6 +5691,7 @@ MonoBehaviour:
   acceleration: 50
   deacceleration: 100
   currentSpeed: 0
+  standardMaxSpeed: 0
   movement: {fileID: -615609114178366659, guid: 00a254183a87b24459bea6e1befa970c, type: 3}
   attack: {fileID: 8798571920088694284, guid: 00a254183a87b24459bea6e1befa970c, type: 3}
   pointerPosition: {fileID: 1485504275406657881, guid: 00a254183a87b24459bea6e1befa970c, type: 3}
@@ -5726,8 +5727,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04033b74e652fd84ebf1e3e1aaeaa47c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hpThreshold: 12
-  damageAmount: 0.03
+  damageInterval: 3
+  damageAmount: 1
+  hpReductionThreshold: 5
+  hpSpeedThreshold: 12
   baseSpeedIncrease: 3
   playerHealth: {fileID: 1157133527975207446}
   playerMovement: {fileID: 6918456677596445224}

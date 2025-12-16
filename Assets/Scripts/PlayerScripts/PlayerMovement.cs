@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private SpriteRenderer characterRenderer;
     [SerializeField] public float maxSpeed = 5f, acceleration = 50f, deacceleration = 100;
     [SerializeField] public float currentSpeed = 0f;
+    public float standardMaxSpeed;
 
     [SerializeField] private InputActionReference movement, attack, pointerPosition;
     
@@ -41,6 +42,8 @@ public class PlayerMovement : MonoBehaviour
         playerHealth = GetComponent<PlayerHealth>();
         animator = GetComponentInChildren<Animator>();
         dodgeRoll = GetComponent<DodgeRoll>();
+
+        standardMaxSpeed = maxSpeed;
     }
 
     private void FixedUpdate()

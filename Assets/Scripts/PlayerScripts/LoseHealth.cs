@@ -1,55 +1,82 @@
+using System;
+using System.Collections;
 using System.Security.Permissions;
 using UnityEngine;
 
 public class LoseHealth : MonoBehaviour
 {
-    private bool lowHealth;
-    private bool highHealth;
-
-    [SerializeField] private float hpThreshold = 12f;
-    [SerializeField] private float damageAmount = 0.03f;
-    [SerializeField] private float baseSpeedIncrease = 3f;
-    //private float moreSpeedBoost;
+    [Header("Health Reduction")]
+    [SerializeField] private float damageInterval = 3f;
+    [SerializeField] private int damageAmount = 1;
+    [SerializeField] private float hpReductionThreshold = 5f;
+    
+    [Header("Speed Boost")]
+    [SerializeField] private float hpSpeedThreshold = 12f;
+    private float totalSpeedIncrease;
+    [SerializeField] private float baseSpeedIncrease = 8f;
+    private float moreSpeedIncrease;
 
     [SerializeField] private PlayerHealth playerHealth;
     [SerializeField] private PlayerMovement playerMovement;
 
+    private Coroutine damageCoroutine;
+
     private void FixedUpdate()
     {
-        if (playerHealth.currentHealth > 5)
+        if (playerHealth.currentHealth > hpReductionThreshold)
         {
-            lowHealth = false;
+            StartDamageTimer();
 
-            if (playerHealth.currentHealth > hpThreshold)
+            if (playerHealth.currentHealth > hpSpeedThreshold)
             {
-                //moreSpeedBoost = playerHealth.currentHealth - (hpThreshold + 1);
-                highHealth = true;
+                moreSpeedIncrease = playerHealth.currentHealth - (hpSpeedThreshold + 1);
+
+                totalSpeedIncrease = baseSpeedIncrease + moreSpeedIncrease;
+                
+                playerMovement.maxSpeed = totalSpeedIncrease;
             }
             else
             {
-                highHealth = false;
+                playerMovement.maxSpeed = playerMovement.standardMaxSpeed;
             }
         }
-        else if (playerHealth.currentHealth <= 5)
+        else
         {
-            highHealth = false;
-            lowHealth = true;
+            StopDamageTimer();
+        }
+    }
+
+    private void StartDamageTimer()
+    {
+        if(damageCoroutine == null)
+        {
+            damageCoroutine = StartCoroutine(TakeDamageOverTime());
+        }
+    }
+
+    private void StopDamageTimer()
+    {
+        if(damageCoroutine != null)
+        {
+            StopCoroutine(damageCoroutine);
+            damageCoroutine = null;
+        }
+    }
+
+    private IEnumerator TakeDamageOverTime()
+    {
+        while(playerHealth.currentHealth > hpReductionThreshold)
+        {
+            yield return new WaitForSeconds(damageInterval);
+            TakeDamage(damageAmount);
         }
 
-        if (lowHealth == false) TakeDamage();
-
-        if (highHealth) SpeedBoost();
+        damageCoroutine = null;
     }
 
-    private void TakeDamage()
-    {
-        playerHealth.currentHealth -= damageAmount;
+    private void TakeDamage(float amount)
+    {        
+        playerHealth.currentHealth -= amount;
         playerHealth.HealthBarNewValue();
-    }
-
-    private void SpeedBoost()
-    {
-        playerMovement.maxSpeed += baseSpeedIncrease;
-        //+ moreSpeedBoost;
     }
 }
