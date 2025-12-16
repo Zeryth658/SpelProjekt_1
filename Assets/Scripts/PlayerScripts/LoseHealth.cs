@@ -13,8 +13,9 @@ public class LoseHealth : MonoBehaviour
     [Header("Speed Boost")]
     [SerializeField] private float hpSpeedThreshold = 12f;
     private float totalSpeedIncrease;
-    [SerializeField] private float baseSpeedIncrease = 8f;
-    private float moreSpeedIncrease;
+    [SerializeField] private float baseSpeedIncrease = 3f;
+    [SerializeField] private float additionalSpeedMultiplier = 1f;
+    private float additionalSpeedIncrease;
 
     [SerializeField] private PlayerHealth playerHealth;
     [SerializeField] private PlayerMovement playerMovement;
@@ -29,11 +30,11 @@ public class LoseHealth : MonoBehaviour
 
             if (playerHealth.currentHealth > hpSpeedThreshold)
             {
-                moreSpeedIncrease = playerHealth.currentHealth - (hpSpeedThreshold + 1);
+                additionalSpeedIncrease = (playerHealth.currentHealth - (hpSpeedThreshold + 1)) * additionalSpeedMultiplier;
 
-                totalSpeedIncrease = baseSpeedIncrease + moreSpeedIncrease;
+                totalSpeedIncrease = baseSpeedIncrease + additionalSpeedIncrease;
                 
-                playerMovement.maxSpeed = totalSpeedIncrease;
+                playerMovement.maxSpeed = playerMovement.standardMaxSpeed + totalSpeedIncrease;
             }
             else
             {

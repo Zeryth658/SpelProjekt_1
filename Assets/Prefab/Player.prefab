@@ -5732,6 +5732,7 @@ MonoBehaviour:
   hpReductionThreshold: 5
   hpSpeedThreshold: 12
   baseSpeedIncrease: 3
+  additionalSpeedMultiplier: 1
   playerHealth: {fileID: 1157133527975207446}
   playerMovement: {fileID: 6918456677596445224}
 --- !u!114 &4967197348334144092
