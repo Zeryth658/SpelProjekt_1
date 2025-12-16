@@ -18,6 +18,7 @@ public class HealthRecovery : MonoBehaviour
         if (other.CompareTag(enemyTag))
         {
             playerHealth.currentHealth += healAmount;
+            playerHealth.HealthBarNewValue();
         }
     }
 }
