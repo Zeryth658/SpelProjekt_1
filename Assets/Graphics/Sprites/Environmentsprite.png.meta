@@ -807,8 +807,8 @@ TextureImporter:
       name: Environmentsprite_32
       rect:
         serializedVersion: 2
-        x: 112
-        y: 48
+        x: 0
+        y: 32
         width: 16
         height: 16
       alignment: 0
@@ -829,7 +829,7 @@ TextureImporter:
       name: Environmentsprite_33
       rect:
         serializedVersion: 2
-        x: 0
+        x: 16
         y: 32
         width: 16
         height: 16
@@ -851,7 +851,7 @@ TextureImporter:
       name: Environmentsprite_34
       rect:
         serializedVersion: 2
-        x: 16
+        x: 32
         y: 32
         width: 16
         height: 16
@@ -873,7 +873,7 @@ TextureImporter:
       name: Environmentsprite_35
       rect:
         serializedVersion: 2
-        x: 32
+        x: 48
         y: 32
         width: 16
         height: 16
@@ -895,7 +895,7 @@ TextureImporter:
       name: Environmentsprite_36
       rect:
         serializedVersion: 2
-        x: 48
+        x: 64
         y: 32
         width: 16
         height: 16
@@ -917,7 +917,7 @@ TextureImporter:
       name: Environmentsprite_37
       rect:
         serializedVersion: 2
-        x: 64
+        x: 80
         y: 32
         width: 16
         height: 16
@@ -939,7 +939,7 @@ TextureImporter:
       name: Environmentsprite_38
       rect:
         serializedVersion: 2
-        x: 80
+        x: 96
         y: 32
         width: 16
         height: 16
@@ -961,8 +961,8 @@ TextureImporter:
       name: Environmentsprite_39
       rect:
         serializedVersion: 2
-        x: 96
-        y: 32
+        x: 0
+        y: 16
         width: 16
         height: 16
       alignment: 0
@@ -983,8 +983,8 @@ TextureImporter:
       name: Environmentsprite_40
       rect:
         serializedVersion: 2
-        x: 112
-        y: 32
+        x: 16
+        y: 16
         width: 16
         height: 16
       alignment: 0
@@ -1005,7 +1005,7 @@ TextureImporter:
       name: Environmentsprite_41
       rect:
         serializedVersion: 2
-        x: 112
+        x: 32
         y: 16
         width: 16
         height: 16
@@ -1027,8 +1027,8 @@ TextureImporter:
       name: Environmentsprite_42
       rect:
         serializedVersion: 2
-        x: 112
-        y: 0
+        x: 48
+        y: 16
         width: 16
         height: 16
       alignment: 0
@@ -1041,6 +1041,72 @@ TextureImporter:
       bones: []
       spriteID: a422181298d81ef4a9e9f5ee96aa5462
       internalID: 627758904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Environmentsprite_43
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15753d3b98db18d4ea6308fca0a9e100
+      internalID: 1616383912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Environmentsprite_44
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c225df945bff770428909857e5030096
+      internalID: -1039669419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Environmentsprite_45
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57c0ee389628e6e4c9ae88eca6c65298
+      internalID: 467161150
       vertices: []
       indices: 
       edges: []
@@ -1097,6 +1163,9 @@ TextureImporter:
       Environmentsprite_40: 5658897
       Environmentsprite_41: -836361840
       Environmentsprite_42: 627758904
+      Environmentsprite_43: 1616383912
+      Environmentsprite_44: -1039669419
+      Environmentsprite_45: 467161150
       Environmentsprite_5: 2050910135
       Environmentsprite_6: 2081190175
       Environmentsprite_7: 2101337279

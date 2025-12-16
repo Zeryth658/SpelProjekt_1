@@ -79,10 +79,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 9.5, y: 5.5}
-      - {x: -9.5, y: 5.5}
-      - {x: -9.5, y: -5.5}
-      - {x: 9.5, y: -5.5}
+    - - {x: 14.22, y: 8}
+      - {x: -14.22, y: 8}
+      - {x: -14.22, y: -8}
+      - {x: 14.22, y: -8}
   m_UseDelaunayMesh: 0
 --- !u!1 &8487171245034173991
 GameObject:
@@ -175,6 +175,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4f0aef76a5c3604cb67bfeb0e275ac7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  confiner: {fileID: 0}
   direction: 1
   addNewPos: 0

@@ -5,8 +5,8 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer characterRenderer;
-    [SerializeField] private float maxSpeed = 5f, acceleration = 50f, deacceleration = 100;
-    [SerializeField] private float currentSpeed = 0f;
+    [SerializeField] public float maxSpeed = 5f, acceleration = 50f, deacceleration = 100;
+    [SerializeField] public float currentSpeed = 0f;
 
     [SerializeField] private InputActionReference movement, attack, pointerPosition;
     
@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     private PlayerHealth playerHealth;
     private Rigidbody2D myRigidbody;
     private Animator animator;
+    private DodgeRoll dodgeRoll;
 
     private void OnEnable()
     {
@@ -39,10 +40,15 @@ public class PlayerMovement : MonoBehaviour
         weaponParent = GetComponentInChildren<WeaponParent>();
         playerHealth = GetComponent<PlayerHealth>();
         animator = GetComponentInChildren<Animator>();
+        dodgeRoll = GetComponent<DodgeRoll>();
     }
 
     private void FixedUpdate()
     {
+        if (dodgeRoll.isDodging)
+        {
+            return;
+        }
         if(playerHealth.isDead == true) 
         { 
             movementInput = Vector2.zero;
