@@ -230,6 +230,7 @@ MonoBehaviour:
   firePoint: {fileID: 4412982548403517146}
   target: {fileID: 0}
   bulletPrefab: {fileID: 6716923964577713858, guid: 00b52c8c331c83a469ebbf079fa48ee9, type: 3}
+  shootSound: {fileID: 8300000, guid: 55c4fba107ee4a446a3eb384a903d8d1, type: 3}
   shotAmount: 1
   shotDelay: 0.2
   shotpattern: {fileID: 11400000, guid: d3be9205a17373346be4b1cdfe6adc27, type: 2}

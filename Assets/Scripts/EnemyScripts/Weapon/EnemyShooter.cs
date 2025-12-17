@@ -12,6 +12,7 @@ public class EnemyShooter : MonoBehaviour
     public Transform firePoint;
     public Transform target;
     public GameObject bulletPrefab;
+    public AudioClip shootSound;
     
     [Header("Shoot behaviour")]
 	public int shotAmount = 1;
@@ -78,6 +79,7 @@ public class EnemyShooter : MonoBehaviour
 
         direction = aimBehaviour.SetTarget(firePoint, target);
         
+        AudioSource.PlayClipAtPoint(shootSound, transform.position);
         StartCoroutine(MultiShoot());
         
         
