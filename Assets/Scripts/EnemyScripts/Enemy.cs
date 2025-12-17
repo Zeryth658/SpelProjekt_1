@@ -40,6 +40,8 @@ public class Enemy : MonoBehaviour, IDamageable
     public PathMovement PathMovement { get; set; }
     
     public Patrol Patrol { get; set; }
+    
+    public Animator Animator { get; set; }
 
     private void Awake()
     {
@@ -48,6 +50,7 @@ public class Enemy : MonoBehaviour, IDamageable
         PathMovement = GetComponent<PathMovement>();
         Patrol = GetComponent<Patrol>();
         Shooter = GetComponent<EnemyShooter>();
+        Animator = GetComponent<Animator>();
         StateMachine = new EnemyStateMachine();
         ChaseState = new EnemyChaseState(this, StateMachine);
         PreparingShotState = new EnemyPreparingShotState(this, StateMachine);

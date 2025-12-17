@@ -16,6 +16,7 @@ public class DodgeRoll : MonoBehaviour
     private Vector2 moveInput;
     private Rigidbody2D _rigidbody;
     private PlayerHealth _playerHealth;
+    private Animator _animator;
     public bool isDodging { get; private set; }
     private bool _canDodge = true;
 
@@ -24,7 +25,7 @@ public class DodgeRoll : MonoBehaviour
     {
         _playerHealth = GetComponent<PlayerHealth>();
         _rigidbody = GetComponent<Rigidbody2D>();
-        
+        _animator = GetComponentInChildren<Animator>();
         _dodgeAction = playerInput.actions["Dodge"];
     }
     
@@ -55,6 +56,7 @@ public class DodgeRoll : MonoBehaviour
     {
         _canDodge = false;
         isDodging = true;
+        _animator.SetBool("isDodging", true);
         _playerHealth.immune = true;
         float time = 0;
 
@@ -75,7 +77,7 @@ public class DodgeRoll : MonoBehaviour
         }
         _rigidbody.linearVelocity = Vector2.zero;
         isDodging = false;
-        
+        _animator.SetBool("isDodging", false);
         yield return new WaitForSeconds(dodgeCooldown);
         _canDodge = true;
     }

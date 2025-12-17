@@ -3,6 +3,7 @@ using UnityEngine;
 public class EnemyPreparingShotState : EnemyState
 {
     private float timer;
+   
     public EnemyPreparingShotState(Enemy enemy, EnemyStateMachine enemyStateMachine) : base(enemy, enemyStateMachine)
     {
         
@@ -26,7 +27,7 @@ public class EnemyPreparingShotState : EnemyState
         {
             enemyStateMachine.ChangeState(enemy.ChaseState);
         }
-
+        enemy.Animator.SetBool("IsMoving", false);
         if (timer >= enemy.preparingShotTime)
         {
             enemyStateMachine.ChangeState(enemy.AttackState);
