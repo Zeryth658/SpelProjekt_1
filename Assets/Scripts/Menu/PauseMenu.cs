@@ -5,12 +5,20 @@ public class PauseMenu : MonoBehaviour
 
     public GameObject pauseMenu;
     public GameObject optionsMenu;
+    public GameObject generalMenu;
+    public GameObject controlsMenu;
+    public GameObject videoMenu;
+    public GameObject audioMenu;
     public static bool IsPaused { get; set; }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         pauseMenu.SetActive(false);
         optionsMenu.SetActive(false);
+        generalMenu.SetActive(false);
+        controlsMenu.SetActive(false);
+        videoMenu.SetActive(false);
+        audioMenu.SetActive(false);
     }
 
     // Update is called once per frame
@@ -24,8 +32,33 @@ public class PauseMenu : MonoBehaviour
         
     }
 
+    public void OpenGeneral()
+    {
+        optionsMenu.SetActive(false);
+        generalMenu.SetActive(true);
+    }
+
+    public void OpenControls()
+    {
+        optionsMenu.SetActive(false);
+        controlsMenu.SetActive(true);
+    }
+
+    public void OpenVideo()
+    {
+        optionsMenu.SetActive(false);
+        videoMenu.SetActive(true);
+    }
+
+    public void OpenAudio()
+    {
+        optionsMenu.SetActive(false);
+        audioMenu.SetActive(true);
+    }
+
     public void OpenSettings()
     {
+        pauseMenu.SetActive(false);
         optionsMenu.SetActive(true);
     }
     public void RestartGame()
@@ -48,7 +81,12 @@ public class PauseMenu : MonoBehaviour
     
     public void ResumeGame()
     {
+        optionsMenu.SetActive(false);
         pauseMenu.SetActive(false);
+        generalMenu.SetActive(false);
+        controlsMenu.SetActive(false);
+        videoMenu.SetActive(false);
+        audioMenu.SetActive(false);
         Time.timeScale = 1;
         IsPaused = false;
     }
