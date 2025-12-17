@@ -8,85 +8,84 @@ public class BloodEffect : MonoBehaviour
     [Header("Prefab Settings")]
     public GameObject prefab;
     public int amountToSpawn = 3;
-    public float delay = 0.5f;
+    public float glideDuration = 1f;
 
     [Header("Spawn Area")]
     public float radius = 3f;
 
     void Start()
     {
-        StartCoroutine(SpawnAfterDelay());
+        SpawnAll();
     }
 
-    IEnumerator SpawnAfterDelay()
+    void SpawnAll()
     {
-        yield return new WaitForSeconds(delay);
+        Transform[] spawned = new Transform[amountToSpawn];
+        Vector3[] targets = new Vector3[amountToSpawn];
 
+        // Spawn all immediately
         for (int i = 0; i < amountToSpawn; i++)
         {
-            Vector3 randomPos = GetRandomPointInCircle();
-            Instantiate(prefab, randomPos, Quaternion.identity);
+            targets[i] = GetRandomPointInCircle();
+            spawned[i] = Instantiate(
+                prefab,
+                transform.position,
+                Quaternion.identity,
+                transform
+            ).transform;
         }
+
+        // Start all glides on the same frame
+        for (int i = 0; i < amountToSpawn; i++)
+        {
+            StartCoroutine(GlideToPosition(spawned[i], targets[i]));
+        }
+    }
+
+    IEnumerator GlideToPosition(Transform obj, Vector3 target)
+    {
+        Vector3 start = obj.position;
+        float elapsed = 0f;
+
+        while (elapsed < glideDuration)
+        {
+            elapsed += Time.deltaTime;
+            float t = elapsed / glideDuration;
+            t = Mathf.SmoothStep(0f, 1f, t);
+
+            obj.position = Vector3.Lerp(start, target, t);
+            yield return null;
+        }
+
+        obj.position = target;
     }
 
     Vector3 GetRandomPointInCircle()
     {
-        // Random point inside a circle (uniform distribution)
         float angle = Random.Range(0f, Mathf.PI * 2f);
         float dist = Mathf.Sqrt(Random.Range(0f, 1f)) * radius;
 
-        float x = Mathf.Cos(angle) * dist;
-        float y = Mathf.Sin(angle) * dist;
-
-        return transform.position + new Vector3(x, y, 0f);
+        return transform.position + new Vector3(
+            Mathf.Cos(angle) * dist,
+            Mathf.Sin(angle) * dist,
+            0f
+        );
     }
 
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
-
-        // Draw the circle (Unity doesn't have a built-in circle, so approximate it)
         int segments = 64;
-        Vector3 prevPoint = transform.position + new Vector3(radius, 0, 0);
+        Vector3 prevPoint = transform.position + Vector3.right * radius;
 
         for (int i = 1; i <= segments; i++)
         {
-            float angle = (i * Mathf.PI * 2f) / segments;
-            Vector3 newPoint = transform.position + new Vector3(Mathf.Cos(angle) * radius, Mathf.Sin(angle) * radius, 0);
+            float angle = i * Mathf.PI * 2f / segments;
+            Vector3 nextPoint = transform.position +
+                                new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0) * radius;
 
-            Gizmos.DrawLine(prevPoint, newPoint);
-            prevPoint = newPoint;
+            Gizmos.DrawLine(prevPoint, nextPoint);
+            prevPoint = nextPoint;
         }
     }
 }
-//public ParticleSystem particleSystem;
-//public GameObject prefab;
-//public int numberToSpawn = 3;
-//public float delay = 0.5f;
-
-//private ParticleSystem.Particle[] particles;
-
-//void Start()
-//{
-//    particles = new ParticleSystem.Particle[particleSystem.main.maxParticles];
-//    StartCoroutine(SpawnPrefabsAfterDelay());
-//}
-
-//IEnumerator SpawnPrefabsAfterDelay()
-//{
-//    // Wait for the delay
-//    yield return new WaitForSeconds(delay);
-
-//    int alive = particleSystem.GetParticles(particles);
-
-//    // If fewer than 3 particles exist, spawn on as many as we have
-//    int count = Mathf.Min(numberToSpawn, alive);
-
-//    for (int i = 0; i < count; i++)
-//    {
-//        // Convert particle local position → world position
-//        Vector3 worldPos = particleSystem.transform.TransformPoint(particles[i].position);
-
-//        Instantiate(prefab, worldPos, Quaternion.identity);
-//    }
-//}

@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 5735255379346079511, guid: 2f7ed1eb871c3504faf339acb34af9fb, type: 3}
   amountToSpawn: 5
-  delay: 0.15
+  glideDuration: 0.1
   radius: 1.02
 --- !u!1 &4992347411733715432
 GameObject:
@@ -4906,7 +4906,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 947068203
-  m_SortingLayer: 1
+  m_SortingLayer: -2
   m_SortingOrder: 0
   m_RenderMode: 0
   m_MeshDistribution: 0
