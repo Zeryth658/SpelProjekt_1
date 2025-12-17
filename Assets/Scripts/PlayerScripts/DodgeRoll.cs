@@ -18,12 +18,14 @@ public class DodgeRoll : MonoBehaviour
     private Rigidbody2D _rigidbody;
     private PlayerHealth _playerHealth;
     private Animator _animator;
+    private Hurtbox _hurtbox;
     public bool isDodging { get; private set; }
     private bool _canDodge = true;
 
 
     private void Awake()
     {
+        _hurtbox =  GetComponent<Hurtbox>();
         _playerHealth = GetComponent<PlayerHealth>();
         _rigidbody = GetComponent<Rigidbody2D>();
         _animator = GetComponentInChildren<Animator>();
@@ -57,6 +59,7 @@ public class DodgeRoll : MonoBehaviour
     {
         _canDodge = false;
         isDodging = true;
+        _hurtbox.TriggerIFrames(dodgeDuration);
         _animator.SetBool("isDodging", true);
         _playerHealth.immune = true;
         float time = 0;

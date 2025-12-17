@@ -5,10 +5,11 @@ public class Patrol : MonoBehaviour
 {
     public Transform[] waypoints;
     public float waitTime = 0f; //How long they should wait at each waypoint
-    
+    public bool loopPath = true;
     private int currentWaypoint = 0;
     private float waitTimer = 0f;
     private PathMovement movement;
+    private int direction = 1;
     
     public void BeginPatrol()
     {
@@ -37,7 +38,30 @@ public class Patrol : MonoBehaviour
 
     private void AdvancePatrolPoint()
     {
-        currentWaypoint = (currentWaypoint + 1) % waypoints.Length;
+        
+        if (loopPath)
+        {
+            currentWaypoint = (currentWaypoint + 1) % waypoints.Length;
+        }
+        
+        else
+        {
+            if (waypoints.Length < 2)
+                return;
+            currentWaypoint += direction;
+
+            if (currentWaypoint >= waypoints.Length)
+            {
+                direction = -1;
+                currentWaypoint = waypoints.Length - 2;
+            }
+            else if (currentWaypoint < 0)
+            {
+                direction = 1;
+                currentWaypoint = 1;
+            }
+        }
+        
         GoToNextPoint();
     }
     private void GoToNextPoint()

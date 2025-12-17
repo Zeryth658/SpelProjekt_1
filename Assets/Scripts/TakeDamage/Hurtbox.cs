@@ -52,7 +52,7 @@ public class Hurtbox : MonoBehaviour
         {
             Debug.Log($"{gameObject.name} im hit by {hitbox.owner}");
             dmg.TakeDamage(hitbox.damage, hitbox.owner);
-            TriggerIFrames(); // optional
+            TriggerIFrames(iFrameDuration); // optional
             if (other.TryGetComponent<IDestroyOnImpact>(out var hit))
             {
                 hit.DestroyMe();
@@ -60,9 +60,9 @@ public class Hurtbox : MonoBehaviour
         }
         
     }
-    public void TriggerIFrames()
+    public void TriggerIFrames(float immunityTime)
     {
-        iFrameTimer = iFrameDuration;
+        iFrameTimer = immunityTime;
         recentAttackIDs.Clear();
     }
     // Update is called once per frame
