@@ -18,7 +18,6 @@ public class Patrol : MonoBehaviour
         {
             return;
         }
-        currentWaypoint = 0;
         GoToNextPoint();
     }
 

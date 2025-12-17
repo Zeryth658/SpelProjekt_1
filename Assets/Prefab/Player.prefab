@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 1157133527975207446}
-  healAmount: 1
+  healAmount: 5
 --- !u!1 &922159165274181876
 GameObject:
   m_ObjectHideFlags: 0
@@ -5636,7 +5636,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!58 &4298855834980070008
 CircleCollider2D:
@@ -5687,8 +5687,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterRenderer: {fileID: 4064008269935355502}
-  maxSpeed: 5
-  acceleration: 50
+  maxSpeed: 6.4
+  acceleration: 25
   deacceleration: 100
   currentSpeed: 0
   standardMaxSpeed: 0
@@ -5707,8 +5707,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb7f81cdef05308438f956c4d4150575, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 15
-  currentHealth: 10
+  maxHealth: 150
+  currentHealth: 100
   healthBar: {fileID: 0}
   hurtbox: {fileID: 4967197348334144092}
   immune: 0
@@ -5727,12 +5727,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04033b74e652fd84ebf1e3e1aaeaa47c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageInterval: 3
+  damageInterval: 1
   damageAmount: 1
-  hpReductionThreshold: 3
-  hpSpeedThreshold: 12
+  hpReductionThreshold: 20
+  hpSpeedThreshold: 125
   baseSpeedIncrease: 3
-  additionalSpeedMultiplier: 0.5
+  additionalSpeedMultiplier: 0
   playerHealth: {fileID: 1157133527975207446}
   playerMovement: {fileID: 6918456677596445224}
 --- !u!114 &4967197348334144092
@@ -5787,6 +5787,7 @@ MonoBehaviour:
   dodgeSpeed: 20
   dodgeDuration: 0.35
   dodgeCooldown: 0.4
+  dodgeImmunityDuration: 0.2
   SpeedCurve:
     serializedVersion: 2
     m_Curve:
