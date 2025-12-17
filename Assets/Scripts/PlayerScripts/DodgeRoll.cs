@@ -59,7 +59,7 @@ public class DodgeRoll : MonoBehaviour
     {
         _canDodge = false;
         isDodging = true;
-        _hurtbox.TriggerIFrames(dodgeDuration);
+        _hurtbox.TriggerIFrames(dodgeImmunityDuration);
         _animator.SetBool("isDodging", true);
         _playerHealth.immune = true;
         float time = 0;
