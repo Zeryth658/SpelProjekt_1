@@ -25,6 +25,7 @@ public class EnemyChaseState : EnemyState
         {
             if (enemy.PlayerDetected())
             {
+                enemy.Animator.SetBool("IsMoving", true);
                 enemy.Movement.MovementUpdate();
             }
             else

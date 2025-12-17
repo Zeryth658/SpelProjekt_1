@@ -10,6 +10,7 @@ public class PathMovement : MonoBehaviour
     private int pathIndex = 0;
     private LayerMask obstacleMask;
     private OrbitingWeapon _orbitingWeapon;
+    private Animator animator;
     
     public bool IsMoving => path != null && pathIndex < path.Count;
     
@@ -17,6 +18,7 @@ public class PathMovement : MonoBehaviour
     {
         this.obstacleMask = obstacleMask;
         this._orbitingWeapon = GetComponentInChildren<OrbitingWeapon>();
+        animator = GetComponent<Animator>();
     }
 
     public void SetPath(List<Vector2> newPath, bool smooth = true)
@@ -43,11 +45,16 @@ public class PathMovement : MonoBehaviour
     public void UpdateMovement()
     {
         if (!IsMoving) return;
-        
+        animator.SetBool("IsMoving", true);
         Vector2 destination = path[pathIndex];
-        transform.position = Vector2.MoveTowards(transform.position, destination, speed * Time.deltaTime);
+        Vector2 currentPosition = transform.position;
+        Vector2 newPosition = Vector2.MoveTowards(transform.position, destination, speed * Time.deltaTime);
+        transform.position = newPosition;
         Vector2 direction = (destination - (Vector2)transform.position).normalized;
         _orbitingWeapon.UpdateRotation(direction);
+        
+        float movementMagnitude = (newPosition - currentPosition).magnitude / Time.deltaTime;
+        animator.SetFloat("Movement", movementMagnitude);
         if (Vector2.Distance(transform.position, destination) <= reachThreshold)
         {
             pathIndex++;
