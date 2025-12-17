@@ -10,6 +10,7 @@ public class DodgeRoll : MonoBehaviour
     public float dodgeSpeed = 12f;
     public float dodgeDuration = 0.4f;
     public float dodgeCooldown = 0.4f;
+    public float dodgeimunityDuration = 0.2f;
     public AnimationCurve SpeedCurve;
     [SerializeField] private PlayerInput playerInput;
     private InputAction _dodgeAction;
@@ -67,7 +68,7 @@ public class DodgeRoll : MonoBehaviour
             
             _rigidbody.linearVelocity = input * speed;
 
-            if (time >= dodgeDuration / 2)
+            if (time >= dodgeimunityDuration)
             {
                 _playerHealth.immune = false;
             }
