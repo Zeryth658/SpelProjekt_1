@@ -79,7 +79,7 @@ public class EnemyShooter : MonoBehaviour
 
         direction = aimBehaviour.SetTarget(firePoint, target);
         
-        AudioSource.PlayClipAtPoint(shootSound, transform.position);
+        
         StartCoroutine(MultiShoot());
         
         
@@ -89,6 +89,7 @@ public class EnemyShooter : MonoBehaviour
     {
         for (int i = 0; i < shotAmount; i++)
         {
+            AudioSource.PlayClipAtPoint(shootSound, transform.position);
             shotpattern.Shoot(this, firePoint, direction);
             yield return new WaitForSeconds(shotDelay);
         }
