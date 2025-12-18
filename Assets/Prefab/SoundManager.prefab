@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1812988824764643700}
   - component: {fileID: 5296867118634482597}
   - component: {fileID: 5035695450820882756}
-  - component: {fileID: 4244939215834199304}
   m_Layer: 0
   m_Name: SoundManager
   m_TagString: Untagged
@@ -159,16 +158,3 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &4244939215834199304
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7855582808686219787}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da13061db7634d44ea76aab61d3374cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clickSound: {fileID: 8300000, guid: 4e79161ff09768d4391e42dda964693d, type: 3}
