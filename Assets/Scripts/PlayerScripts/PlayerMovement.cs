@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D myRigidbody;
     private Animator animator;
     private DodgeRoll dodgeRoll;
+    [SerializeField] private ParticleSystem dustParticles;
 
     private void OnEnable()
     {
@@ -80,13 +81,21 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if (movementInput.magnitude > 0 && currentSpeed >= 0)
+        Debug.Log("movement: " + movementInput.magnitude);
+        Debug.Log("speed" + currentSpeed);
+
+        if (movementInput.magnitude > 0)
         {
             currentSpeed += acceleration * maxSpeed * Time.deltaTime;
+            if(!dustParticles.isPlaying) { dustParticles.Play(); }
+        }
+        else if (currentSpeed >= 0.1)
+        {
+            currentSpeed -= deacceleration * maxSpeed * Time.deltaTime;
         }
         else
         {
-            currentSpeed -= deacceleration * maxSpeed * Time.deltaTime;
+            if (dustParticles.isPlaying) { dustParticles.Stop(); }
         }
         currentSpeed = Mathf.Clamp(currentSpeed, 0, maxSpeed);
         myRigidbody.linearVelocity = movementInput * currentSpeed;
