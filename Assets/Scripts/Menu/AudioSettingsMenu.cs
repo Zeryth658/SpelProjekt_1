@@ -14,6 +14,11 @@ public class AudioSettingsMenu : MonoBehaviour
     {
         LoadVolumes();
 
+        SetMasterVolume(masterSlider.value);
+        SetMusicVolume(musicSlider.value);
+        SetSFXVolume(sfxSlider.value);
+        SetVoiceVolume(voiceSlider.value);
+        
         masterSlider.onValueChanged.AddListener(SetMasterVolume);
         musicSlider.onValueChanged.AddListener(SetMusicVolume);
         sfxSlider.onValueChanged.AddListener(SetSFXVolume);
