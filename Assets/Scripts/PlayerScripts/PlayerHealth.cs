@@ -25,14 +25,6 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         healthBar.SetValue(currentHealth, maxHealth);
     }
 
-    public void Update()
-    {
-        if(currentHealth >= maxHealth)
-        {
-            currentHealth = maxHealth;
-        }
-    }
-
     public void TakeDamage(float amount, GameObject source)
     {
         if (immune) return;

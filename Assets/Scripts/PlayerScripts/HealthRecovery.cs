@@ -18,6 +18,10 @@ public class HealthRecovery : MonoBehaviour
         if (other.CompareTag(enemyTag))
         {
             playerHealth.currentHealth += healAmount;
+            if(playerHealth.currentHealth >= playerHealth.maxHealth)
+            {
+                playerHealth.currentHealth = playerHealth.maxHealth;
+            }
             playerHealth.HealthBarNewValue();
         }
     }
