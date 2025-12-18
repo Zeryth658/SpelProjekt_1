@@ -38,10 +38,22 @@ public class PauseMenu : MonoBehaviour
         generalMenu.SetActive(true);
     }
 
+    public void CloseGeneral()
+    {
+        optionsMenu.SetActive(true);
+        generalMenu.SetActive(false);
+    }
+
     public void OpenControls()
     {
         optionsMenu.SetActive(false);
         controlsMenu.SetActive(true);
+    }
+
+    public void CloseControls()
+    {
+        optionsMenu.SetActive(true);
+        controlsMenu.SetActive(false);
     }
 
     public void OpenVideo()
@@ -50,16 +62,34 @@ public class PauseMenu : MonoBehaviour
         videoMenu.SetActive(true);
     }
 
+    public void CloseVideo()
+    {
+        optionsMenu.SetActive(true);
+        videoMenu.SetActive(false);
+    }
+
     public void OpenAudio()
     {
         optionsMenu.SetActive(false);
         audioMenu.SetActive(true);
     }
 
+    public void CloseAudio()
+    {
+        optionsMenu.SetActive(true);
+        audioMenu.SetActive(false);
+    }
+
     public void OpenSettings()
     {
         pauseMenu.SetActive(false);
         optionsMenu.SetActive(true);
+    }
+
+    public void CloseSettings()
+    {
+        optionsMenu.SetActive(true);
+        pauseMenu.SetActive(false);
     }
     public void RestartGame()
     {
