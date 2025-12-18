@@ -24,8 +24,12 @@ public class OrbitingWeapon : MonoBehaviour
             return;
         }
         enemy = shooter.transform;
-        target = shooter.target;
         aimBehaviour = shooter.aimBehaviour;
+    }
+
+    private void Start()
+    {
+        target = shooter.target;
     }
 
 
