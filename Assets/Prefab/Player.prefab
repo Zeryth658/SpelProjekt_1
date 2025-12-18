@@ -418,6 +418,7 @@ Transform:
   - {fileID: 4708953974652912544}
   - {fileID: 8773171101286068495}
   - {fileID: 3259029622902731156}
+  - {fileID: 7386924171744063765}
   m_Father: {fileID: 1432178805295054504}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3176092114936905135
@@ -436,6 +437,37 @@ MonoBehaviour:
   weaponRenderer: {fileID: 582737285545866239}
   animator: {fileID: 950005001998381786}
   delay: 0.4
+--- !u!1 &4695902056398405910
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7386924171744063765}
+  m_Layer: 0
+  m_Name: SlashPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7386924171744063765
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4695902056398405910}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1437618163912301222}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5383990744667911804
 GameObject:
   m_ObjectHideFlags: 0
@@ -5737,6 +5769,7 @@ MonoBehaviour:
   playerHealth: {fileID: 1157133527975207446}
   playerMovement: {fileID: 6918456677596445224}
   speedEffect: {fileID: 0}
+  speedAudio: {fileID: 0}
 --- !u!114 &4967197348334144092
 MonoBehaviour:
   m_ObjectHideFlags: 0
