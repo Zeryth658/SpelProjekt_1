@@ -23,24 +23,30 @@ public class BloodEffect : MonoBehaviour
         Transform[] spawned = new Transform[amountToSpawn];
         Vector3[] targets = new Vector3[amountToSpawn];
 
-        // Spawn all immediately
         for (int i = 0; i < amountToSpawn; i++)
         {
             targets[i] = GetRandomPointInCircle();
+
+            Quaternion randomRotation = Quaternion.Euler(
+                0f,
+                0f,
+                Random.Range(0f, 360f)
+            );
+
             spawned[i] = Instantiate(
                 prefab,
                 transform.position,
-                Quaternion.identity,
+                randomRotation,
                 transform
             ).transform;
         }
 
-        // Start all glides on the same frame
         for (int i = 0; i < amountToSpawn; i++)
         {
             StartCoroutine(GlideToPosition(spawned[i], targets[i]));
         }
     }
+
 
     IEnumerator GlideToPosition(Transform obj, Vector3 target)
     {
@@ -81,8 +87,7 @@ public class BloodEffect : MonoBehaviour
         for (int i = 1; i <= segments; i++)
         {
             float angle = i * Mathf.PI * 2f / segments;
-            Vector3 nextPoint = transform.position +
-                                new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0) * radius;
+            Vector3 nextPoint = transform.position + new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0) * radius;
 
             Gizmos.DrawLine(prevPoint, nextPoint);
             prevPoint = nextPoint;
