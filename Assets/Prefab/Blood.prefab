@@ -48,7 +48,9 @@ MonoBehaviour:
   prefab: {fileID: 5735255379346079511, guid: 2f7ed1eb871c3504faf339acb34af9fb, type: 3}
   amountToSpawn: 5
   glideDuration: 0.06
-  radius: 1.4
+  radius: 2.5
+  spreadAngle: 150
+  player: {fileID: 0}
 --- !u!1 &4992347411733715432
 GameObject:
   m_ObjectHideFlags: 0
