@@ -1,13 +1,16 @@
 fileFormatVersion: 2
-guid: 78b8d88ade6219e41b2ae985759570fe
+guid: 6456138732cd1af438a123af03db7832
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -15214966553249568
-    second: "D\xF6rr_0"
+      213: -7793781597308436370
+    second: Side_door_anim_0
   - first:
-      213: 1650071801786266216
-    second: "D\xF6rr_1"
+      213: 5979370641347612670
+    second: Side_door_anim_1
+  - first:
+      213: -4807271727171944738
+    second: Side_door_anim_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -40,7 +43,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -54,7 +57,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -78,7 +81,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -103,45 +106,67 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "D\xF6rr_0"
+      name: Side_door_anim_0
       rect:
         serializedVersion: 2
-        x: 2
+        x: 1
         y: 0
-        width: 6
+        width: 8
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0e8f25b8112f9cff0800000000000000
-      internalID: -15214966553249568
+      spriteID: e6044733eece6d390800000000000000
+      internalID: -7793781597308436370
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "D\xF6rr_1"
+      name: Side_door_anim_1
       rect:
         serializedVersion: 2
-        x: 16
-        y: 0
-        width: 32
-        height: 32
+        x: 17
+        y: 26
+        width: 8
+        height: 6
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 862fb5faf8b36e610800000000000000
-      internalID: 1650071801786266216
+      spriteID: eff8ce11bedfaf250800000000000000
+      internalID: 5979370641347612670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Side_door_anim_2
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 0
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ede332b85d3294db0800000000000000
+      internalID: -4807271727171944738
       vertices: []
       indices: 
       edges: []
@@ -150,7 +175,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: c28999b75ff0c2d42be91559a0c0f205
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -160,8 +185,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      "D\xF6rr_0": -15214966553249568
-      "D\xF6rr_1": 1650071801786266216
+      Side_door_anim_0: -7793781597308436370
+      Side_door_anim_1: 5979370641347612670
+      Side_door_anim_2: -4807271727171944738
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
