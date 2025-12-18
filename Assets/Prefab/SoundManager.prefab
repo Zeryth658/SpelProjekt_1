@@ -55,8 +55,12 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 55c4fba107ee4a446a3eb384a903d8d1, type: 3}
   - name: PlayerHit
     sounds: []
-  - name: Enemy
-    sounds: []
+  - name: EnemyDeath
+    sounds:
+    - {fileID: 8300000, guid: 7f0e3e7740a0c6c4ebc7c1423fe46538, type: 3}
+  - name: EnemyAttack
+    sounds:
+    - {fileID: 8300000, guid: b2ab249c85531cb40b95e23aba9b9263, type: 3}
 --- !u!82 &5035695450820882756
 AudioSource:
   m_ObjectHideFlags: 0

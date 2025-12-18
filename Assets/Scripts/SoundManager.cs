@@ -6,7 +6,8 @@ public enum SoundType
 {
     Sword,
     PlayerHit,
-    Enemy
+    EnemyDeath,
+    EnemyAttack
 }
 
 [RequireComponent(typeof(AudioSource)), ExecuteInEditMode]

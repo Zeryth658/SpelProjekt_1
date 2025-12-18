@@ -125,7 +125,8 @@ public class Enemy : MonoBehaviour, IDamageable
     void Die()
     {
         PoolManager.Spawn(blood, transform.position, Quaternion.identity);
-        AudioSource.PlayClipAtPoint(deathSound, transform.position);
+        //AudioSource.PlayClipAtPoint(deathSound, transform.position);
+        SoundManager.PlaySound(SoundType.EnemyDeath);
         PoolManager.Despawn(gameObject);
     }
 

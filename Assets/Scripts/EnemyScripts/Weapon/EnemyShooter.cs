@@ -89,7 +89,8 @@ public class EnemyShooter : MonoBehaviour
     {
         for (int i = 0; i < shotAmount; i++)
         {
-            AudioSource.PlayClipAtPoint(shootSound, transform.position);
+            //AudioSource.PlayClipAtPoint(shootSound, transform.position);
+            SoundManager.PlaySound(SoundType.EnemyAttack);
             shotpattern.Shoot(this, firePoint, direction);
             yield return new WaitForSeconds(shotDelay);
         }
