@@ -29,6 +29,15 @@ public class EnemyShooter : MonoBehaviour
     
     private void Start()
     {
+        if (target == null)
+        {
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            if (player != null)
+                target = player.transform;
+            else
+                Debug.LogError("Player not found");
+        }
+        
         if (aimBehaviour == null || target == null || shotpattern == null)
         {
             Debug.Log($"{gameObject.name} I can't shoot something missing. AimBehavior =  {aimBehaviour}, target =  {target}, shotpattern =  {shotpattern}");
