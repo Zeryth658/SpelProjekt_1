@@ -6,7 +6,8 @@ using UnityEngine.Tilemaps;
 public class BloodEffect : MonoBehaviour
 {
     [Header("Prefab Settings")]
-    public GameObject prefab;
+    public GameObject blood1;
+    public GameObject blood2;
     public int amountToSpawn = 3;
     public float glideDuration = 1f;
 
@@ -42,21 +43,21 @@ public class BloodEffect : MonoBehaviour
         {
             targets[i] = GetBiasedPointAwayFromPlayer();
 
-            // Random initial rotation
             Quaternion randomRotation = Quaternion.Euler(
                 0f,
                 0f,
                 Random.Range(0f, 360f)
             );
 
+            GameObject chosenPrefab = Random.value < 0.5f ? blood1 : blood2;
+
             spawned[i] = Instantiate(
-                prefab,
+                chosenPrefab,
                 transform.position,
                 randomRotation,
                 transform
             ).transform;
 
-            // Optional: face movement direction immediately
             Vector2 dir = (targets[i] - transform.position).normalized;
             float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
             spawned[i].rotation = Quaternion.Euler(0f, 0f, angle);
@@ -67,6 +68,7 @@ public class BloodEffect : MonoBehaviour
             StartCoroutine(GlideToPosition(spawned[i], targets[i]));
         }
     }
+
 
     IEnumerator GlideToPosition(Transform obj, Vector3 target)
     {

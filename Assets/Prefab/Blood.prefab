@@ -45,7 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2067e13726483c1419d18a395d91829c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 5735255379346079511, guid: 2f7ed1eb871c3504faf339acb34af9fb, type: 3}
+  blood1: {fileID: 5735255379346079511, guid: 2f7ed1eb871c3504faf339acb34af9fb, type: 3}
+  blood2: {fileID: 5735255379346079511, guid: f695f2c856944be4f895614ea1bdbbd9, type: 3}
   amountToSpawn: 5
   glideDuration: 0.06
   radius: 2.5
