@@ -88,8 +88,8 @@ public class PauseMenu : MonoBehaviour
 
     public void CloseSettings()
     {
-        optionsMenu.SetActive(true);
-        pauseMenu.SetActive(false);
+        optionsMenu.SetActive(false);
+        pauseMenu.SetActive(true);
     }
     public void RestartGame()
     {
