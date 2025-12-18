@@ -81,9 +81,6 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        Debug.Log("movement: " + movementInput.magnitude);
-        Debug.Log("speed" + currentSpeed);
-
         if (movementInput.magnitude > 0)
         {
             currentSpeed += acceleration * maxSpeed * Time.deltaTime;

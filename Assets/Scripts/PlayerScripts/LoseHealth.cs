@@ -19,6 +19,7 @@ public class LoseHealth : MonoBehaviour
 
     [SerializeField] private PlayerHealth playerHealth;
     [SerializeField] private PlayerMovement playerMovement;
+    [SerializeField] private ParticleSystem speedEffect;
 
     private Coroutine damageCoroutine;
 
@@ -35,10 +36,20 @@ public class LoseHealth : MonoBehaviour
                 totalSpeedIncrease = baseSpeedIncrease + additionalSpeedIncrease;
                 
                 playerMovement.maxSpeed = playerMovement.standardMaxSpeed + totalSpeedIncrease;
+                
+                if (!speedEffect.isPlaying) 
+                { 
+                    speedEffect.Play(); 
+                }
             }
             else
             {
                 playerMovement.maxSpeed = playerMovement.standardMaxSpeed;
+                
+                if(speedEffect.isPlaying) 
+                { 
+                    speedEffect.Stop();
+                }
             }
         }
         else
