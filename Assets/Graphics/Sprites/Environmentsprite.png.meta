@@ -1111,6 +1111,50 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Environmentsprite_46
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83b9bc5f26d31cb488b30e93f1b83270
+      internalID: -415166035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Environmentsprite_47
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83bd3fbe16b1e364e921acb4e4f859bf
+      internalID: -1336794127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -1166,6 +1210,8 @@ TextureImporter:
       Environmentsprite_43: 1616383912
       Environmentsprite_44: -1039669419
       Environmentsprite_45: 467161150
+      Environmentsprite_46: -415166035
+      Environmentsprite_47: -1336794127
       Environmentsprite_5: 2050910135
       Environmentsprite_6: 2081190175
       Environmentsprite_7: 2101337279
