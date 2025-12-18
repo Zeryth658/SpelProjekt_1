@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Security.Permissions;
 using UnityEngine;
 
 public class LoseHealth : MonoBehaviour
@@ -20,6 +19,7 @@ public class LoseHealth : MonoBehaviour
     [SerializeField] private PlayerHealth playerHealth;
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private ParticleSystem speedEffect;
+    [SerializeField] private AudioSource speedAudio; 
 
     private Coroutine damageCoroutine;
 
@@ -36,6 +36,8 @@ public class LoseHealth : MonoBehaviour
                 totalSpeedIncrease = baseSpeedIncrease + additionalSpeedIncrease;
                 
                 playerMovement.maxSpeed = playerMovement.standardMaxSpeed + totalSpeedIncrease;
+
+                speedAudio.volume = 0.6f;
                 
                 if (!speedEffect.isPlaying) 
                 { 
@@ -45,6 +47,8 @@ public class LoseHealth : MonoBehaviour
             else
             {
                 playerMovement.maxSpeed = playerMovement.standardMaxSpeed;
+
+                speedAudio.volume = 0;
                 
                 if(speedEffect.isPlaying) 
                 { 
