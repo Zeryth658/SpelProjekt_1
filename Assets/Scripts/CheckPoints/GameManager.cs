@@ -5,7 +5,6 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     public Vector2 lastCheckpoint;
-    public Vector2 startPoint;
 
     private void Awake()
     {
@@ -18,8 +17,6 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-        startPoint = transform.position;
     }
     
 }

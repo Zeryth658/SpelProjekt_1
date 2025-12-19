@@ -14,7 +14,7 @@ public class ResetGame : MonoBehaviour
     public static void Reset()
     {
         string currentSceneName = SceneManager.GetActiveScene().name;
-        GameManager.Instance.lastCheckpoint = GameManager.Instance.startPoint;
+        GameManager.Instance.lastCheckpoint = StartPos;
         SceneManager.LoadScene(currentSceneName);
     }
     // Update is called once per frame
