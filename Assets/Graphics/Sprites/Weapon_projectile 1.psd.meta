@@ -275,6 +275,28 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Weapon_projectile 1_7
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 5
+        width: 13
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb5a2f2e055f7e64aa9517316ae60596
+      internalID: -679317485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -296,6 +318,7 @@ TextureImporter:
       Weapon_projectile 1_4: 443485838
       Weapon_projectile 1_5: 1988456840
       Weapon_projectile 1_6: -819832836
+      Weapon_projectile 1_7: -679317485
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
