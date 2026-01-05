@@ -5,6 +5,7 @@ using UnityEngine;
 public class LoseHealth : MonoBehaviour
 {
     [Header("Health Reduction")]
+    public bool takeDamage = false;
     [SerializeField] private float damageInterval = 3f;
     [SerializeField] private int damageAmount = 1;
     [SerializeField] private float hpReductionThreshold = 5f;
@@ -22,7 +23,7 @@ public class LoseHealth : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (playerHealth.currentHealth > hpReductionThreshold)
+        if (takeDamage && playerHealth.currentHealth > hpReductionThreshold)
         {
             StartDamageTimer();
 
@@ -93,5 +94,10 @@ public class LoseHealth : MonoBehaviour
         }
 
         playerHealth.HealthBarNewValue();
+    }
+
+    public void Toggle()
+    {
+        takeDamage = !takeDamage;
     }
 }
