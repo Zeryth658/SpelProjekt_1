@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 public class WeaponParent : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer characterRenderer, weaponRenderer;
+
+    [SerializeField] private GameObject slashAnimPrefab;
+    [SerializeField] private Transform slashAnimSpawnPoint;
 
     public Vector2 PointerPosition { get; set; }
 
@@ -53,6 +57,9 @@ public class WeaponParent : MonoBehaviour
         if (attackBlocked)
             return;
         animator.SetTrigger("Attack");
+
+        Instantiate(slashAnimPrefab, slashAnimSpawnPoint);
+        
         IsAttacking = true;
         attackBlocked = true;
         SoundManager.PlaySound(SoundType.Sword);

@@ -60,13 +60,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 623797603461334084}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.53, y: -0.32, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 0.4, y: 0.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1437618163912301222}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!60 &1190782734434366332
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -115,10 +115,11 @@ PolygonCollider2D:
     m_Paths:
     - - {x: 0.38110352, y: 0.039554}
       - {x: -0.3951378, y: 0.037968397}
-      - {x: -0.92329484, y: 0.3275822}
-      - {x: -0.7353897, y: 1.3508801}
-      - {x: 0.6008835, y: 1.3845067}
-      - {x: 0.87846833, y: 0.42846236}
+      - {x: -1.0256689, y: 0.25778085}
+      - {x: -0.72142935, y: 1.2531552}
+      - {x: -0.071261, y: 1.5150326}
+      - {x: 0.70325756, y: 1.2169805}
+      - {x: 0.92965585, y: 0.30282152}
   m_UseDelaunayMesh: 0
 --- !u!114 &8803418714444095585
 MonoBehaviour:
@@ -435,6 +436,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterRenderer: {fileID: 4064008269935355502}
   weaponRenderer: {fileID: 582737285545866239}
+  slashAnimPrefab: {fileID: 978305584324951680, guid: 39a76fe81c321ad48a40ed4a8ad1d8a7, type: 3}
+  slashAnimSpawnPoint: {fileID: 7386924171744063765}
   animator: {fileID: 950005001998381786}
   delay: 0.4
 --- !u!1 &4695902056398405910
@@ -461,13 +464,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4695902056398405910}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
+  m_LocalPosition: {x: 1, y: 0.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1437618163912301222}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
 --- !u!1 &5383990744667911804
 GameObject:
   m_ObjectHideFlags: 0
@@ -5764,8 +5767,7 @@ MonoBehaviour:
   damageAmount: 1
   hpReductionThreshold: 1
   hpSpeedThreshold: 105
-  baseSpeedIncrease: 2.5
-  additionalSpeedMultiplier: 0
+  speedIncrease: 3
   playerHealth: {fileID: 1157133527975207446}
   playerMovement: {fileID: 6918456677596445224}
   speedEffect: {fileID: 0}

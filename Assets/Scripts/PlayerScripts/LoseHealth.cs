@@ -11,15 +11,12 @@ public class LoseHealth : MonoBehaviour
     
     [Header("Speed Boost")]
     [SerializeField] private float hpSpeedThreshold = 12f;
-    private float totalSpeedIncrease;
-    [SerializeField] private float baseSpeedIncrease = 3f;
-    [SerializeField] private float additionalSpeedMultiplier = 1f;
-    private float additionalSpeedIncrease;
+    [SerializeField] private float speedIncrease = 3f;
 
     [SerializeField] private PlayerHealth playerHealth;
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private ParticleSystem speedEffect;
-    [SerializeField] private AudioSource speedAudio; 
+    [SerializeField] private AudioSource speedAudio;
 
     private Coroutine damageCoroutine;
 
@@ -30,12 +27,8 @@ public class LoseHealth : MonoBehaviour
             StartDamageTimer();
 
             if (playerHealth.currentHealth > hpSpeedThreshold)
-            {
-                additionalSpeedIncrease = (playerHealth.currentHealth - (hpSpeedThreshold + 1)) * additionalSpeedMultiplier;
-
-                totalSpeedIncrease = baseSpeedIncrease + additionalSpeedIncrease;
-                
-                playerMovement.maxSpeed = playerMovement.standardMaxSpeed + totalSpeedIncrease;
+            { 
+                playerMovement.maxSpeed = playerMovement.standardMaxSpeed + speedIncrease;
 
                 speedAudio.volume = 0.6f;
                 
@@ -93,6 +86,12 @@ public class LoseHealth : MonoBehaviour
     private void TakeDamage(float amount)
     {        
         playerHealth.currentHealth -= amount;
+
+        if (playerHealth.currentHealth <= 0)
+        {
+            playerHealth.currentHealth = 0;
+        }
+
         playerHealth.HealthBarNewValue();
     }
 }
