@@ -1,5 +1,7 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 public class PauseMenu : MonoBehaviour
 {
 
@@ -8,9 +10,10 @@ public class PauseMenu : MonoBehaviour
     public GameObject generalMenu;
     public GameObject controlsMenu;
     public GameObject videoMenu;
+    public PlayerInput playerInput;
     public GameObject audioMenu;
     public static bool IsPaused { get; set; }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    
     void Start()
     {
         pauseMenu.SetActive(false);
@@ -19,6 +22,14 @@ public class PauseMenu : MonoBehaviour
         controlsMenu.SetActive(false);
         videoMenu.SetActive(false);
         audioMenu.SetActive(false);
+    }
+    void Awake()
+    {
+        if (PlayerPrefs.HasKey("rebinds"))
+        {
+            playerInput.actions.LoadBindingOverridesFromJson(
+                PlayerPrefs.GetString("rebinds"));
+        }
     }
 
     // Update is called once per frame
@@ -105,6 +116,7 @@ public class PauseMenu : MonoBehaviour
     public void PauseGame()
     {
         pauseMenu.SetActive(true);
+        playerInput.DeactivateInput();
         Time.timeScale = 0;
         IsPaused = true;
     }
@@ -117,6 +129,7 @@ public class PauseMenu : MonoBehaviour
         controlsMenu.SetActive(false);
         videoMenu.SetActive(false);
         audioMenu.SetActive(false);
+        playerInput.ActivateInput();
         Time.timeScale = 1;
         IsPaused = false;
     }
