@@ -25,6 +25,10 @@ public class PauseMenu : MonoBehaviour
     }
     void Awake()
     {
+        if (playerInput == null)
+        {
+            playerInput = FindFirstObjectByType<PlayerInput>();
+        }
         if (PlayerPrefs.HasKey("rebinds"))
         {
             playerInput.actions.LoadBindingOverridesFromJson(
