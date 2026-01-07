@@ -4,6 +4,8 @@ public class HitstopManager : MonoBehaviour
 {
     
     public static HitstopManager Instance;
+    private int hitstopCount = 0;
+    private float originalTimeScale = 1f;
     private void Awake()
     {
         if (Instance == null) Instance = this;
@@ -17,13 +19,23 @@ public class HitstopManager : MonoBehaviour
 
     private IEnumerator HitstopCoroutine(float duration, float timeScale)
     {
-        float originalTimeScale = Time.timeScale;
-        Time.timeScale = timeScale;
-        Time.fixedDeltaTime = 0.02f * Time.timeScale; 
+        if (hitstopCount == 0)
+        {
+            originalTimeScale = Time.timeScale;
+            Time.timeScale = timeScale;
+            Time.fixedDeltaTime = 0.02f * Time.timeScale;
+        }
+
+        hitstopCount++;
 
         yield return new WaitForSecondsRealtime(duration);
 
-        Time.timeScale = originalTimeScale;
-        Time.fixedDeltaTime = 0.02f;
+        hitstopCount--;
+        if (hitstopCount <= 0)
+        {
+            Time.timeScale = originalTimeScale;
+            Time.fixedDeltaTime = 0.02f;
+            hitstopCount = 0;
+        }
     }
 }
