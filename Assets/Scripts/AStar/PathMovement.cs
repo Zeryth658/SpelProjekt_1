@@ -37,9 +37,7 @@ public class PathMovement : MonoBehaviour
         {
             path = new List<Vector2>(newPath);
         }
-        while (path.Count > 1 &&
-               Vector2.Distance(transform.position, path[0]) <
-               Vector2.Distance(transform.position, path[1]))
+        while (path.Count > 1 && Vector2.Distance(transform.position, path[0]) < Vector2.Distance(transform.position, path[1]))
         {
             path.RemoveAt(0);
         }
