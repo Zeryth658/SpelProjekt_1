@@ -47,6 +47,7 @@ public class DodgeRoll : MonoBehaviour
     private void OnDodgePerformed(InputAction.CallbackContext context)
     {
         moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
+        SoundManager.PlaySound(SoundType.Dodge);
 
         if (!isDodging && _canDodge && moveInput.magnitude > 0.1f)
         {
