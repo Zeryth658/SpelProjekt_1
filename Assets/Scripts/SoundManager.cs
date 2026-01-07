@@ -6,6 +6,7 @@ public enum SoundType
 {
     Sword,
     PlayerHit,
+    Dodge,
     EnemyDeath,
     EnemyAttack
 }

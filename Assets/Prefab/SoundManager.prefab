@@ -54,7 +54,11 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 1c696750c37806a4cab678cf9fdc8f8e, type: 3}
     - {fileID: 8300000, guid: 55c4fba107ee4a446a3eb384a903d8d1, type: 3}
   - name: PlayerHit
-    sounds: []
+    sounds:
+    - {fileID: 8300000, guid: 0f27e36afa1550a42bd3178cd9f99f53, type: 3}
+  - name: Dodge
+    sounds:
+    - {fileID: 8300000, guid: 25f5271fd04b71d4e88bca9f541c2150, type: 3}
   - name: EnemyDeath
     sounds:
     - {fileID: 8300000, guid: 7f0e3e7740a0c6c4ebc7c1423fe46538, type: 3}

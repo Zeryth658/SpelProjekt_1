@@ -28,7 +28,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     public void TakeDamage(float amount, GameObject source)
     {
         if (immune) return;
-        PlayGetHitSounds();
+        SoundManager.PlaySound(SoundType.PlayerHit);
         currentHealth -= amount;
         Debug.Log($"{gameObject.name} took {amount} from {source}");
         if (currentHealth <= 0)
@@ -48,11 +48,5 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     {
         isDead = true;
         animator.SetBool("Dead", true);
-    }
-
-    void PlayGetHitSounds()
-    {
-        playerGetHitSound1.Play();
-        playerGetHitSound2.Play();
     }
 }
