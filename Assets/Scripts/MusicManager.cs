@@ -15,9 +15,14 @@ public class MusicManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
         
-        if (!GetComponent<AudioSource>().isPlaying)
-        {
-            GetComponent<AudioSource>().Play();
+        foreach (AudioSource audioSource in GetComponentsInChildren<AudioSource>()){
+
+            if(!audioSource.isPlaying){
+                audioSource.Play();
+                Debug.Log(audioSource.gameObject.name);
+            }
+
         }
+
     }
 }
