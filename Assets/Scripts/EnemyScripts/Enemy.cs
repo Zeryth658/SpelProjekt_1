@@ -25,6 +25,8 @@ public class Enemy : MonoBehaviour, IDamageable
     public float preparingShotTime = 0.4f;
     public float recoveryTime = 0.5f;
     public float shootingRange = 7f;
+    [SerializeField] float hitStopDuration = 0.05f;
+    [SerializeField] float hitStopTimeScale = 0f;
     public AudioSource audioSource;
     public AudioClip deathSound;
     
@@ -127,6 +129,7 @@ public class Enemy : MonoBehaviour, IDamageable
         PoolManager.Spawn(blood, transform.position, Quaternion.identity);
         //AudioSource.PlayClipAtPoint(deathSound, transform.position);
         SoundManager.PlaySound(SoundType.EnemyDeath);
+        HitstopManager.Instance.DoHitstop(hitStopDuration, hitStopTimeScale);
         PoolManager.Despawn(gameObject);
     }
 
