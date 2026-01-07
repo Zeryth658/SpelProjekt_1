@@ -13,7 +13,7 @@ public class Bullet : MonoBehaviour, IDestroyOnImpact
         speed = spd;
         moveDirection = direction.normalized;
         hitbox.damage = damage;
-        hitbox.owner = owner;
+        hitbox.tag = owner.tag;
         hitbox.attackID = Random.Range(int.MinValue, int.MaxValue);
     }
 
@@ -34,6 +34,5 @@ public class Bullet : MonoBehaviour, IDestroyOnImpact
     void Update()
     {
         transform.position += (Vector3)moveDirection *(speed * Time.deltaTime);
-        
     }
 }

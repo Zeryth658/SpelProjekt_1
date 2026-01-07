@@ -26,17 +26,11 @@ public class Hurtbox : MonoBehaviour
         {
             return;
         }
-        
-        if (hitbox.owner != null)
-        {
-            // Prevent hitting itself
-            if (hitbox.owner == gameObject)
+
+        // Prevent friendly fire
+        if (hitbox.CompareTag(gameObject.tag))
                 return;
 
-            // Prevent friendly fire
-            if (hitbox.owner.CompareTag(gameObject.tag))
-                return;
-        }
 
         // Checks Immunity frames
         if (!CanTakeHit(hitbox.attackID))
