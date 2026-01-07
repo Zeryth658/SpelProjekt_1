@@ -31,13 +31,18 @@ public class PathMovement : MonoBehaviour
         } 
         if (smooth && obstacleMask != 0)
         {
-            path = PathSmoothing.SmoothPath(newPath, obstacleMask);
+            path = PathSmoothing.SmoothPath(newPath, obstacleMask, transform.position);
         }
         else
         {
             path = new List<Vector2>(newPath);
         }
-        
+        while (path.Count > 1 &&
+               Vector2.Distance(transform.position, path[0]) <
+               Vector2.Distance(transform.position, path[1]))
+        {
+            path.RemoveAt(0);
+        }
         pathIndex = 0;
     }
 
