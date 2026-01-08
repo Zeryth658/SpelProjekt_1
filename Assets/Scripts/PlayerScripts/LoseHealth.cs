@@ -35,6 +35,7 @@ public class LoseHealth : MonoBehaviour
                 
                 if (!speedEffect.isPlaying) 
                 { 
+                    Debug.Log("Start Speed Effect");
                     speedEffect.Play(); 
                 }
             }
@@ -46,6 +47,7 @@ public class LoseHealth : MonoBehaviour
                 
                 if(speedEffect.isPlaying) 
                 { 
+                    Debug.Log("Stop Speed Effect");
                     speedEffect.Stop();
                 }
             }
