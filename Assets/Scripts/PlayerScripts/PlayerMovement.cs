@@ -7,9 +7,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private SpriteRenderer characterRenderer;
     [SerializeField] public float maxSpeed = 5f, acceleration = 50f, deacceleration = 100;
     [SerializeField] public float currentSpeed = 0f;
+    [SerializeField] private float stickAimDistance = 2f;
+    [SerializeField] private float stickDeadzone = 0.2f;
+    
     public float standardMaxSpeed;
 
-    [SerializeField] private InputActionReference movement, attack, pointerPosition;
+    [SerializeField] private InputActionReference movement, attack, pointerPosition, lookStick;
     
     private Vector2 pointerInput, movementInput;
 
@@ -20,6 +23,15 @@ public class PlayerMovement : MonoBehaviour
     private DodgeRoll dodgeRoll;
     [SerializeField] private ParticleSystem dustParticles;
 
+    private enum AimSource
+    {
+        Mouse,
+        Controller
+    }
+    private AimSource currentAimSource = AimSource.Mouse;
+    private Vector2 lastMousePosition;
+    private Vector2 lastStickDirection;
+    
     private void OnEnable()
     {
         attack.action.performed += PerformAttack;
@@ -100,8 +112,30 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector2 GetPointerInput()
     {
-        Vector3 mousePos = pointerPosition.action.ReadValue<Vector2>();
-        mousePos.z = Camera.main.nearClipPlane;
-        return Camera.main.ScreenToWorldPoint(mousePos);
+        Vector2 stickInput = lookStick.action.ReadValue<Vector2>();
+        Vector2 mouseScreenPos = pointerPosition.action.ReadValue<Vector2>();
+
+        if (stickInput.magnitude > stickDeadzone)
+        {
+            lastStickDirection = stickInput.normalized;
+            currentAimSource = AimSource.Controller;
+        }
+
+        if ((mouseScreenPos - lastMousePosition).sqrMagnitude > 1f)
+        {
+            currentAimSource = AimSource.Mouse;
+            lastMousePosition = mouseScreenPos;
+        }
+
+        if (currentAimSource == AimSource.Controller)
+        {
+            return (Vector2)transform.position + lastStickDirection * stickAimDistance;
+        }
+        else
+        {
+            Vector3 mousePos = mouseScreenPos;
+            mousePos.z = Camera.main.nearClipPlane;
+            return Camera.main.ScreenToWorldPoint(mousePos);
+        }
     }
 }
