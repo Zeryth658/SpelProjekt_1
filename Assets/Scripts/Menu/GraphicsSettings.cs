@@ -8,6 +8,7 @@ public class GraphicsSettings : MonoBehaviour
     
     public TMP_Dropdown resolutionDropdown;
     public TMP_Dropdown windowModeDropdown;
+    public TMP_Dropdown fpsDropdown;
     public Toggle vSyncToggle;
     
     private Resolution[] _resolutions;
@@ -42,6 +43,11 @@ public class GraphicsSettings : MonoBehaviour
             "Borderless",
             "Windowed"
         });
+        
+        fpsDropdown.ClearOptions();
+        List<string> fpsOptions = new List<string>() {"Unlimited", "30", "60", "120", "165"};
+        fpsDropdown.AddOptions(fpsOptions);
+        
         LoadSettings();
     }
     
@@ -52,7 +58,7 @@ public class GraphicsSettings : MonoBehaviour
         resolutionDropdown.value = PlayerPrefs.GetInt("Resolution");
         windowModeDropdown.value = PlayerPrefs.GetInt("WindowMode");
         vSyncToggle.isOn = PlayerPrefs.GetInt("VSync") == 1;
-
+        fpsDropdown.value = PlayerPrefs.GetInt("FPS");
         ApplySettings();
     }
 
@@ -69,6 +75,13 @@ public class GraphicsSettings : MonoBehaviour
         }
         Screen.SetResolution(resolution.width, resolution.height, screenMode);
         QualitySettings.vSyncCount = vSyncToggle.isOn ? 1 : 0;
+        
+        string selectedFPS = fpsDropdown.options[fpsDropdown.value].text;
+        if (selectedFPS == "Unlimited")
+            Application.targetFrameRate = -1;
+        else
+            Application.targetFrameRate = int.Parse(selectedFPS);
+        
         SaveSettings();
     }
 
@@ -77,6 +90,7 @@ public class GraphicsSettings : MonoBehaviour
         PlayerPrefs.SetInt("Resolution", resolutionDropdown.value);
         PlayerPrefs.SetInt("WindowMode", windowModeDropdown.value);
         PlayerPrefs.SetInt("VSync", vSyncToggle.isOn ? 1 : 0);
+        PlayerPrefs.SetInt("FPS", fpsDropdown.value); 
         PlayerPrefs.Save();
     }
 
