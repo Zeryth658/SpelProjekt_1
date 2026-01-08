@@ -455,8 +455,10 @@ MonoBehaviour:
   detectionRange: 30
   spottingDelay: 0.3
   preparingShotTime: 0.4
-  recoveryTime: 0.5
+  recoveryTime: 0.7
   shootingRange: 30
+  hitStopDuration: 0.05
+  hitStopTimeScale: 0
   audioSource: {fileID: 8244512063950818533}
   deathSound: {fileID: 8300000, guid: 7f0e3e7740a0c6c4ebc7c1423fe46538, type: 3}
   hurtbox: {fileID: 7110556767178359901}

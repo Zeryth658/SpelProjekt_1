@@ -30,9 +30,10 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         if (immune) return;
         SoundManager.PlaySound(SoundType.PlayerHit);
         currentHealth -= amount;
-        Debug.Log($"{gameObject.name} took {amount} from {source}");
+        //Debug.Log($"{gameObject.name} took {amount} from {source}");
         if (currentHealth <= 0)
         {
+            currentHealth = 0;
             Die();
         }
         HealthBarNewValue();
