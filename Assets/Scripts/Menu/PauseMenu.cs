@@ -28,6 +28,13 @@ public class PauseMenu : MonoBehaviour
     public InputActionAsset actions; 
     private InputActionMap gameplayMap;
     private InputActionMap uiMap;
+    private enum InputMode
+    {
+        Gamepad,
+        Keyboard,
+        Mouse
+    }
+    private InputMode currentInputMode;
     [SerializeField] private InputActionReference cancel;
     [SerializeField] private InputActionReference pause;
     void Start()
@@ -66,7 +73,6 @@ public class PauseMenu : MonoBehaviour
         pause.action.performed -= TogglePause;
         cancel.action.performed -= OnCancel;
     }
-
     // Update is called once per frame
     private void TogglePause(InputAction.CallbackContext context)
     {
@@ -183,16 +189,70 @@ public class PauseMenu : MonoBehaviour
     
     private void SelectFirstButton(GameObject firstButton)
     {
-        if (firstButton == null) return;
+        if (firstButton == null)
+            return;
 
-        EventSystem.current.SetSelectedGameObject(null); // Clear previous selection
+        EventSystem.current.SetSelectedGameObject(null); 
         EventSystem.current.SetSelectedGameObject(firstButton);
+    }
+    
+    void Update()
+    {
+        if (Gamepad.current != null && Gamepad.current.wasUpdatedThisFrame)
+        {
+            SwitchTo(InputMode.Gamepad);
+        }
+        else if (Mouse.current != null &&
+                 (Mouse.current.delta.ReadValue() != Vector2.zero ||
+                  Mouse.current.leftButton.wasPressedThisFrame ||
+                  Mouse.current.rightButton.wasPressedThisFrame))
+        {
+            SwitchTo(InputMode.Mouse);
+        }
+        else if (Keyboard.current != null && Keyboard.current.anyKey.wasPressedThisFrame)
+        {
+            SwitchTo(InputMode.Keyboard);
+        }
+    }
+    
+    private void SwitchTo(InputMode mode)
+    {
+        if (currentInputMode == mode)
+            return;
+
+        currentInputMode = mode;
+
+        if (mode == InputMode.Mouse)
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+        }
+        else
+        {
+            SelectCurrentMenuFirstButton();
+        }
+    }
+    
+    private void SelectCurrentMenuFirstButton()
+    {
+        if (!IsPaused) return;
+
+        if (generalMenu.activeSelf)
+            SelectFirstButton(generalFirstButton);
+        else if (controlsMenu.activeSelf)
+            SelectFirstButton(controlsFirstButton);
+        else if (videoMenu.activeSelf)
+            SelectFirstButton(videoFirstButton);
+        else if (audioMenu.activeSelf)
+            SelectFirstButton(audioFirstButton);
+        else if (optionsMenu.activeSelf)
+            SelectFirstButton(optionsFirstButton);
+        else if (pauseMenu.activeSelf)
+            SelectFirstButton(pauseFirstButton);
     }
     
     private void OnCancel(InputAction.CallbackContext context)
     {
         if (!IsPaused) return;
-
         if (generalMenu.activeSelf || controlsMenu.activeSelf || videoMenu.activeSelf || audioMenu.activeSelf)
         {
             generalMenu.SetActive(false);
