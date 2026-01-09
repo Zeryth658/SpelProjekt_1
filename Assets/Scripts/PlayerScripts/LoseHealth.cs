@@ -13,14 +13,15 @@ public class LoseHealth : MonoBehaviour
     [Header("Speed Boost")]
     [SerializeField] private float hpSpeedThreshold = 12f;
     [SerializeField] private float speedIncrease = 3f;
-
+    [SerializeField] private float speedAudioDuration = 0.5f;
     [SerializeField] private PlayerHealth playerHealth;
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private ParticleSystem speedEffect;
     [SerializeField] private AudioSource speedAudio;
 
     private Coroutine damageCoroutine;
-
+    private Coroutine speedVolumeCoroutine;
+    private bool speedBoostActive = false;
     private void FixedUpdate()
     {
         if (takeDamage && playerHealth.currentHealth > hpReductionThreshold)
@@ -30,8 +31,6 @@ public class LoseHealth : MonoBehaviour
             if (playerHealth.currentHealth > hpSpeedThreshold)
             { 
                 playerMovement.maxSpeed = playerMovement.standardMaxSpeed + speedIncrease;
-
-                speedAudio.volume = 0.6f;
                 
                 if (!speedEffect.isPlaying) 
                 { 
@@ -42,9 +41,6 @@ public class LoseHealth : MonoBehaviour
             else
             {
                 playerMovement.maxSpeed = playerMovement.standardMaxSpeed;
-
-                speedAudio.volume = 0;
-                
                 if(speedEffect.isPlaying) 
                 { 
                     Debug.Log("Stop Speed Effect");
@@ -56,8 +52,45 @@ public class LoseHealth : MonoBehaviour
         {
             StopDamageTimer();
         }
+        bool shouldHaveSpeedBoost = playerHealth.currentHealth > hpSpeedThreshold;
+        if (shouldHaveSpeedBoost != speedBoostActive)
+        {
+            speedBoostActive = shouldHaveSpeedBoost;
+            OnSpeedBoostStateChanged(speedBoostActive);
+        }
     }
 
+    private void OnSpeedBoostStateChanged(bool active)
+    {
+        if (active)
+        {
+            SetSpeedAudioVolume(0.6f);
+        }
+        else
+        {
+            SetSpeedAudioVolume(0f);
+        }
+    }
+
+    private void SetSpeedAudioVolume(float targetVolume)
+    {
+        if (speedVolumeCoroutine != null)
+            StopCoroutine(speedVolumeCoroutine);
+
+        speedVolumeCoroutine = StartCoroutine(DynamicSpeedVolume(targetVolume));
+    }
+    private IEnumerator DynamicSpeedVolume(float targetVolume)
+    {
+        float startVolume = speedAudio.volume;
+        float time = 0;
+        while (time < speedAudioDuration)
+        {
+            time += Time.deltaTime;
+            speedAudio.volume = Mathf.Lerp(startVolume, targetVolume, time / speedAudioDuration);
+            yield return null;
+        }
+        speedAudio.volume = targetVolume;
+    }
     private void StartDamageTimer()
     {
         if(damageCoroutine == null)
