@@ -85,7 +85,6 @@ public class LoseHealth : MonoBehaviour
     {
         if (speedVolumeCoroutine != null)
         {
-            Debug.Log("Stop Speed Volume");
             StopCoroutine(speedVolumeCoroutine);
             speedVolumeCoroutine = null;
         }
