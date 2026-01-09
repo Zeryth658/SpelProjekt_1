@@ -260,6 +260,7 @@ MonoBehaviour:
   deathSound: {fileID: 8300000, guid: 7f0e3e7740a0c6c4ebc7c1423fe46538, type: 3}
   hurtbox: {fileID: 4972438075651288497}
   blood: {fileID: 4144589229495795748, guid: 34aa5056927a6734081644318bc41d85, type: 3}
+  healthUp: {fileID: 4606407159007040228, guid: 595c9d6e0729c2c428583eaed3dad250, type: 3}
 --- !u!58 &3597884981904689622
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -33,7 +33,7 @@ public class Enemy : MonoBehaviour, IDamageable
     [Header("References")]
     public Hurtbox hurtbox;
     public GameObject blood;
-    
+    [SerializeField] private GameObject healthUp;
     public EnemyShooter Shooter { get; set; }
     public OrbitingWeapon WeaponRotation { get; set; }
     
@@ -127,6 +127,7 @@ public class Enemy : MonoBehaviour, IDamageable
     void Die()
     {
         PoolManager.Spawn(blood, transform.position, Quaternion.identity);
+        PoolManager.Spawn(healthUp, transform.position, Quaternion.identity);
         //AudioSource.PlayClipAtPoint(deathSound, transform.position);
         SoundManager.PlaySound(SoundType.EnemyDeath);
         HitstopManager.Instance.DoHitstop(hitStopDuration, hitStopTimeScale);
