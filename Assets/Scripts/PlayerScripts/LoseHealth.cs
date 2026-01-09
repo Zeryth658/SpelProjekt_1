@@ -74,13 +74,25 @@ public class LoseHealth : MonoBehaviour
 
     private void SetSpeedAudioVolume(float targetVolume)
     {
+        if (speedAudio == null) return;
         if (speedVolumeCoroutine != null)
             StopCoroutine(speedVolumeCoroutine);
 
         speedVolumeCoroutine = StartCoroutine(DynamicSpeedVolume(targetVolume));
     }
+
+    private void OnDestroy()
+    {
+        if (speedVolumeCoroutine != null)
+        {
+            Debug.Log("Stop Speed Volume");
+            StopCoroutine(speedVolumeCoroutine);
+            speedVolumeCoroutine = null;
+        }
+    }
     private IEnumerator DynamicSpeedVolume(float targetVolume)
     {
+        
         float startVolume = speedAudio.volume;
         float time = 0;
         while (time < speedAudioDuration)
