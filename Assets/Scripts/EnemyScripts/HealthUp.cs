@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class HealthUp : MonoBehaviour
@@ -6,6 +7,12 @@ public class HealthUp : MonoBehaviour
     [SerializeField] private float speed = 0.3f;
     [SerializeField] private float rightDrift = 0.3f;
     private float timer = 0f;
+
+    public void OnEnable()
+    {
+        timer = 0f;
+    }
+
     public void Update()
     {
         if (timer >= ExistanceTime)

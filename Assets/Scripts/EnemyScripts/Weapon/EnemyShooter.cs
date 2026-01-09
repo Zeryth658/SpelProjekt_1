@@ -86,7 +86,7 @@ public class EnemyShooter : MonoBehaviour
             return; 
         }
 
-        direction = aimBehaviour.SetTarget(firePoint, target);
+        
         
         
         StartCoroutine(MultiShoot());
@@ -98,6 +98,7 @@ public class EnemyShooter : MonoBehaviour
     {
         for (int i = 0; i < shotAmount; i++)
         {
+            direction = aimBehaviour.SetTarget(firePoint, target);
             //AudioSource.PlayClipAtPoint(shootSound, transform.position);
             SoundManager.PlaySound(SoundType.EnemyAttack);
             shotpattern.Shoot(this, firePoint, direction);
