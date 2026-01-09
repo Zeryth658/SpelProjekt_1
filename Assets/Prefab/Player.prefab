@@ -5619,6 +5619,7 @@ GameObject:
   - component: {fileID: 785864877921393023}
   - component: {fileID: 3439027128940978162}
   - component: {fileID: 9214262830800647993}
+  - component: {fileID: 7297806060191058813}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -5771,6 +5772,7 @@ MonoBehaviour:
   hpReductionThreshold: 1
   hpSpeedThreshold: 105
   speedIncrease: 3
+  speedAudioDuration: 0.5
   playerHealth: {fileID: 1157133527975207446}
   playerMovement: {fileID: 6918456677596445224}
   speedEffect: {fileID: 0}
@@ -5910,9 +5912,9 @@ AudioSource:
   m_GameObject: {fileID: 8818006389662794542}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -5567652545050064945, guid: 9d030628d2f1ca14da97a5f1c82d547e, type: 2}
+  OutputAudioMixerGroup: {fileID: -8717395887718098912, guid: 9d030628d2f1ca14da97a5f1c82d547e, type: 2}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 0f27e36afa1550a42bd3178cd9f99f53, type: 3}
+  m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -6008,5 +6010,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4c7824756d31cbc46a239b564757c0be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7297806060191058813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8818006389662794542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28b0b5f919b4b5e4f94a15d3e0a16285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

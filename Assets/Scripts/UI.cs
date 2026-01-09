@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -11,10 +12,24 @@ public class UI : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        ClearSubtitle();
     }
 
-    public void SetSubtitle(string subtitle)
+    public void SetSubtitle(string subtitle, float delay)
     {
         subtitleText.text = subtitle;
+
+        StartCoroutine(ClearAfterSeconds(delay));
+    }
+
+    public void ClearSubtitle()
+    {
+        subtitleText.text = "";
+    }
+
+    private IEnumerator ClearAfterSeconds(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        ClearSubtitle();
     }
 }
