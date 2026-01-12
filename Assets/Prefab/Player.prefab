@@ -5777,6 +5777,8 @@ MonoBehaviour:
   playerMovement: {fileID: 6918456677596445224}
   speedEffect: {fileID: 0}
   speedAudio: {fileID: 0}
+  lowHealthIndicatorThreshold: 50
+  healthIndicator: {fileID: 0}
 --- !u!114 &4967197348334144092
 MonoBehaviour:
   m_ObjectHideFlags: 0

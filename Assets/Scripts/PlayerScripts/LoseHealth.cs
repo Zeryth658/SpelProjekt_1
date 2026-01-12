@@ -9,6 +9,7 @@ public class LoseHealth : MonoBehaviour
     [SerializeField] private float damageInterval = 3f;
     [SerializeField] private int damageAmount = 1;
     [SerializeField] private float hpReductionThreshold = 5f;
+
     
     [Header("Speed Boost")]
     [SerializeField] private float hpSpeedThreshold = 12f;
@@ -19,9 +20,17 @@ public class LoseHealth : MonoBehaviour
     [SerializeField] private ParticleSystem speedEffect;
     [SerializeField] private AudioSource speedAudio;
 
+    [Header("Low Health Indicator")]
+    [SerializeField] private float lowHealthIndicatorThreshold = 50f;
+    [SerializeField] private CanvasGroup healthIndicator;
+    [SerializeField] private float indicatorFadeDuration = 0.5f;
+    
+    private Coroutine healthIndicatorCoroutine;
     private Coroutine damageCoroutine;
     private Coroutine speedVolumeCoroutine;
     private bool speedBoostActive = false;
+    private bool healthIndicatorActive = false;
+    
     private void FixedUpdate()
     {
         if (takeDamage && playerHealth.currentHealth > hpReductionThreshold)
@@ -52,12 +61,50 @@ public class LoseHealth : MonoBehaviour
         {
             StopDamageTimer();
         }
+        bool shouldHaveHealthIndicator = playerHealth.currentHealth < lowHealthIndicatorThreshold;
+        if (shouldHaveHealthIndicator != healthIndicatorActive)
+        {
+            healthIndicatorActive = shouldHaveHealthIndicator;
+            ActivateHealthIndicator();
+        }
         bool shouldHaveSpeedBoost = playerHealth.currentHealth > hpSpeedThreshold;
         if (shouldHaveSpeedBoost != speedBoostActive)
         {
             speedBoostActive = shouldHaveSpeedBoost;
             OnSpeedBoostStateChanged(speedBoostActive);
         }
+    }
+
+    private void Update()
+    {
+        if (healthIndicatorActive && healthIndicator.alpha > 0.01f)
+        {
+            healthIndicator.alpha = Mathf.Lerp(0.7f, 1f, Mathf.PingPong(Time.time, 1f));
+        }
+    }
+
+    private void ActivateHealthIndicator()
+    {
+        if (healthIndicatorCoroutine != null)
+            StopCoroutine(healthIndicatorCoroutine);
+
+        float targetAlpha = healthIndicatorActive ? 1f : 0f;
+        healthIndicatorCoroutine = StartCoroutine(FadeHealthIndicator(targetAlpha));
+    }
+    
+    private IEnumerator FadeHealthIndicator(float targetAlpha)
+    {
+        float startAlpha = healthIndicator.alpha;
+        float time = 0f;
+
+        while (time < indicatorFadeDuration)
+        {
+            time += Time.deltaTime;
+            healthIndicator.alpha = Mathf.Lerp(startAlpha, targetAlpha, time / indicatorFadeDuration);
+            yield return null;
+        }
+
+        healthIndicator.alpha = targetAlpha;
     }
 
     private void OnSpeedBoostStateChanged(bool active)
