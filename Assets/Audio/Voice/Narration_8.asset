@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Narration_8
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: e07969434a58e884eac297d1d012bc0f, type: 3}
-  subtitle: I don't understand why you are doing this. You are a fairytale creatur,
+  subtitle: I don't understand why you are doing this. You are a fairytale creature,
     shouldn't you be kind.

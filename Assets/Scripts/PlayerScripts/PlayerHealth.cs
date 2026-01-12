@@ -11,9 +11,6 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     public bool immune = false;
     public bool isDead = false;
 
-    [SerializeField] private AudioSource playerGetHitSound1;
-    [SerializeField] private AudioSource playerGetHitSound2;
-
     public void Awake()
     {
         isDead = false;

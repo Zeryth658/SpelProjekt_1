@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private SpriteRenderer characterRenderer;
     [SerializeField] public float maxSpeed = 5f, acceleration = 50f, deacceleration = 100;
     [SerializeField] public float currentSpeed = 0f;
+    public bool freeze = false;
     [SerializeField] private float stickAimDistance = 2f;
     [SerializeField] private float stickDeadzone = 0.2f;
     
@@ -44,9 +45,15 @@ public class PlayerMovement : MonoBehaviour
 
     private void PerformAttack(InputAction.CallbackContext context)
     {
+        if(freeze) { return; }
         if(PauseMenu.IsPaused) { return; }
         if(playerHealth.isDead == true) { return; }
         weaponParent.OnAttack();
+    }
+
+    public void Toggle_Freeze()
+    {
+        freeze = !freeze;
     }
 
     private void Awake()
@@ -62,6 +69,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (freeze)
+        {
+            return;
+        }
         if (dodgeRoll.isDodging)
         {
             return;

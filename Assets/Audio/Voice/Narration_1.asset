@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Narration_1
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: 4d33cfcb2a926f9428d784d4ceab5a1f, type: 3}
-  subtitle: Who am I. Why do I feel pain...why
+  subtitle: Who... who am I. Why do I feel pain...why
