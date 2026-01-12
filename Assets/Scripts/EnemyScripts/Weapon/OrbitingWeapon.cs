@@ -11,6 +11,7 @@ public class OrbitingWeapon : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private SpriteRenderer parentSpriteRenderer;
     public bool isAiming { get; set; }
+    public bool aiming { get; set; }
 
     void Awake()
     {
@@ -35,7 +36,7 @@ public class OrbitingWeapon : MonoBehaviour
 
     public void UpdateAimRotation()
     {
-        if (!isAiming) return;
+        if (!isAiming || !aiming) return;
         Vector2 dirToTarget = aimBehaviour.SetTarget(enemy, target);
         float targetAngle = Mathf.Atan2(dirToTarget.y, dirToTarget.x) * Mathf.Rad2Deg;
             
