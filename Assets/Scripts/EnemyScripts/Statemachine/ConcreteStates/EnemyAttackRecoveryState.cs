@@ -11,13 +11,11 @@ public class EnemyAttackRecoveryState : EnemyState
     public override void EnterState()
     {
         timer = 0f; 
-        enemy.WeaponRotation.aiming = false;
         base.EnterState();
     }
 
     public override void ExitState()
     {
-        enemy.WeaponRotation.aiming = true;
         base.ExitState();
     }
 
