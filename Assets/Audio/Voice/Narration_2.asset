@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e6d3e640262f8246af58e3c25f14bd2, type: 3}
   m_Name: Narration_2
   m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: 07ae61ec39a88ce438fc8e30dfe2ac9a, type: 3}
+  clip: {fileID: 8300000, guid: 830cbfae9c488a941a0b65c3212de99b, type: 3}
   subtitle: A gnome. I think I know you but... I can't remember. Hello, who are you?
