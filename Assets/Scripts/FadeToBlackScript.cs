@@ -33,10 +33,10 @@ public class FadeToBlackScript : MonoBehaviour
             if (startTimeFade)
             {
                 fadeImageColor.a += Time.deltaTime * timedFadeSpeed;
-            }
-            else if (fadeImageColor.a >= 1)
-            {
-                SceneManager.LoadScene(sceneToLoad);
+                if (fadeImageColor.a >= 1)
+                {
+                    SceneManager.LoadScene(sceneToLoad);
+                }
             }
             else
             {
