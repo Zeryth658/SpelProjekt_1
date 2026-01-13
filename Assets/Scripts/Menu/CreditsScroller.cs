@@ -6,16 +6,17 @@ public class CreditsScroller : MonoBehaviour
 {
     public float scrollSpeed = 50f;
     public float waitTime = 4f;
+    public float autoSkipAfter = 60f;
     private float time;
     void Update()
     {
-        if (Input.anyKeyDown)
+        time += Time.deltaTime;
+        if (Input.anyKeyDown || time > autoSkipAfter)
         {
-            SceneManager.LoadScene("MainMenu");
+            SceneManager.LoadScene("StartMenu");
         }
         if (time < waitTime)
         {
-            time += Time.deltaTime;
             return;
         }
         transform.Translate(Vector3.up * scrollSpeed * Time.deltaTime);
