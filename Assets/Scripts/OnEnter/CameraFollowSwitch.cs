@@ -13,10 +13,12 @@ public class CameraFollowSwitch : MonoBehaviour
         cinCamera = FindFirstObjectByType<CinemachineCamera>();
         cinemachineFollow = cinCamera.GetComponent<CinemachineFollow>();
     }
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log("OnTriggerEnter");
         if (other.CompareTag("Player"))
         {
+            Debug.Log("player entered");
             cinemachineFollow.enabled = isFollowing;
         }
     }
