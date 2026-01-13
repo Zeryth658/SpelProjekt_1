@@ -21,15 +21,15 @@ public class CreditsScroller : MonoBehaviour
     void Update()
     {
         time += Time.deltaTime;
-        if (Input.anyKeyDown || time > autoSkipAfter)
-        {
-            SceneManager.LoadScene("StartMenu");
-        }
-        
         if (time < waitTime || isPaused)
         {
             return;
         }
+        if (Input.anyKeyDown || time > autoSkipAfter)
+        {
+            SceneManager.LoadScene("StartMenu");
+        }
+
         rectTransform.anchoredPosition += Vector2.up * scrollSpeed * Time.deltaTime;
         
         if (pauseTarget != null && IsAtCenter(pauseTarget))
