@@ -24,8 +24,7 @@ public class EnemyAttackState : EnemyState
        
         if (enemy.PlayerDetected())
         {
-           
-            enemy.Shooter.Shoot();
+            enemy.Animator.SetBool("Shooting", true);
             enemyStateMachine.ChangeState(enemy.AttackRecoveryState);
         }
         else

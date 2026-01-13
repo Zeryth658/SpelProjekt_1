@@ -82,6 +82,10 @@ public class Enemy : MonoBehaviour, IDamageable
         StateMachine.CurrentState.PhysicsUpdate();
     }
     
+    public void StopShooting()
+    {
+        Animator.SetBool("Shooting", false);
+    }
     
     public bool PlayerDetected()
     {
