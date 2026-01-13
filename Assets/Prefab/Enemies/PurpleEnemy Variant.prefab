@@ -487,7 +487,7 @@ MonoBehaviour:
   detectionRange: 30
   spottingDelay: 0.3
   preparingShotTime: 0.4
-  recoveryTime: 0.5
+  recoveryTime: 1.3
   shootingRange: 30
   hitStopDuration: 0.05
   hitStopTimeScale: 0
