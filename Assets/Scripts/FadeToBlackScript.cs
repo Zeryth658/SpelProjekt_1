@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class FadeToBlackScript : MonoBehaviour
@@ -15,6 +16,7 @@ public class FadeToBlackScript : MonoBehaviour
     [SerializeField] private float distanceFadeSpeed;
     [SerializeField] private float transitionToTimerPoint;
     [SerializeField] private float timedFadeSpeed;
+    [SerializeField] private string sceneToLoad;
     
     void Start()
     {
@@ -30,7 +32,11 @@ public class FadeToBlackScript : MonoBehaviour
             
             if (startTimeFade)
             {
-                fadeImageColor.a += Time.deltaTime * timedFadeSpeed; 
+                fadeImageColor.a += Time.deltaTime * timedFadeSpeed;
+            }
+            else if (fadeImageColor.a >= 1)
+            {
+                SceneManager.LoadScene(sceneToLoad);
             }
             else
             {
