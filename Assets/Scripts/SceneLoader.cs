@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class SceneLoader : MonoBehaviour
 {
     [SerializeField] private string sceneToLoad;
+    public Vector2 spawnPosition;
 
     private TagHandle playerTag;
 
@@ -23,6 +24,7 @@ public class SceneLoader : MonoBehaviour
             if (!string.IsNullOrEmpty(sceneToLoad))
             {
                SceneManager.LoadScene(sceneToLoad); 
+               GameManager.Instance.lastCheckpoint = spawnPosition;
             }
             else
             {
