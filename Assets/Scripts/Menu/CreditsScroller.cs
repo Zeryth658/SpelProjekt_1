@@ -21,7 +21,7 @@ public class CreditsScroller : MonoBehaviour
     void Update()
     {
         time += Time.deltaTime;
-        if (time < waitTime || isPaused)
+        if (time < waitTime)
         {
             return;
         }
@@ -30,6 +30,7 @@ public class CreditsScroller : MonoBehaviour
             SceneManager.LoadScene("StartMenu");
         }
 
+        if (isPaused) return;
         rectTransform.anchoredPosition += Vector2.up * scrollSpeed * Time.deltaTime;
         
         if (pauseTarget != null && IsAtCenter(pauseTarget))
