@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Vocals : MonoBehaviour
 {
-    private AudioSource source;
+    [SerializeField] private AudioSource source;
     public static Vocals instance;
 
     private void Awake()
@@ -10,17 +10,13 @@ public class Vocals : MonoBehaviour
         instance = this;
     }
 
-    private void Start()
+    public void Say(AudioObject narrate)
     {
-        source = gameObject.AddComponent<AudioSource>();
-    }
+        source.Stop();
 
-    public void Say(AudioObject clip)
-    {
-        if (source.isPlaying) { source.Stop(); }
+        source.clip = narrate.clip;
+        source.Play();
 
-        source.PlayOneShot(clip.clip);
-
-        UI.instance.SetSubtitle(clip.subtitle, clip.clip.length);
+        UI.instance.SetSubtitle(narrate.subtitle, narrate.clip.length);
     }
 }
