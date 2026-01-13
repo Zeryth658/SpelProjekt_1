@@ -9,27 +9,38 @@ public class UI : MonoBehaviour
 
     public static UI instance;
 
+    private float clearTimer;
+    private bool timerRunning;
+
     private void Awake()
     {
         instance = this;
         ClearSubtitle();
     }
 
+    private void Update()
+    {
+        if (!timerRunning) return;
+
+        clearTimer -= Time.deltaTime;
+
+        if(clearTimer <= 0f)
+        {
+            ClearSubtitle();
+            timerRunning = false;
+        }
+    }
+
     public void SetSubtitle(string subtitle, float delay)
     {
         subtitleText.text = subtitle;
-
-        StartCoroutine(ClearAfterSeconds(delay));
+        clearTimer = delay;
+        timerRunning = true;
     }
 
     public void ClearSubtitle()
     {
         subtitleText.text = "";
-    }
-
-    private IEnumerator ClearAfterSeconds(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        ClearSubtitle();
+        timerRunning = false;
     }
 }
