@@ -18,11 +18,14 @@ public class FadeAwayScript : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
+        else
+        {
+            gameObject.SetActive(true);
+        }
     }
 
     public void Fade()
     {
         canFade = !canFade;
     }
-
 }

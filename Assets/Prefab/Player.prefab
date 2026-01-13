@@ -5748,7 +5748,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 150
-  currentHealth: 100
+  currentHealth: 15
   healthBar: {fileID: 0}
   hurtbox: {fileID: 4967197348334144092}
   immune: 0
