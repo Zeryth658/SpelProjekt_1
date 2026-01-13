@@ -15,10 +15,8 @@ public class CameraFollowSwitch : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("OnTriggerEnter");
         if (other.CompareTag("Player"))
         {
-            Debug.Log("player entered");
             cinemachineFollow.enabled = isFollowing;
         }
     }
