@@ -33,11 +33,11 @@ public class LoseHealth : MonoBehaviour
     
     private void FixedUpdate()
     {
-        if (takeDamage && playerHealth.currentHealth > hpReductionThreshold)
+        if (takeDamage && playerHealth.health.currentHealth > hpReductionThreshold)
         {
             StartDamageTimer();
 
-            if (playerHealth.currentHealth > hpSpeedThreshold)
+            if (playerHealth.health.currentHealth > hpSpeedThreshold)
             { 
                 playerMovement.maxSpeed = playerMovement.standardMaxSpeed + speedIncrease;
                 
@@ -61,13 +61,13 @@ public class LoseHealth : MonoBehaviour
         {
             StopDamageTimer();
         }
-        bool shouldHaveHealthIndicator = playerHealth.currentHealth < lowHealthIndicatorThreshold;
+        bool shouldHaveHealthIndicator = playerHealth.health.currentHealth < lowHealthIndicatorThreshold;
         if (shouldHaveHealthIndicator != healthIndicatorActive)
         {
             healthIndicatorActive = shouldHaveHealthIndicator;
             ActivateHealthIndicator();
         }
-        bool shouldHaveSpeedBoost = playerHealth.currentHealth > hpSpeedThreshold;
+        bool shouldHaveSpeedBoost = playerHealth.health.currentHealth > hpSpeedThreshold;
         if (shouldHaveSpeedBoost != speedBoostActive)
         {
             speedBoostActive = shouldHaveSpeedBoost;
@@ -168,7 +168,7 @@ public class LoseHealth : MonoBehaviour
 
     private IEnumerator TakeDamageOverTime()
     {
-        while(playerHealth.currentHealth > hpReductionThreshold)
+        while(playerHealth.health.currentHealth > hpReductionThreshold)
         {
             yield return new WaitForSeconds(damageInterval);
             TakeDamage(damageAmount);
@@ -179,11 +179,11 @@ public class LoseHealth : MonoBehaviour
 
     private void TakeDamage(float amount)
     {        
-        playerHealth.currentHealth -= amount;
+        playerHealth.health.currentHealth -= amount;
 
-        if (playerHealth.currentHealth <= 0)
+        if (playerHealth.health.currentHealth <= 0)
         {
-            playerHealth.currentHealth = 0;
+            playerHealth.health.currentHealth = 0;
         }
 
         playerHealth.HealthBarNewValue();
