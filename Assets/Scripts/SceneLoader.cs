@@ -24,7 +24,7 @@ public class SceneLoader : MonoBehaviour
             if (!string.IsNullOrEmpty(sceneToLoad))
             {
                SceneManager.LoadScene(sceneToLoad); 
-               GameManager.Instance.lastCheckpoint = spawnPosition;
+               GameManager.Instance.lastCheckpoint = spawnPosition + new Vector2(0, other.transform.position.y - transform.position.y);
             }
             else
             {
