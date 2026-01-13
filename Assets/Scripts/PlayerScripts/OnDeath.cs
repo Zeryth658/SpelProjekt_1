@@ -6,8 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class OnDeath : MonoBehaviour
 {
+    public HealthData health;
+
     public void OnDeathAnimEvent()
     {  
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        health.ResetHealth();
     }
 }

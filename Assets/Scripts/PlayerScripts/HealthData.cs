@@ -11,6 +11,11 @@ public class HealthData : ScriptableObject
 
     public void OnEnable()
     {
-        currentHealth = maxHealth -= lessThanMax;
+        currentHealth = maxHealth - lessThanMax;
+    }
+
+    public void ResetHealth()
+    {
+        currentHealth = maxHealth - lessThanMax;
     }
 }
