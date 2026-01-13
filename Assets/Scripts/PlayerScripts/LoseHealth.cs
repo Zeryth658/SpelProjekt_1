@@ -109,6 +109,8 @@ public class LoseHealth : MonoBehaviour
 
     private void OnSpeedBoostStateChanged(bool active)
     {
+        Debug.LogWarning("Fading!!!");
+
         if (active)
         {
             SetSpeedAudioVolume(0.6f);
@@ -121,7 +123,19 @@ public class LoseHealth : MonoBehaviour
 
     private void SetSpeedAudioVolume(float targetVolume)
     {
-        if (speedAudio == null) return;
+        if (speedAudio == null)
+        {
+            Debug.LogWarning("NO SPEED AUDIO WTF");
+
+            speedAudio = GameObject.Find("Lead").GetComponent<AudioSource>();
+            
+            if(speedAudio == null)
+            {
+                Debug.LogWarning("No GameObject with name \"lead\" found in scene");
+                return;
+            }
+            Debug.LogWarning("New speed audio found = " + speedAudio.gameObject.name);
+        }        
         if (speedVolumeCoroutine != null)
             StopCoroutine(speedVolumeCoroutine);
 
