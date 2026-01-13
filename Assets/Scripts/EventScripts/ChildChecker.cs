@@ -7,6 +7,8 @@ public class ChildChecker : MonoBehaviour
     public UnityEvent OnNoEnemies;
     private bool performed = false;
 
+    [SerializeField] private Animator animator;
+
     public void Update()
     {
         //Checking for child objects
@@ -14,6 +16,8 @@ public class ChildChecker : MonoBehaviour
         {
             performed = true;
             OnNoEnemies.Invoke();
+
+            animator.SetTrigger("Open");
         }
     }
 }

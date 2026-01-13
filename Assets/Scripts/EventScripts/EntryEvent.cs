@@ -7,8 +7,9 @@ public class EntryEvent : MonoBehaviour
 {
     [Header("Event called when stepping on the trigger")]
     public UnityEvent OnEntryEvent;
-
     private TagHandle playerTag;
+
+    [SerializeField] private Animator animator;
 
     public void OnEnable()
     {
@@ -20,6 +21,8 @@ public class EntryEvent : MonoBehaviour
         if (other.CompareTag(playerTag))
         {
             OnEntryEvent.Invoke();
+
+            animator.SetTrigger("Close");
         }
     }
 }
