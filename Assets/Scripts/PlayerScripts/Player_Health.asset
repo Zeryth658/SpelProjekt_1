@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Player_Health
   m_EditorClassIdentifier: 
   maxHealth: 150
-  currentHealth: 100
+  currentHealth: 102
