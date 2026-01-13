@@ -11889,6 +11889,7 @@ MonoBehaviour:
   videoMenu: {fileID: 1383301108589326060}
   playerInput: {fileID: 0}
   audioMenu: {fileID: 693297352805412068}
+  health: {fileID: 11400000, guid: 64ea1272c0dc5a945836c71cb7c6ab62, type: 2}
   pauseFirstButton: {fileID: 4525723787761338236}
   optionsFirstButton: {fileID: 5504468456068405919}
   generalFirstButton: {fileID: 6543980174908652304}

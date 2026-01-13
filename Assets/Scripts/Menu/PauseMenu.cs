@@ -14,6 +14,8 @@ public class PauseMenu : MonoBehaviour
     public PlayerInput playerInput;
     public GameObject audioMenu;
 
+    public HealthData health;
+
     
     
     [Header("First Selected Buttons")]
@@ -155,6 +157,7 @@ public class PauseMenu : MonoBehaviour
     {
         ResumeGame();
         ResetGame.Reset();
+        health.ResetHealth();
     }
     public void QuitGame()
     {
